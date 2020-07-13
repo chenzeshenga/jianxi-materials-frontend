@@ -14,7 +14,6 @@
                 </el-carousel-item>
             </el-carousel>
         </el-row>
-
     </div>
 </template>
 

@@ -1,15 +1,22 @@
 <template>
     <div>
-        <div>
-            <vue2-org-tree class="hidden-md-and-up" :data="data" :horizontal="true"
-                           :label-class-name="labelClassName"
-            />
-        </div>
-        <div>
-            <vue2-org-tree class="hidden-md-and-down" :data="data" :horizontal="false"
-                           :label-class-name="labelClassName"
-            />
-        </div>
+        <el-row>
+            <el-col :span="2" :offset="2">
+                <el-tree :data="treeData" :props="defaultProps" :default-expanded-keys="[1]" node-key="id"/>
+            </el-col>
+            <el-col :span="20">
+                <div>
+                    <vue2-org-tree class="hidden-md-and-up" :data="data" :horizontal="true"
+                                   :label-class-name="labelClassName"
+                    />
+                </div>
+                <div>
+                    <vue2-org-tree class="hidden-md-and-down" :data="data" :horizontal="false"
+                                   :label-class-name="labelClassName"
+                    />
+                </div>
+            </el-col>
+        </el-row>
     </div>
 </template>
 
@@ -63,13 +70,40 @@
                         },
                     ]
                 },
-                labelClassName: "bg-white"
-            }
+                labelClassName: "bg-white",
+                treeData: [{
+                    id: 1,
+                    label: '公司介绍',
+                    children: [
+                        {
+                            label: '公司概述',
+                        },
+                        {
+                            label: '团队介绍',
+                        },
+                        {
+                            label: '技术实力',
+                        },
+                        {
+                            label: '组织架构',
+                        },
+                        {
+                            label: '公司理念',
+                        },
+                    ]
+                },],
+                defaultProps: {
+                    children: 'children',
+                    label: 'label'
+                }
+            };
         },
         created() {
-        },
+        }
+        ,
         mounted() {
-        },
+        }
+        ,
         methods: {}
     }
 </script>
