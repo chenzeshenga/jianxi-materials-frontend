@@ -21,7 +21,12 @@ const routes = [
     {
         path: '/introduce',
         name: 'introduce',
-        component: () => import('../views/introduce')
+        component: () => import('../views/introduce/introduce')
+    },
+    {
+        path: '/introduce/orgCharts',
+        name: 'orgCharts',
+        component: () => import('../views/introduce/orgCharts')
     }
 ]
 

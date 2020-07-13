@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" style="width: 100%">
         <el-row class="hidden-md-and-down">
             桌面端
             <el-col :span="8">
@@ -111,4 +111,5 @@
     .font-black {
         color: black;
     }
+
 </style>
