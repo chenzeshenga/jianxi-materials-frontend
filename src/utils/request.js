@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const request = axios.create({
-    baseURL: 'http://localhost:8888',
+    baseURL: 'http://localhost:8889',
     timeout: 60000, // request timeout
     withCredentials: true, // 使前台能够保存cookie
 });
