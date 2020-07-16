@@ -30,12 +30,12 @@
         data() {
             return {
                 pics: [
-                    'http://localhost:8889/img/1',
-                    'http://localhost:8889/img/2',
-                    'http://localhost:8889/img/3',
-                    'http://localhost:8889/img/4',
-                    'http://localhost:8889/img/5',
-                    'http://localhost:8889/img/6',
+                    'http://47.105.33.48:8889/img/1',
+                    'http://47.105.33.48:8889/img/2',
+                    'http://47.105.33.48:8889/img/3',
+                    'http://47.105.33.48:8889/img/4',
+                    'http://47.105.33.48:8889/img/5',
+                    'http://47.105.33.48:8889/img/6',
                 ]
             };
         },
