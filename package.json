@@ -13,6 +13,7 @@
     "vue-router": "^3.2.0"
   },
   "devDependencies": {
+    "@syncfusion/ej2-layouts": "^18.2.44",
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
     "@vue/cli-plugin-router": "^4.4.6",

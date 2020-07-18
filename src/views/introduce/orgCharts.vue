@@ -1,9 +1,9 @@
 <template>
     <div>
         <el-row>
-            <el-col :span="2" :offset="2">
-                <el-tree :data="treeData" :props="defaultProps" :default-expanded-keys="[1]" node-key="id"/>
-            </el-col>
+<!--            <el-col :span="2" :offset="2">-->
+<!--                <el-tree :data="treeData" :props="defaultProps" :default-expanded-keys="[1]" node-key="id"/>-->
+<!--            </el-col>-->
             <el-col :span="20">
                 <div>
                     <vue2-org-tree class="hidden-md-and-up" :data="data" :horizontal="true"

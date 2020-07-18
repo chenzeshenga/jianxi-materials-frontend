@@ -1,10 +1,10 @@
 <template>
-    <div class="about">
+    <div class="about" :style="padding">
         <el-tabs/>
         <el-tabs :tab-position="tabPosition">
             <el-tab-pane label="公司概述">
                 <el-row>
-                    <el-col :offset="2">
+                    <span>
                         西安塔博瑞克新材料有限公司的技术及产品源于西安交通大学技术团
                         队的多年研发成果，在产业化的过程中多名拥有西安交大教育背景的管
                         理、技术和市场人才加入了公司，共同组建了文化统一、各有所长、团
@@ -20,11 +20,181 @@
                         铝-铬、铜-磷、镍-磷、铬-硅高纯合金粉以及超轻、超强、高导热率、耐
                         腐蚀等材料。公司致力于镀膜靶材的技术研发和产品服务，产品应用于
                         装饰镀膜、工具镀膜、太阳能、玻璃、手机、功率电子器件等行业
+                    </span>
+                </el-row>
+            </el-tab-pane>
+            <el-tab-pane label="团队介绍">
+                <el-row>
+                    <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
+                        <div class="control-section avatar-card">
+                            <div class="sample_container">
+                                <div class="e-card e-custom-card">
+                                    <div class="e-card-header">
+                                        <div class="e-avatar e-avatar-circle e-avatar-xlarge">
+                                            <img src="../../assets/jianxi.png" alt="profile_pic">
+                                        </div>
+                                    </div>
+                                    <div class="e-card-header">
+                                        <div class="e-card-header-caption center">
+                                            <div class="e-card-header-title name">公司创始人 董事长</div>
+                                            <div class="e-card-sub-title">姚建军</div>
+                                        </div>
+                                    </div>
+                                    <div class="e-card-content">
+                                        <p class="avatar-content">
+                                            西安交通大学工学博士学位，高级工程师。2013年入选国家科技部科技创新创业人才计划；2014年入选中组部第一批“万人计划”科技创业领军人才。
+                                            曾任国有大型研究所常务副院长，组织和承担了多项国家、省部级项目，产学研转化落地、科技与金融结合经验丰富。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </el-col>
+                    <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
+                        <div class="control-section avatar-card">
+                            <div class="sample_container">
+                                <div class="e-card e-custom-card">
+                                    <div class="e-card-header">
+                                        <div class="e-avatar e-avatar-circle e-avatar-xlarge">
+                                            <img src="../../assets/jianxi.png" alt="profile_pic">
+                                        </div>
+                                    </div>
+                                    <div class="e-card-header">
+                                        <div class="e-card-header-caption center">
+                                            <div class="e-card-header-title name">Laura Callahan</div>
+                                            <div class="e-card-sub-title">Sales Coordinator</div>
+                                        </div>
+                                    </div>
+                                    <div class="e-card-content">
+                                        <p class="avatar-content"> Laura received a BA in psychology from the University
+                                            of
+                                            Washington. She has also completed a course
+                                            in business French. She reads and writes French.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </el-col>
+                    <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
+                        <div class="control-section avatar-card">
+                            <div class="sample_container">
+                                <div class="e-card e-custom-card">
+                                    <div class="e-card-header">
+                                        <div class="e-avatar e-avatar-circle e-avatar-xlarge">
+                                            <img src="../../assets/jianxi.png" alt="profile_pic">
+                                        </div>
+                                    </div>
+                                    <div class="e-card-header">
+                                        <div class="e-card-header-caption center">
+                                            <div class="e-card-header-title name">Laura Callahan</div>
+                                            <div class="e-card-sub-title">Sales Coordinator</div>
+                                        </div>
+                                    </div>
+                                    <div class="e-card-content">
+                                        <p class="avatar-content"> Laura received a BA in psychology from the University
+                                            of
+                                            Washington. She has also completed a course
+                                            in business French. She reads and writes French.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </el-col>
+                    <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
+                        <div class="control-section avatar-card">
+                            <div class="sample_container">
+                                <div class="e-card e-custom-card">
+                                    <div class="e-card-header">
+                                        <div class="e-avatar e-avatar-circle e-avatar-xlarge">
+                                            <img src="../../assets/jianxi.png" alt="profile_pic">
+                                        </div>
+                                    </div>
+                                    <div class="e-card-header">
+                                        <div class="e-card-header-caption center">
+                                            <div class="e-card-header-title name">Laura Callahan</div>
+                                            <div class="e-card-sub-title">Sales Coordinator</div>
+                                        </div>
+                                    </div>
+                                    <div class="e-card-content">
+                                        <p class="avatar-content"> Laura received a BA in psychology from the University
+                                            of
+                                            Washington. She has also completed a course
+                                            in business French. She reads and writes French.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </el-col>
+                    <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
+                        <div class="control-section avatar-card">
+                            <div class="sample_container">
+                                <div class="e-card e-custom-card">
+                                    <div class="e-card-header">
+                                        <div class="e-avatar e-avatar-circle e-avatar-xlarge">
+                                            <img src="../../assets/jianxi.png" alt="profile_pic">
+                                        </div>
+                                    </div>
+                                    <div class="e-card-header">
+                                        <div class="e-card-header-caption center">
+                                            <div class="e-card-header-title name">Laura Callahan</div>
+                                            <div class="e-card-sub-title">Sales Coordinator</div>
+                                        </div>
+                                    </div>
+                                    <div class="e-card-content">
+                                        <p class="avatar-content"> Laura received a BA in psychology from the University
+                                            of
+                                            Washington. She has also completed a course
+                                            in business French. She reads and writes French.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </el-col>
+                    <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
+                        <div class="control-section avatar-card">
+                            <div class="sample_container">
+                                <div class="e-card e-custom-card">
+                                    <div class="e-card-header">
+                                        <div class="e-avatar e-avatar-circle e-avatar-xlarge">
+                                            <img src="../../assets/jianxi.png" alt="profile_pic">
+                                        </div>
+                                    </div>
+                                    <div class="e-card-header">
+                                        <div class="e-card-header-caption center">
+                                            <div class="e-card-header-title name">Laura Callahan</div>
+                                            <div class="e-card-sub-title">Sales Coordinator</div>
+                                        </div>
+                                    </div>
+                                    <div class="e-card-content">
+                                        <p class="avatar-content"> Laura received a BA in psychology from the University
+                                            of
+                                            Washington. She has also completed a course
+                                            in business French. She reads and writes French.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </el-col>
                 </el-row>
             </el-tab-pane>
-            <el-tab-pane label="配置管理">配置管理</el-tab-pane>
-            <el-tab-pane label="角色管理">角色管理</el-tab-pane>
+            <el-tab-pane label="技术实力">技术实力</el-tab-pane>
+            <el-tab-pane label="组织架构">
+                <el-row>
+                    <el-col :span="20">
+                        <div>
+                            <vue2-org-tree class="hidden-md-and-up" :data="data" :horizontal="true"
+                                           :label-class-name="labelClassName"
+                            />
+                        </div>
+                        <div>
+                            <vue2-org-tree class="hidden-md-and-down" :data="data" :horizontal="false"
+                                           :label-class-name="labelClassName"
+                            />
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-tab-pane>
+            <el-tab-pane label="公司理念">公司理念</el-tab-pane>
             <el-tab-pane label="地址">
                 <!--                <el-button>导航</el-button>-->
                 <baidu-map style="width: 100%;height: 500px" class="map"
@@ -60,6 +230,54 @@
                 position: {
                     start: '{}',
                     end: {}
+                },
+                labelClassName: "bg-white",
+                data: {
+                    id: 0,
+                    label: "董事会",
+                    children: [
+                        {
+                            id: 2,
+                            label: "总经理",
+                            children: [
+                                {
+                                    id: 5,
+                                    label: "研发部",
+                                    children: [
+                                        {
+                                            id: 99, label: '西安交大电学材料课题组'
+                                        }
+                                    ]
+                                },
+                                {
+                                    id: 6,
+                                    label: "市场部",
+                                    children: [
+                                        {id: 100, label: '销售部'},
+                                        {id: 101, label: '产品开发中心'}
+                                    ]
+                                },
+                                {
+                                    id: 9,
+                                    label: "产品部",
+                                    children: [
+                                        {id: 102, label: '质量部'},
+                                        {id: 103, label: '生产部'}
+                                    ]
+                                },
+                                {
+                                    id: 10,
+                                    label: "办公室",
+                                    children: [
+                                        {id: 104, label: '财务室'},
+                                    ]
+                                }
+                            ]
+                        },
+                    ]
+                },
+                padding: {
+                    'padding-left': '10%'
                 }
             }
         },
@@ -72,6 +290,7 @@
             updateTabPosition() {
                 if (window.outerWidth <= 992) {
                     this.tabPosition = 'top';
+                    this.padding = {};
                 }
             },
             handler({BMap, map}) {
@@ -113,224 +332,108 @@
     }
 </script>
 
-<!--<style scoped lang="scss">-->
-<!--    .bm-view {-->
-<!--        width: 100%;-->
-<!--        height: 300px;-->
-<!--    }-->
+<style scoped>
 
-<!--    /* 地图标注圆角显示 */-->
-<!--    .BMap_bubble_title {-->
-<!--        color: black;-->
-<!--        font-size: 13px;-->
-<!--        font-weight: bold;-->
-<!--        text-align: left;-->
-<!--    }-->
+    .avatar-card .sample_container {
+        max-width: 300px;
+        margin: auto;
+        min-height: 400px;
+    }
 
-<!--    .BMap_pop div:nth-child(1) {-->
-<!--        border-radius: 7px 0 0 0;-->
-<!--    }-->
+    /* Card Customizations */
 
-<!--    .BMap_pop div:nth-child(3) {-->
-<!--        border-radius: 0 7px 0 0;-->
-<!--        background: #ABABAB;;-->
-<!--        /*background: #ABABAB;*/-->
-<!--        width: 23px;-->
-<!--        width: 0px;-->
-<!--        height: 10px;-->
-<!--    }-->
+    .avatar-card .e-custom-card {
+        position: relative;
+        margin-top: 80px;
+        overflow: visible;
+        border-radius: 15px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        transition: 0.2s;
+        border-width: 1px;
+        padding: 1px;
+    }
 
-<!--    .BMap_pop div:nth-child(3) div {-->
-<!--        border-radius: 7px;-->
-<!--    }-->
+    .avatar-card .e-custom-card.e-card:hover {
+        border-width: 1px;
+        padding: 1px;
+    }
 
-<!--    .BMap_pop div:nth-child(5) {-->
-<!--        border-radius: 0 0 0 7px;-->
-<!--    }-->
+    .avatar-card .e-custom-card :nth-child(2) .e-card-header-title.name {
+        margin-top: 20px;
+    }
 
-<!--    .BMap_pop div:nth-child(5) div {-->
-<!--        border-radius: 7px;-->
-<!--    }-->
+    .avatar-card p.avatar-content {
+        line-height: 20px;
+        font-family: inherit;
+    }
 
-<!--    .BMap_pop div:nth-child(7) {-->
-<!--        border-radius: 0 0 7px 0;-->
-<!--    }-->
+    .avatar-card .e-custom-card .e-card-header {
+        text-align: center;
+    }
 
-<!--    /*.BMap_pop div:nth-child div(7) {*/-->
-<!--    /*    border-radius:7px ;*/-->
-<!--    /*}*/-->
-<!--    /*   .BMap_pop>img {*/-->
-<!--    /*       display: none;*/-->
-<!--    /*   }*/-->
+    .avatar-card .e-custom-card .e-avatar {
+        font-size: 40px;
+        position: absolute;
+        top: calc(0% - 1.5em);
+        left: calc(50% - 1.5em);
+        box-shadow: 0 16px 28px -8px rgba(0, 0, 0, .36), 0 4px 15px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+    }
 
-<!--    $bgBlueColor: #1881bf;-->
-<!--    h3.title {-->
-<!--        box-sizing: border-box;-->
-<!--        height: 34px;-->
-<!--        line-height: 34px;-->
-<!--        font-size: 16px;-->
-<!--        font-weight: 600;-->
-<!--        padding: 0 0 0 30px;-->
-<!--        border: 1px #E5EEF3 solid;-->
-<!--        color: #2274A4;-->
-<!--        background: #F5F9F9;-->
-<!--        width: 100%;-->
-<!--        text-align: left;-->
-<!--    }-->
+    .avatar-card .e-card.e-custom-card :nth-child(3) {
+        padding: 12px 0px 20px 0px;
+        height: 130px;
+    }
 
-<!--    .container {-->
-<!--        margin: 0 auto;-->
-<!--        min-width: 1366px;-->
-<!--        padding: 0px;-->
-<!--        min-height: 710px;-->
+    .avatar-card .e-custom-card.e-card .e-card-header .e-card-header-caption .e-card-header-title {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: normal;
+        color: rgba(83, 101, 132, 0.65);
+        text-shadow: 0 0 0.1px;
+    }
 
-<!--        .left {-->
-<!--            width: 320px;-->
-<!--            float: left;-->
+    .avatar-card .e-custom-card.e-card .e-card-header .e-card-header-caption .e-card-sub-title {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: normal;
+        color: rgba(86, 90, 97, 0.65);
+        text-shadow: 0 0 0.1px;
+    }
 
-<!--            .header {-->
-<!--                width: 300px;-->
-<!--                clear: left;-->
-<!--                height: 34px;-->
-<!--                line-height: 34px;-->
-<!--                color: black;-->
-<!--                background: #F5F9F9;-->
-<!--                padding-left: 20px;-->
-<!--            }-->
+    .avatar-card .e-custom-card.e-card .e-card-content {
+        overflow: visible;
+        width: auto;
+        margin: -5px 20px 0 20px;
+        word-spacing: 1px;
+    }
 
-<!--            .top {-->
-<!--                height: 70px;-->
-<!--                padding: 8px 5px 12px 5px;-->
-<!--            }-->
-<!--        }-->
+    .avatar-card .avatar-content {
+        color: rgba(250, 200, 130, 0.6);
+        margin: 0 auto;
+        text-align: center;
+        color: rgb(94, 94, 94);
+        border: none;
+        padding: 0;
+        font-size: 14px;
+    }
 
-<!--        .right-context {-->
-<!--            float: left;-->
-<!--        }-->
+    .avatar-card .avatar-content {
+        margin-bottom: 0;
+    }
 
-<!--        .item {-->
-<!--            margin: 5px;-->
-<!--            height: 28px;-->
-<!--            line-height: 28px;-->
+    .avatar-card .sample_container .name {
+        margin-top: 10px;
+    }
 
-<!--            .electricity {-->
-<!--                color: #FFD670;-->
-<!--            }-->
+    .highcontrast .avatar-card .e-custom-card.e-card .avatar-content {
+        color: rgba(255, 255, 255, 0.84);
+    }
 
-<!--            .water {-->
-<!--                color: #4EB9DB;-->
-<!--            }-->
+    .highcontrast .avatar-card .e-custom-card.e-card .e-card-header .e-card-header-caption .e-card-sub-title {
+        color: rgba(255, 255, 255, 0.45);
+    }
 
-<!--            .air {-->
-<!--                color: #F39795;-->
-<!--            }-->
-
-<!--            .iconfont {-->
-<!--                font-size: 22px;-->
-<!--            }-->
-<!--        }-->
-
-<!--        .query-submit {-->
-<!--            width: 90px;-->
-<!--            border-radius: 28px;-->
-<!--            background: $bgBlueColor;-->
-<!--            color: #fff;-->
-<!--            text-align: center;-->
-<!--            cursor: pointer;-->
-<!--        }-->
-
-<!--        .list {-->
-<!--            .item {-->
-<!--                width: 93px;-->
-<!--                height: 30px;-->
-<!--                line-height: 30px;-->
-<!--                display: block;-->
-<!--            }-->
-
-<!--            .item.fl {-->
-<!--                float: left;-->
-<!--            }-->
-
-<!--            .list-context {-->
-<!--                border-radius: 5px;-->
-<!--                margin-top: 10px;-->
-<!--                background: white;-->
-
-<!--                .list-scroll {-->
-<!--                    margin-top: 10px;-->
-<!--                    overflow-y: auto;-->
-<!--                    min-height: 537px;-->
-<!--                    overflow-x: hidden;-->
-
-<!--                    .row {-->
-<!--                        float: left;-->
-<!--                        width: 320px;-->
-<!--                        cursor: pointer;-->
-
-<!--                        .head-title {-->
-<!--                            overflow: hidden;-->
-<!--                            text-overflow: ellipsis;-->
-<!--                            white-space: nowrap;-->
-<!--                            font-size: 16px;-->
-<!--                            color: #1781BF;-->
-<!--                            font-weight: 400;-->
-<!--                            padding-left: 20px;-->
-<!--                            height: 30px;-->
-<!--                            line-height: 30px;-->
-<!--                        }-->
-
-<!--                        .row-content {-->
-<!--                            overflow: hidden;-->
-<!--                            text-overflow: ellipsis;-->
-<!--                            white-space: nowrap;-->
-<!--                            padding-bottom: 10px;-->
-<!--                            font-size: 12px;-->
-<!--                            color: rgb(128, 128, 128);-->
-<!--                            border-bottom: 1px solid #eee;-->
-<!--                            padding-left: 10px;-->
-<!--                        }-->
-<!--                    }-->
-
-<!--                    .row.active {-->
-<!--                        background-color: #CFDDF3;-->
-<!--                    }-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-
-<!--        .map {-->
-<!--            min-width: 800px;-->
-<!--            width: 1000px;-->
-<!--            height: 710px;-->
-<!--            float: left;-->
-<!--            background: white;-->
-<!--            border-radius: 5px;-->
-<!--            margin-left: 10px;-->
-
-<!--            .right {-->
-<!--                text-align: left;-->
-<!--            }-->
-
-<!--            .left {-->
-<!--                width: 100px;-->
-<!--            }-->
-<!--        }-->
-
-<!--    }-->
-<!--</style>-->
-
-
-<!--<style lang="scss">-->
-<!--    .pm-distribution {-->
-<!--        .BMap_bubble_title {-->
-<!--            color: #2DB7F5 !important;-->
-<!--            font-size: 16px;-->
-<!--            font-weight: 400;-->
-<!--            margin-bottom: 8px;-->
-<!--            overflow: hidden;-->
-<!--            text-overflow: ellipsis;-->
-<!--            white-space: nowrap;-->
-<!--            width: 220px !important;-->
-<!--        }-->
-<!--    }-->
-<!--</style>-->
+    .highcontrast .avatar-card .e-custom-card.e-card .e-card-header .e-card-header-caption .e-card-header-title {
+        color: rgba(255, 255, 255, 0.84);
+    }
+</style>
