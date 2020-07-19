@@ -1,26 +1,43 @@
 <template>
     <div class="about" :style="padding">
         <el-tabs/>
-        <el-tabs :tab-position="tabPosition">
+        <el-tabs :tab-position="tabPosition" :style="padding2">
             <el-tab-pane label="公司概述">
                 <el-row>
-                    <span>
-                        西安塔博瑞克新材料有限公司的技术及产品源于西安交通大学技术团
-                        队的多年研发成果，在产业化的过程中多名拥有西安交大教育背景的管
-                        理、技术和市场人才加入了公司，共同组建了文化统一、各有所长、团
-                        结奋斗的核心团队。
-                        公司在特种合金靶材领域具有领先的技术优势，已开发并批量生产了
-                        多项具有完全自主知识产权、国际领先的技术和产品，具有按照客户要
-                        求开发特种合金靶材的技术能力。公司技术团队在密切关注国内外镀膜
-                        及镀膜材料的发展方向的基础上，引领高性能特种镀膜靶材的技术发
-                        展，为行业提供最先进、最优质的镀膜材料。
-                        公司目前生产全球唯一的镍-磷烧结靶材，国内唯一的铝-铬-硼（硼：
-                        1-10 at.%)靶材，以及高纯铜（6N）、ITO靶材、高纯（3N5)全系列铝-硅
-                        （硅: 10-90 at.%)靶、氧化铌靶、钼-铌靶、铝-钛靶、镍-硼靶以及铝-钴、
-                        铝-铬、铜-磷、镍-磷、铬-硅高纯合金粉以及超轻、超强、高导热率、耐
-                        腐蚀等材料。公司致力于镀膜靶材的技术研发和产品服务，产品应用于
-                        装饰镀膜、工具镀膜、太阳能、玻璃、手机、功率电子器件等行业
-                    </span>
+                    <div>
+                        宁波建锡新材料有限公司
+                        <ul>
+                            西安交通大学金属材料强度国家重点实验室作为依托平台
+                        </ul>
+                        <ul>
+                            通用熔渗技术
+                        </ul>
+                        <ul>
+                            多种成熟产品形成销售
+                        </ul>
+                        <ul>
+                            文化、理念高度一致的研发管理团队
+                        </ul>
+                        <ul>
+                            高纯靶材
+                        </ul>
+                        <ul>
+                            多功能金属复合材料
+                        </ul>
+                        <ul>
+                            绑定服务
+                        </ul>
+                        <ul>
+                            生产设备、辅助工具
+                        </ul>
+                        <ul>
+                            公司在特种合金靶材领域具有领先的技术优势，已开发并批量生产了
+                            多项具有完全自主知识产权、国际领先的技术和产品，具有按照客户要
+                            求开发特种合金靶材的技术能力。公司技术团队在密切关注国内外镀膜
+                            及镀膜材料的发展方向的基础上，引领高性能特种镀膜靶材的技术发
+                            展，为行业提供最先进、最优质的镀膜材料。
+                        </ul>
+                    </div>
                 </el-row>
             </el-tab-pane>
             <el-tab-pane label="团队介绍">
@@ -31,7 +48,7 @@
                                 <div class="e-card e-custom-card">
                                     <div class="e-card-header">
                                         <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                                            <img src="../../assets/jianxi.png" alt="profile_pic">
+                                            <img src="../../assets/001.png" alt="profile_pic">
                                         </div>
                                     </div>
                                     <div class="e-card-header">
@@ -56,20 +73,20 @@
                                 <div class="e-card e-custom-card">
                                     <div class="e-card-header">
                                         <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                                            <img src="../../assets/jianxi.png" alt="profile_pic">
+                                            <img src="../../assets/002.png" alt="profile_pic">
                                         </div>
                                     </div>
                                     <div class="e-card-header">
                                         <div class="e-card-header-caption center">
-                                            <div class="e-card-header-title name">Laura Callahan</div>
-                                            <div class="e-card-sub-title">Sales Coordinator</div>
+                                            <div class="e-card-header-title name">公司联合创始人 总工程师 技术带头人</div>
+                                            <div class="e-card-sub-title">王亚平</div>
                                         </div>
                                     </div>
                                     <div class="e-card-content">
-                                        <p class="avatar-content"> Laura received a BA in psychology from the University
-                                            of
-                                            Washington. She has also completed a course
-                                            in business French. She reads and writes French.</p>
+                                        <p class="avatar-content">
+                                            西安交通大学教授，博士生导师，承担多项国家、省部级科研项目，曾获国家科技进步二等级、陕西省科学技术一等奖、二等级等奖项，拥有多项专利
+                                            在金属合金领域耕耘近三十年，成功研发和产业化多种金属合金产品，属于相关领域的国际权威专家。
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -81,20 +98,18 @@
                                 <div class="e-card e-custom-card">
                                     <div class="e-card-header">
                                         <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                                            <img src="../../assets/jianxi.png" alt="profile_pic">
+                                            <img src="../../assets/003.png" alt="profile_pic">
                                         </div>
                                     </div>
                                     <div class="e-card-header">
                                         <div class="e-card-header-caption center">
-                                            <div class="e-card-header-title name">Laura Callahan</div>
-                                            <div class="e-card-sub-title">Sales Coordinator</div>
+                                            <div class="e-card-header-title name">总经理</div>
+                                            <div class="e-card-sub-title">白浩博</div>
                                         </div>
                                     </div>
                                     <div class="e-card-content">
-                                        <p class="avatar-content"> Laura received a BA in psychology from the University
-                                            of
-                                            Washington. She has also completed a course
-                                            in business French. She reads and writes French.</p>
+                                        <p class="avatar-content">
+                                            西安交通大学硕士学位，曾任国有大型研究所研发负责人，产业化公司副总经理，拥有多年工业制作、新材料领域的企业管理和产品开发经验。</p>
                                     </div>
                                 </div>
                             </div>
@@ -106,20 +121,18 @@
                                 <div class="e-card e-custom-card">
                                     <div class="e-card-header">
                                         <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                                            <img src="../../assets/jianxi.png" alt="profile_pic">
+                                            <img src="../../assets/004.png" alt="profile_pic">
                                         </div>
                                     </div>
                                     <div class="e-card-header">
                                         <div class="e-card-header-caption center">
-                                            <div class="e-card-header-title name">Laura Callahan</div>
-                                            <div class="e-card-sub-title">Sales Coordinator</div>
+                                            <div class="e-card-header-title name">销售副总</div>
+                                            <div class="e-card-sub-title">于丰</div>
                                         </div>
                                     </div>
                                     <div class="e-card-content">
-                                        <p class="avatar-content"> Laura received a BA in psychology from the University
-                                            of
-                                            Washington. She has also completed a course
-                                            in business French. She reads and writes French.</p>
+                                        <p class="avatar-content">
+                                            西安交通大学硕士学位，曾任大唐电信科技股份有限公司二级事业部总经理，管理200余人的市场销售团队，拥有丰富的市场销售经验和销售团队管理技能。</p>
                                     </div>
                                 </div>
                             </div>
@@ -131,45 +144,17 @@
                                 <div class="e-card e-custom-card">
                                     <div class="e-card-header">
                                         <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                                            <img src="../../assets/jianxi.png" alt="profile_pic">
+                                            <img src="../../assets/005.png" alt="profile_pic">
                                         </div>
                                     </div>
                                     <div class="e-card-header">
                                         <div class="e-card-header-caption center">
-                                            <div class="e-card-header-title name">Laura Callahan</div>
-                                            <div class="e-card-sub-title">Sales Coordinator</div>
+                                            <div class="e-card-header-title name">生产副总</div>
+                                            <div class="e-card-sub-title">罗凯于</div>
                                         </div>
                                     </div>
                                     <div class="e-card-content">
-                                        <p class="avatar-content"> Laura received a BA in psychology from the University
-                                            of
-                                            Washington. She has also completed a course
-                                            in business French. She reads and writes French.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </el-col>
-                    <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
-                        <div class="control-section avatar-card">
-                            <div class="sample_container">
-                                <div class="e-card e-custom-card">
-                                    <div class="e-card-header">
-                                        <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                                            <img src="../../assets/jianxi.png" alt="profile_pic">
-                                        </div>
-                                    </div>
-                                    <div class="e-card-header">
-                                        <div class="e-card-header-caption center">
-                                            <div class="e-card-header-title name">Laura Callahan</div>
-                                            <div class="e-card-sub-title">Sales Coordinator</div>
-                                        </div>
-                                    </div>
-                                    <div class="e-card-content">
-                                        <p class="avatar-content"> Laura received a BA in psychology from the University
-                                            of
-                                            Washington. She has also completed a course
-                                            in business French. She reads and writes French.</p>
+                                        <p class="avatar-content">西安交通大学硕士学位，曾任某大型国企生产部副主任，在工业制作、新材料领域有多年的生产和项目管理经验。</p>
                                     </div>
                                 </div>
                             </div>
@@ -196,7 +181,6 @@
             </el-tab-pane>
             <el-tab-pane label="公司理念">公司理念</el-tab-pane>
             <el-tab-pane label="地址">
-                <!--                <el-button>导航</el-button>-->
                 <baidu-map style="width: 100%;height: 500px" class="map"
                            ak="HWgG9jQ3R5AH31GEG1svVfM8h4chKRlj"
                            @ready="handler"
@@ -278,7 +262,8 @@
                 },
                 padding: {
                     'padding-left': '10%'
-                }
+                },
+                padding2: {}
             }
         },
         created() {
@@ -291,11 +276,15 @@
                 if (window.outerWidth <= 992) {
                     this.tabPosition = 'top';
                     this.padding = {};
+                    this.padding2 = {
+                        'padding-left': '2%',
+                        'padding-right': '2%',
+                    }
                 }
             },
             handler({BMap, map}) {
                 // 初始化地图,设置中心点坐标
-                let point = new BMap.Point(121.216564, 30.242683)
+                let point = new BMap.Point(121.222564, 30.241683)
                 map.centerAndZoom(point, 18)
                 // 添加鼠标滚动缩放
                 map.enableScrollWheelZoom();
@@ -310,7 +299,7 @@
                 //设置标注的图标
                 // let icon = new BMap.Icon("/img/jianxi.png", new BMap.Size(100, 100));
                 //设置标注的经纬度
-                let marker = new BMap.Marker(new BMap.Point(121.216564, 30.242683));
+                let marker = new BMap.Marker(new BMap.Point(121.222564, 30.241683));
                 //把标注添加到地图上
                 map.addOverlay(marker);
                 let content = "<table>";
