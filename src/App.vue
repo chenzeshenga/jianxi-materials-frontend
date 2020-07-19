@@ -13,12 +13,12 @@
                 </el-button>
                 <el-button type="text">
                     <h2>
-                        <router-link to="/about" class="font-black">新闻中心</router-link>
+                        <router-link to="/news" class="font-black">新闻中心</router-link>
                     </h2>
                 </el-button>
                 <el-button type="text">
                     <h2>
-                        <router-link to="/" class="font-black">产品服务</router-link>
+                        <router-link to="/product" class="font-black">产品服务</router-link>
                     </h2>
                 </el-button>
                 <el-button type="text">
@@ -48,10 +48,10 @@
                             <router-link to="/introduce" class="font-black">公司介绍</router-link>
                         </el-dropdown-item>
                         <el-dropdown-item>
-                            <router-link to="/introduce" class="font-black">新闻中心</router-link>
+                            <router-link to="/news" class="font-black">新闻中心</router-link>
                         </el-dropdown-item>
                         <el-dropdown-item>
-                            <router-link to="/introduce" class="font-black">产品服务</router-link>
+                            <router-link to="/product" class="font-black">产品服务</router-link>
                         </el-dropdown-item>
                         <el-dropdown-item>
                             <router-link to="/introduce" class="font-black">下载中心</router-link>
