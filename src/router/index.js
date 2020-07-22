@@ -34,9 +34,9 @@ const routes = [
         component: () => import('../views/product/product')
     },
     {
-        path: '/introduce/orgCharts',
-        name: 'orgCharts',
-        component: () => import('../views/introduce/orgCharts')
+        path: '/mgt/login',
+        name: 'login',
+        component: () => import('../views/mgt/login')
     }
 ]
 

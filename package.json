@@ -14,6 +14,7 @@
   },
   "devDependencies": {
     "@syncfusion/ej2-layouts": "^18.2.44",
+    "@syncfusion/ej2-vue-richtexteditor": "^18.2.45",
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
     "@vue/cli-plugin-router": "^4.4.6",
