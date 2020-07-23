@@ -17,6 +17,24 @@ export default {
             method: 'post',
             data: user
         })
+    },
+
+    addOrUpdateNews(news) {
+        console.log('addOrUpdateNews')
+        return request({
+            url: '/news/insert',
+            method: 'post',
+            data: news
+        })
+    },
+
+    listNews(pagination, type) {
+        console.log('listNews')
+        return request({
+            url: '/news/list/' + type,
+            method: 'post',
+            data: pagination
+        })
     }
 
 }

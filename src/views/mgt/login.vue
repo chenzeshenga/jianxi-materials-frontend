@@ -32,7 +32,7 @@
             onSubmit() {
                 request.login(this.form).then(() => {
                     this.$message.success('登录成功');
-                    this.$router.push({path: '/introduce'})
+                    this.$router.push({path: '/mgt/mgt'})
                 }).catch(() => {
                     this.$message.error('error 用户名或密码错误');
                 })
