@@ -3,87 +3,70 @@
         <el-tabs/>
         <el-tabs :tab-position="tabPosition">
             <el-tab-pane label="行业动态">
-                <ul>
-                    <el-row>
-                        <div class="hidden-md-and-up">
-                            <div class="el-col-md-24 el-col-sm-24 textLeft">新闻内容1</div>
-                        </div>
-                        <div class="hidden-md-and-down">
-                            <div class="el-col-lg-15 el-col-lg-offset-1 textLeft">新闻内容1</div>
-                            <div class="hidden-md-and-up"><br></div>
-                            <div class="el-col-lg-4 el-col-lg-offset-1 el-col-md-offset-16 el-col-sm-offset-16 el-col-md-8 el-col-sm-8">
-                                2020-07-19
-                            </div>
-                        </div>
-                    </el-row>
-                </ul>
-                <ul>
-                    <el-row>
-                        <div class="hidden-md-and-up">
-                            <div class="el-col-md-24 el-col-sm-24 textLeft">新闻内容1</div>
-                        </div>
-                        <div class="hidden-md-and-down">
-                            <div class="el-col-lg-15 el-col-lg-offset-1 textLeft">新闻内容1</div>
-                            <div class="hidden-md-and-up"><br></div>
-                            <div class="el-col-lg-4 el-col-lg-offset-1 el-col-md-offset-16 el-col-sm-offset-16 el-col-md-8 el-col-sm-8">
-                                2020-07-19
-                            </div>
-                        </div>
-                    </el-row>
-                </ul>
-                <ul>
-                    <el-row>
-                        <div class="hidden-md-and-up">
-                            <div class="el-col-md-24 el-col-sm-24 textLeft">新闻内容1</div>
-                        </div>
-                        <div class="hidden-md-and-down">
-                            <div class="el-col-lg-15 el-col-lg-offset-1 textLeft">新闻内容1</div>
-                            <div class="hidden-md-and-up"><br></div>
-                            <div class="el-col-lg-4 el-col-lg-offset-1 el-col-md-offset-16 el-col-sm-offset-16 el-col-md-8 el-col-sm-8">
-                                2020-07-19
-                            </div>
-                        </div>
-                    </el-row>
-                </ul>
-                <ul>
-                    <el-row>
-                        <div class="hidden-md-and-up">
-                            <div class="el-col-md-24 el-col-sm-24 textLeft">新闻内容1</div>
-                        </div>
-                        <div class="hidden-md-and-down">
-                            <div class="el-col-lg-15 el-col-lg-offset-1 textLeft">新闻内容1</div>
-                            <div class="hidden-md-and-up"><br></div>
-                            <div class="el-col-lg-4 el-col-lg-offset-1 el-col-md-offset-16 el-col-sm-offset-16 el-col-md-8 el-col-sm-8">
-                                2020-07-19
-                            </div>
-                        </div>
-                    </el-row>
-                </ul>
-                <ul>
-                    <el-row>
-                        <div class="hidden-md-and-up">
-                            <div class="el-col-md-24 el-col-sm-24 textLeft">新闻内容1</div>
-                        </div>
-                        <div class="hidden-md-and-down">
-                            <div class="el-col-lg-15 el-col-lg-offset-1 textLeft">新闻内容1</div>
-                            <div class="hidden-md-and-up"><br></div>
-                            <div class="el-col-lg-4 el-col-lg-offset-1 el-col-md-offset-16 el-col-sm-offset-16 el-col-md-8 el-col-sm-8">
-                                2020-07-19
-                            </div>
-                        </div>
-                    </el-row>
-                </ul>
+                <el-table
+                        :data="newsTableData1"
+                        :style="tableStyle">
+                    <el-table-column
+                            prop="time"
+                            label="日期"
+                            width="100"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="title"
+                            label="内容"
+                    >
+                        <template slot-scope="scope">
+                            <el-button type="text" @click="router2NewsDetail(scope.row.id)">{{scope.row.title}}
+                            </el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
                 <el-pagination
-                        layout="prev, pager, next"
-                        :total="50">
+                        layout="prev, pager, next, total"
+                        :total="pagination1.total"
+                        :page-size="pagination1.size"
+                        :current-page="pagination1.current"
+                        @current-change="currentChange1"
+                >
                 </el-pagination>
             </el-tab-pane>
-            <el-tab-pane label="公司新闻"></el-tab-pane>
+            <el-tab-pane label="公司新闻">
+                <el-table
+                        :data="newsTableData2"
+                        :style="tableStyle">
+                    <el-table-column
+                            prop="time"
+                            label="日期"
+                            width="100"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="title"
+                            label="内容"
+                    >
+                        <template slot-scope="scope">
+                            <el-button type="text" @click="router2NewsDetail(scope.row.id)">{{scope.row.title}}
+                            </el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+                <el-pagination
+                        layout="prev, pager, next, total"
+                        :total="pagination2.total"
+                        :page-size="pagination2.size"
+                        :current-page="pagination2.current"
+                        @current-change="currentChange2"
+                >
+                </el-pagination>
+            </el-tab-pane>
         </el-tabs>
     </div>
 </template>
 
 <script>
+
+    import request from "../../request/request";
 
     export default {
         name: "news",
@@ -92,23 +75,67 @@
                 padding: {
                     'padding-left': '10%'
                 },
-                tabPosition: 'left'
-            };
+                tableStyle: {
+                    'margin-left': '10%'
+                },
+                tabPosition: 'left',
+                pagination1: {
+                    current: 1,
+                    size: 10,
+                    total: 0,
+                },
+                pagination2: {
+                    current: 1,
+                    size: 10,
+                    total: 0,
+                },
+                newsTableData1: [],
+                newsTableData2: [],
+            }
         },
         created() {
             this.updateCss();
-        }
-        ,
+            this.fetchNews();
+        },
         mounted() {
-        }
-        ,
+        },
         methods: {
             updateCss() {
                 if (window.outerWidth <= 992) {
                     this.tabPosition = 'top';
                     this.padding = {};
+                    this.tableStyle = {};
                 }
             },
+            currentChange1(val) {
+                this.pagination1.current = val;
+                this.fetchNews()
+            },
+            currentChange2(val) {
+                this.pagination2.current = val;
+                this.fetchNews()
+            },
+            fetchNews() {
+                request.listNews(this.pagination1, '1').then((ret) => {
+                    this.newsTableData1 = ret.data.list;
+                    this.pagination1.total = ret.data.total;
+                    this.pagination1.current = ret.data.current;
+                    this.pagination1.size = ret.data.size;
+                }).catch((err) => {
+                    console.log(err)
+                })
+                request.listNews(this.pagination2, '2').then((ret) => {
+                    this.newsTableData2 = ret.data.list;
+                    this.pagination2.total = ret.data.total;
+                    this.pagination2.current = ret.data.current;
+                    this.pagination2.size = ret.data.size;
+                }).catch((err) => {
+                    console.log(err)
+                })
+            },
+            router2NewsDetail(id) {
+                this.$router.push({path: '/newsDetail?newsId=' + id})
+            }
         }
     }
 </script>

@@ -1,7 +1,6 @@
 <template>
     <div id="app" style="width: 100%">
         <el-row class="hidden-md-and-down">
-            桌面端
             <el-col :span="8">
                 <img src="./assets/jianxi.jpg" alt="jianxi">
             </el-col>
@@ -34,7 +33,6 @@
             </el-col>
         </el-row>
         <el-row class="hidden-md-and-up" style="height: 100px">
-            移动端
             <el-col :span="16">
                 <img src="./assets/jianxi.jpg" alt="jianxi" style="height: 100px">
             </el-col>

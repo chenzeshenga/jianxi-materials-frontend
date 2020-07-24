@@ -52,6 +52,14 @@ export default {
             url: 'news/delete/' + newsId,
             method: 'get'
         })
+    },
+
+    fetchSingleNews(newsId) {
+        console.log('fetchSingleNews');
+        return request({
+            url: 'news?newsId=' + newsId,
+            method: 'get'
+        })
     }
 
 }

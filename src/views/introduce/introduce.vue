@@ -48,7 +48,7 @@
                                 <div class="e-card e-custom-card">
                                     <div class="e-card-header">
                                         <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                                            <img src="../../assets/001.png" alt="profile_pic">
+                                            <img src="../../assets/Y.jpg" alt="profile_pic">
                                         </div>
                                     </div>
                                     <div class="e-card-header">
@@ -73,7 +73,7 @@
                                 <div class="e-card e-custom-card">
                                     <div class="e-card-header">
                                         <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                                            <img src="../../assets/002.png" alt="profile_pic">
+                                            <img src="../../assets/W.jpg" alt="profile_pic">
                                         </div>
                                     </div>
                                     <div class="e-card-header">
@@ -98,7 +98,7 @@
                                 <div class="e-card e-custom-card">
                                     <div class="e-card-header">
                                         <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                                            <img src="../../assets/003.png" alt="profile_pic">
+                                            <img src="../../assets/B.jpg" alt="profile_pic">
                                         </div>
                                     </div>
                                     <div class="e-card-header">
@@ -121,7 +121,7 @@
                                 <div class="e-card e-custom-card">
                                     <div class="e-card-header">
                                         <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                                            <img src="../../assets/004.png" alt="profile_pic">
+                                            <img src="../../assets/YF.jpg" alt="profile_pic">
                                         </div>
                                     </div>
                                     <div class="e-card-header">
@@ -144,7 +144,7 @@
                                 <div class="e-card e-custom-card">
                                     <div class="e-card-header">
                                         <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                                            <img src="../../assets/005.png" alt="profile_pic">
+                                            <img src="../../assets/L.jpg" alt="profile_pic">
                                         </div>
                                     </div>
                                     <div class="e-card-header">
