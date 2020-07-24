@@ -15,12 +15,14 @@
             </el-menu>
         </el-aside>
         <el-container>
-            <el-main style="padding-left: 10%">
+            <el-main style="padding-left: 10%" :style="newsMainStyle">
                 <h3>新闻管理</h3>
                 <el-table :data="newsTableData">
                     <el-table-column prop="title" label="标题">
                     </el-table-column>
                     <el-table-column prop="time" label="时间">
+                    </el-table-column>
+                    <el-table-column prop="typeDesc" label="新闻类型">
                     </el-table-column>
                     <el-table-column label="操作">
                         <template slot-scope="scope">
@@ -91,6 +93,10 @@
                     <el-button @click="news2Backend" style="margin-top: 2%">确定</el-button>
                 </div>
             </el-main>
+            <el-main style="padding-left: 10%" :style="productMainStyle">
+                <h3>产品管理</h3>
+
+            </el-main>
         </el-container>
     </el-container>
 </template>
@@ -125,7 +131,12 @@
                     type: '1'
                 },
                 productTableData: [],
-                hidden: true,
+                hidden: {
+                    display: 'none'
+                },
+                show: {
+                    display: 'block'
+                },
                 newsStyle: {
                     'margin-top': '5%',
                     'display': 'none'
@@ -139,7 +150,13 @@
                     size: 10,
                     total: 0,
                 },
-                newsType: '1'
+                newsType: '1',
+                newsMainStyle: {
+                    display: 'block'
+                },
+                productMainStyle: {
+                    display: 'none'
+                }
             };
         },
         created() {
@@ -147,9 +164,18 @@
         },
         methods: {
             fetchNews() {
-                request.listNews(this.pagination, this.newsType).then((ret) => {
+                request.listAllNews(this.pagination).then((ret) => {
                     console.log(ret);
-                    this.newsTableData = ret.data.list;
+                    let list = ret.data.list;
+                    console.log(list);
+                    for (let news of list) {
+                        if ('1' === news.type) {
+                            news.typeDesc = '行业动态';
+                        } else {
+                            news.typeDesc = '公司新闻';
+                        }
+                    }
+                    this.newsTableData = list;
                     this.pagination.total = ret.data.total;
                     this.pagination.current = ret.data.current;
                     this.pagination.size = ret.data.size;
@@ -164,10 +190,13 @@
             newsUpdate() {
                 console.log('news update')
                 this.newsType = '1';
+                this.newsMainStyle = this.show;
+                this.productMainStyle = this.hidden;
             },
             productUpdate() {
                 console.log('product update')
-                this.newsType = '2';
+                this.newsMainStyle = this.hidden;
+                this.productMainStyle = this.show;
             },
             newsEdit(index, row) {
                 console.log(index);
@@ -181,6 +210,13 @@
             newsDelete(index, row) {
                 console.log(index);
                 console.log(row);
+                request.deleteNews(row.id).then((ret) => {
+                    console.log(ret);
+                    this.$message.success('新闻删除成功');
+                    this.fetchNews();
+                }).catch((err) => {
+                    console.log(err)
+                })
             },
             news2Backend() {
                 if (!this.news.title) {

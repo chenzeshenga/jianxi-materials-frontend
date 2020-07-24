@@ -35,6 +35,23 @@ export default {
             method: 'post',
             data: pagination
         })
+    },
+
+    listAllNews(pagination) {
+        console.log('listAllNews')
+        return request({
+            url: '/news/list',
+            method: 'post',
+            data: pagination
+        })
+    },
+
+    deleteNews(newsId) {
+        console.log('delete news');
+        return request({
+            url: 'news/delete/' + newsId,
+            method: 'get'
+        })
     }
 
 }
