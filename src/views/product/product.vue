@@ -1,59 +1,37 @@
 <template>
     <div :style="padding">
-        <el-tabs/>
-        <el-tabs :tab-position="tabPosition">
-            <el-tab-pane label="产品1">
-                <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
-                    <div class="control-section avatar-card">
-                        <div class="sample_container">
-                            <div class="e-card e-custom-card">
-                                <div class="e-card-header">
-                                    <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                                        <img src="../../assets/jianxi.png" alt="profile_pic">
-                                    </div>
-                                </div>
-                                <div class="e-card-header">
-                                    <div class="e-card-header-caption center">
-                                        <div class="e-card-header-title name">产品名称</div>
-                                        <div class="e-card-sub-title">产品编号</div>
-                                    </div>
-                                </div>
-                                <div class="e-card-content">
-                                    <p class="avatar-content">
-                                        产品配方：氧化铟、氧化锡
-                                        <br>
-                                        分子重量：
-                                        <br>
-                                        产品纯度：
-                                        <br>
-                                        CAS NO.:
-                                        <br>
-                                        EC NO.:
-                                        <br>
-                                        MDL:
-                                        <br>
-                                        产品形态：
-                                        <br>
-                                        熔点：
-                                        <br>
-                                        沸点：
-                                        <br>
-                                        密度：
-                                        <br>
-                                        杂质含量：
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+        <el-container>
+            <el-aside width="100px">
+                <el-table :data="productTableData">
+                    <el-table-column prop="product" label="产品">
+                        <template slot-scope="scope">
+                            <el-button type="text" @click="showProduct(scope.row.id)">{{scope.row.name}}
+                            </el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </el-aside>
+            <el-container>
+                <el-main>
+                    <img :src="imgSrc" style="width: 400px;height:250px" alt="产品">
+                    <el-row style="margin-top: 5px">
+                        <span>产品名称： <b>{{name}}</b></span>
+                    </el-row>
+                    <el-row style="margin-top: 5px">
+                        <span>产品简介</span>
+                    </el-row>
+                    <div v-html="introduce">
                     </div>
-                </el-col>
-            </el-tab-pane>
-            <el-tab-pane label="产品2"></el-tab-pane>
-        </el-tabs>
+                </el-main>
+
+            </el-container>
+        </el-container>
     </div>
 </template>
 
 <script>
+
+    import request from "../../request/request";
 
     export default {
         name: "product",
@@ -62,16 +40,24 @@
                 padding: {
                     'padding-left': '10%'
                 },
-                tabPosition: 'left'
+                tabPosition: 'left',
+                productTableData: [
+                    {
+                        'product': 'product'
+                    }
+                ],
+                imgSrc: '',
+                name: '',
+                introduce: ''
             };
         },
         created() {
             this.updateCss();
-        }
-        ,
+            this.fetchProduct();
+            this.showProduct('1');
+        },
         mounted() {
-        }
-        ,
+        },
         methods: {
             updateCss() {
                 if (window.outerWidth <= 992) {
@@ -79,6 +65,23 @@
                     this.padding = {};
                 }
             },
+            showProduct(id) {
+                request.showProduct(id).then((ret) => {
+                    console.log(ret.data)
+                    this.name = ret.data.name;
+                    this.introduce = ret.data.introduce;
+                    this.imgSrc = 'http://locaclhost:8889/img/' + ret.data.img;
+                }).catch((err) => {
+                    console.log(err);
+                })
+            },
+            fetchProduct() {
+                request.listProduct().then((ret) => {
+                    this.productTableData = ret.data;
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
         }
     }
 </script>

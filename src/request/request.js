@@ -60,6 +60,22 @@ export default {
             url: 'news?newsId=' + newsId,
             method: 'get'
         })
+    },
+
+    listProduct() {
+        console.log('listProduct');
+        return request({
+            url: '/product/listAll',
+            method: 'post'
+        })
+    },
+
+    showProduct(id) {
+        console.log('showProduct');
+        return request({
+            url: '/product?id=' + id,
+            method: 'get'
+        })
     }
 
 }
