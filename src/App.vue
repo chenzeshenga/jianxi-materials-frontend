@@ -1,10 +1,15 @@
 <template>
     <div id="app" style="width: 100%">
         <el-row class="hidden-md-and-down">
-            <el-col :span="8">
+            <el-col :span="4" :offset="4">
                 <img src="./assets/jianxi.jpg" alt="jianxi">
             </el-col>
-            <el-col :span="8" :offset="7" style="padding-top: 50px;">
+            <el-col :span="4">
+                <h2 style="margin-top: 20%;margin-left: -50%">
+                    宁波建锡新材料有限公司
+                </h2>
+            </el-col>
+            <el-col :span="8" :offset="3" style="padding-top: 50px;">
                 <el-button type="text">
                     <h2>
                         <router-link to="/introduce" class="font-black">公司介绍</router-link>
@@ -22,7 +27,7 @@
                 </el-button>
                 <el-button type="text">
                     <h2>
-                        <router-link to="/" class="font-black">下载中心</router-link>
+                        <router-link to="/document" class="font-black">下载中心</router-link>
                     </h2>
                 </el-button>
                 <el-button type="text">
@@ -52,7 +57,7 @@
                             <router-link to="/product" class="font-black">产品服务</router-link>
                         </el-dropdown-item>
                         <el-dropdown-item>
-                            <router-link to="/introduce" class="font-black">下载中心</router-link>
+                            <router-link to="/document" class="font-black">下载中心</router-link>
                         </el-dropdown-item>
                         <el-dropdown-item>
                             <router-link to="/introduce" class="font-black">联系我们</router-link>

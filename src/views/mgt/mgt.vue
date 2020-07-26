@@ -12,6 +12,10 @@
                     <em class="el-icon-menu"></em>
                     <el-button type="text" slot="title" @click="productUpdate">产品</el-button>
                 </el-menu-item>
+                <el-menu-item index="3">
+                    <em class="el-icon-menu"></em>
+                    <el-button type="text" slot="title" @click="DocUpdate">文档</el-button>
+                </el-menu-item>
             </el-menu>
         </el-aside>
         <el-container>
@@ -88,7 +92,7 @@
                                             ref="rteInstance"
                                             :placeholder="placeholder" :showCharCount="showCharCount"
                                             :maxLength="maxLength" :value="value"
-                                            height="500px" :key="timer"></ejs-richtexteditor>
+                                            height="500px"></ejs-richtexteditor>
                     </div>
                     <el-button @click="news2Backend" style="margin-top: 2%">确定</el-button>
                 </div>
@@ -173,8 +177,59 @@
                                             ref="rteInstance4Product"
                                             :showCharCount="showCharCount"
                                             :maxLength="maxLength" :value="value4Product"
-                                            height="500px" :key="timer"></ejs-richtexteditor>
+                                            height="500px"></ejs-richtexteditor>
                     </div>
+                    <el-button @click="product2Backend" style="margin-top: 2%">确定</el-button>
+                </div>
+            </el-main>
+            <el-main style="padding-left: 10%" :style="docMainStyle">
+                <h3>文档管理</h3>
+                <el-table :data="docTableData">
+                    <el-table-column prop="ctime" label="创建时间">
+                    </el-table-column>
+                    <el-table-column prop="name" label="名称">
+                    </el-table-column>
+                    <el-table-column label="操作">
+                        <template slot-scope="scope">
+                            <el-tooltip
+                                    content="删除"
+                                    placement="top"
+                            >
+                                <el-button
+                                        @click="docDelete(scope.$index, scope.row)"
+                                        size="mini"
+                                        type="danger"
+                                        icon="el-icon-delete"
+                                        circle
+                                        plain
+                                ></el-button>
+                            </el-tooltip>
+                        </template>
+                    </el-table-column>
+                </el-table>
+                <el-pagination
+                        layout="prev, pager, next, total"
+                        :total="pagination4Doc.total"
+                        :page-size="pagination4Doc.size"
+                        :current-page="pagination4Doc.current"
+                        @current-change="currentChange4Doc"
+                >
+                </el-pagination>
+                <div style="margin-top: 2%">
+                    新增文档
+                    <el-row style="margin-top: 2%">
+                        <el-upload
+                                class="upload-demo"
+                                drag
+                                action="http://localhost:8889/document/file"
+                                multiple
+                                :on-success="successUploadDoc"
+                        >
+                            <i class="el-icon-upload"></i>
+                            <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                            <div class="el-upload__tip" slot="tip">文件拖拽完成即上传</div>
+                        </el-upload>
+                    </el-row>
                     <el-button @click="product2Backend" style="margin-top: 2%">确定</el-button>
                 </div>
             </el-main>
@@ -218,6 +273,7 @@
                     img: ''
                 },
                 productTableData: [],
+                docTableData: [],
                 hidden: {
                     display: 'none'
                 },
@@ -243,11 +299,19 @@
                     size: 10,
                     total: 0,
                 },
+                pagination4Doc: {
+                    current: 1,
+                    size: 10,
+                    total: 0,
+                },
                 newsType: '1',
                 newsMainStyle: {
                     display: 'block'
                 },
                 productMainStyle: {
+                    display: 'none'
+                },
+                docMainStyle: {
                     display: 'none'
                 }
             };
@@ -255,6 +319,7 @@
         created() {
             this.fetchNews();
             this.fetchProduct();
+            this.fetchDoc();
         },
         methods: {
             fetchNews() {
@@ -293,6 +358,18 @@
                     console.log(err)
                 })
             },
+            fetchDoc() {
+                request.listDoc(this.pagination).then((ret) => {
+                    console.log(ret);
+                    let list = ret.data.list;
+                    this.docTableData = list;
+                    this.pagination4Doc.total = ret.data.total;
+                    this.pagination4Doc.current = ret.data.current;
+                    this.pagination4Doc.size = ret.data.size;
+                }).catch((err) => {
+                    console.log(err)
+                })
+            },
             currentChange(val) {
                 this.pagination.current = val;
                 this.fetchNews()
@@ -301,16 +378,28 @@
                 this.pagination4Product.current = val;
                 this.fetchProduct()
             },
+            currentChange4Doc(val) {
+                this.pagination4Doc.current = val;
+                this.fetchDoc()
+            },
             newsUpdate() {
                 console.log('news update')
                 this.newsType = '1';
                 this.newsMainStyle = this.show;
                 this.productMainStyle = this.hidden;
+                this.docMainStyle = this.hidden;
             },
             productUpdate() {
                 console.log('product update')
                 this.newsMainStyle = this.hidden;
                 this.productMainStyle = this.show;
+                this.docMainStyle = this.hidden;
+            },
+            DocUpdate() {
+                console.log('doc update')
+                this.newsMainStyle = this.hidden;
+                this.productMainStyle = this.hidden;
+                this.docMainStyle = this.show;
             },
             newsEdit(index, row) {
                 console.log(index);
@@ -346,6 +435,17 @@
                     console.log(ret);
                     this.$message.success('产品删除成功');
                     this.fetchProduct();
+                }).catch((err) => {
+                    console.log(err)
+                })
+            },
+            docDelete(index, row) {
+                console.log(index);
+                console.log(row);
+                request.deleteDoc(row.uuid).then((ret) => {
+                    console.log(ret);
+                    this.$message.success('文档删除成功');
+                    this.fetchDoc();
                 }).catch((err) => {
                     console.log(err)
                 })
@@ -403,6 +503,9 @@
             },
             timer() {
                 return String.valueOf(new Date().getTime());
+            },
+            successUploadDoc() {
+                this.fetchDoc();
             }
         }
     }

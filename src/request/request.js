@@ -46,6 +46,15 @@ export default {
         })
     },
 
+    listDoc(pagination) {
+        console.log('listProduct')
+        return request({
+            url: '/document/list/',
+            method: 'post',
+            data: pagination
+        })
+    },
+
     listAllNews(pagination) {
         console.log('listAllNews')
         return request({
@@ -67,6 +76,14 @@ export default {
         console.log('delete product');
         return request({
             url: 'product/delete/' + id,
+            method: 'get'
+        })
+    },
+
+    deleteDoc(uuid) {
+        console.log('delete deleteDoc');
+        return request({
+            url: 'document/delete/' + uuid,
             method: 'get'
         })
     },
