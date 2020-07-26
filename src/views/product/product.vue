@@ -1,6 +1,6 @@
 <template>
-    <div :style="padding">
-        <el-container>
+    <div>
+        <el-container :style="padding" class="hidden-md-and-down">
             <el-aside width="100px">
                 <el-table :data="productTableData">
                     <el-table-column prop="product" label="产品">
@@ -23,9 +23,27 @@
                     <div v-html="introduce">
                     </div>
                 </el-main>
-
             </el-container>
         </el-container>
+        <div class="hidden-md-and-up">
+            <el-table :data="productTableData">
+                <el-table-column prop="product" label="产品">
+                    <template slot-scope="scope">
+                        <el-button type="text" @click="showProduct(scope.row.id)">{{scope.row.name}}
+                        </el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+            <img :src="imgSrc" style="width: 400px;height:250px" alt="产品">
+            <el-row style="margin-top: 5px">
+                <span>产品名称： <b>{{name}}</b></span>
+            </el-row>
+            <el-row style="margin-top: 5px">
+                <span>产品简介</span>
+            </el-row>
+            <div v-html="introduce">
+            </div>
+        </div>
     </div>
 </template>
 
