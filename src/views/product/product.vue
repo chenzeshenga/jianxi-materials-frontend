@@ -70,7 +70,7 @@
                     console.log(ret.data)
                     this.name = ret.data.name;
                     this.introduce = ret.data.introduce;
-                    this.imgSrc = 'http://locaclhost:8889/img/' + ret.data.img;
+                    this.imgSrc = 'http://47.105.33.48:8889/img/' + ret.data.img;
                 }).catch((err) => {
                     console.log(err);
                 })

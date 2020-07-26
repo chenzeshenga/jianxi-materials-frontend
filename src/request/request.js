@@ -28,6 +28,15 @@ export default {
         })
     },
 
+    addOrUpdateProduct(product) {
+        console.log('addOrUpdateProduct')
+        return request({
+            url: '/product/insert',
+            method: 'post',
+            data: product
+        })
+    },
+
     listNews(pagination, type) {
         console.log('listNews')
         return request({
@@ -54,6 +63,14 @@ export default {
         })
     },
 
+    deleteProduct(id) {
+        console.log('delete product');
+        return request({
+            url: 'product/delete/' + id,
+            method: 'get'
+        })
+    },
+
     fetchSingleNews(newsId) {
         console.log('fetchSingleNews');
         return request({
@@ -67,6 +84,15 @@ export default {
         return request({
             url: '/product/listAll',
             method: 'post'
+        })
+    },
+
+    listAllProduct(pagination) {
+        console.log('listAllProduct');
+        return request({
+            url: '/product/list',
+            method: 'post',
+            data: pagination
         })
     },
 
