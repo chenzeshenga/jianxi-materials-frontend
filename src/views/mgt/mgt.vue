@@ -218,10 +218,11 @@
                 <div style="margin-top: 2%">
                     新增文档
                     <el-row style="margin-top: 2%">
+                        <!--                                action="http://localhost:8889/document/file"-->
                         <el-upload
                                 class="upload-demo"
                                 drag
-                                action="http://localhost:8889/document/file"
+                                action="http://47.105.33.48:8889/document/file"
                                 multiple
                                 :on-success="successUploadDoc"
                         >
