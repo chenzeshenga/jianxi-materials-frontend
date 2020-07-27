@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <el-row class="hidden-md-and-down">
-            <el-carousel :interval="4000" type="card" height="400px">
+            <el-carousel :interval="4000" height="800px">
                 <el-carousel-item v-for="item in pics" :key="item">
                     <el-image :src="item" fit="contain"></el-image>
                 </el-carousel-item>

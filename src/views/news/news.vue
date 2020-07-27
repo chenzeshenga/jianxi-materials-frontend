@@ -2,7 +2,15 @@
     <div :style="padding">
         <el-tabs/>
         <el-tabs :tab-position="tabPosition">
-            <el-tab-pane label="行业动态">
+            <el-tab-pane disabled>
+                <div slot="label">
+                    <img src="../../assets/menu-top.jpg" alt="新闻中心">
+                </div>
+            </el-tab-pane>
+            <el-tab-pane active>
+                <div slot="label">
+                    <span style="font-size: 20px">行业动态</span>
+                </div>
                 <el-table
                         :data="newsTableData1"
                         :style="tableStyle">
@@ -31,7 +39,10 @@
                 >
                 </el-pagination>
             </el-tab-pane>
-            <el-tab-pane label="公司新闻">
+            <el-tab-pane>
+                <div slot="label">
+                    <span style="font-size: 20px">公司新闻</span>
+                </div>
                 <el-table
                         :data="newsTableData2"
                         :style="tableStyle">
@@ -73,7 +84,8 @@
         data() {
             return {
                 padding: {
-                    'padding-left': '10%'
+                    'padding-left': '12%',
+                    'margin-top': '2%'
                 },
                 tableStyle: {
                     'margin-left': '10%'

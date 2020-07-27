@@ -1,39 +1,39 @@
 <template>
     <div id="app" style="width: 100%">
-        <el-row class="hidden-md-and-down">
-            <el-col :span="4" :offset="4">
-                <img src="./assets/jianxi.jpg" alt="jianxi">
+        <el-row class="hidden-md-and-down" :gutter="50">
+            <el-col :span="4" :offset="3">
+                <img src="./assets/图标1.jpg" alt="jianxi">
             </el-col>
-            <el-col :span="4">
-                <h2 style="margin-top: 20%;margin-left: -50%">
-                    宁波建锡新材料有限公司
-                </h2>
-            </el-col>
-            <el-col :span="8" :offset="3" style="padding-top: 50px;">
+            <el-col :span="12" :offset="2" style="padding-top: 50px;">
                 <el-button type="text">
-                    <h2>
+                    <span class="nav">
+                        <router-link to="/" class="font-black">首页</router-link>
+                    </span>
+                </el-button>
+                <el-button type="text">
+                    <span class="nav">
                         <router-link to="/introduce" class="font-black">公司介绍</router-link>
-                    </h2>
+                    </span>
                 </el-button>
                 <el-button type="text">
-                    <h2>
+                    <span class="nav">
                         <router-link to="/news" class="font-black">新闻中心</router-link>
-                    </h2>
+                    </span>
                 </el-button>
                 <el-button type="text">
-                    <h2>
+                    <span class="nav">
                         <router-link to="/product" class="font-black">产品服务</router-link>
-                    </h2>
+                    </span>
                 </el-button>
                 <el-button type="text">
-                    <h2>
+                    <span class="nav">
                         <router-link to="/document" class="font-black">下载中心</router-link>
-                    </h2>
+                    </span>
                 </el-button>
                 <el-button type="text">
-                    <h2>
-                        <router-link to="/" class="font-black">联系我们</router-link>
-                    </h2>
+                    <span class="nav">
+                        <router-link to="/contact" class="font-black">人力资源</router-link>
+                    </span>
                 </el-button>
             </el-col>
         </el-row>
@@ -60,7 +60,7 @@
                             <router-link to="/document" class="font-black">下载中心</router-link>
                         </el-dropdown-item>
                         <el-dropdown-item>
-                            <router-link to="/introduce" class="font-black">联系我们</router-link>
+                            <router-link to="/contact" class="font-black">联系我们</router-link>
                         </el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
@@ -116,6 +116,20 @@
 
     .font-black {
         color: black;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .nav {
+        font-size: 20px;
+        margin-right: 20px
+    }
+
+    a:hover {
+        background: #3a8ee6;
+        color: white;
     }
 
 </style>
