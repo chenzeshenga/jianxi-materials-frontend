@@ -72,6 +72,19 @@
                 </el-pagination>
             </el-tab-pane>
         </el-tabs>
+
+        <el-row>
+            <el-col :span="4">
+                <ul>
+                    <img src="../../assets/news-top.jpg" alt="新闻中心">
+                </ul>
+                <ul>行业动态</ul>
+                <ul>公司新闻</ul>
+            </el-col>
+            <el-col :span="16">
+                123
+            </el-col>
+        </el-row>
     </div>
 </template>
 
