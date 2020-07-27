@@ -1,90 +1,83 @@
 <template>
-    <div :style="padding">
-        <el-tabs/>
-        <el-tabs :tab-position="tabPosition">
-            <el-tab-pane disabled>
-                <div slot="label">
-                    <img src="../../assets/menu-top.jpg" alt="新闻中心">
-                </div>
-            </el-tab-pane>
-            <el-tab-pane active>
-                <div slot="label">
-                    <span style="font-size: 20px">行业动态</span>
-                </div>
-                <el-table
-                        :data="newsTableData1"
-                        :style="tableStyle">
-                    <el-table-column
-                            prop="time"
-                            label="日期"
-                            width="100"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="title"
-                            label="内容"
-                    >
-                        <template slot-scope="scope">
-                            <el-button type="text" @click="router2NewsDetail(scope.row.id)">{{scope.row.title}}
-                            </el-button>
-                        </template>
-                    </el-table-column>
-                </el-table>
-                <el-pagination
-                        layout="prev, pager, next, total"
-                        :total="pagination1.total"
-                        :page-size="pagination1.size"
-                        :current-page="pagination1.current"
-                        @current-change="currentChange1"
-                >
-                </el-pagination>
-            </el-tab-pane>
-            <el-tab-pane>
-                <div slot="label">
-                    <span style="font-size: 20px">公司新闻</span>
-                </div>
-                <el-table
-                        :data="newsTableData2"
-                        :style="tableStyle">
-                    <el-table-column
-                            prop="time"
-                            label="日期"
-                            width="100"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            prop="title"
-                            label="内容"
-                    >
-                        <template slot-scope="scope">
-                            <el-button type="text" @click="router2NewsDetail(scope.row.id)">{{scope.row.title}}
-                            </el-button>
-                        </template>
-                    </el-table-column>
-                </el-table>
-                <el-pagination
-                        layout="prev, pager, next, total"
-                        :total="pagination2.total"
-                        :page-size="pagination2.size"
-                        :current-page="pagination2.current"
-                        @current-change="currentChange2"
-                >
-                </el-pagination>
-            </el-tab-pane>
-        </el-tabs>
-
+    <div>
         <el-row>
-            <el-col :span="4">
-                <ul>
-                    <img src="../../assets/news-top.jpg" alt="新闻中心">
-                </ul>
-                <ul>行业动态</ul>
-                <ul>公司新闻</ul>
-            </el-col>
-            <el-col :span="16">
-                123
-            </el-col>
+            <img src="../../assets/news-header.jpg" style="width: 100%" alt="新闻中心">
         </el-row>
+        <div :style="padding">
+            <el-row>
+                <el-col class="el-col-lg-4 el-col-md-24 el-col-sm-24">
+                    <ul class="hidden-md-and-down">
+                        <img src="../../assets/news-top.jpg" alt="新闻中心">
+                    </ul>
+                    <ul>
+                        <el-button type="text" style="font-size: 20px" @click="showNews2">行业动态</el-button>
+                    </ul>
+                    <ul>
+                        <el-button type="text" style="font-size: 20px" @click="showNews1">公司新闻</el-button>
+                    </ul>
+                </el-col>
+                <el-col class="el-col-lg-16 el-col-md-24 el-col-sm-24">
+                    <div :style="newsStyle1">
+                        <el-table
+                                :data="newsTableData1"
+                                :style="tableStyle">
+                            <el-table-column
+                                    prop="time"
+                                    label="日期"
+                                    width="100"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="title"
+                                    label="内容"
+                            >
+                                <template slot-scope="scope">
+                                    <el-button type="text" @click="router2NewsDetail(scope.row.id)">{{scope.row.title}}
+                                    </el-button>
+                                </template>
+                            </el-table-column>
+                        </el-table>
+                        <el-pagination
+                                layout="prev, pager, next, total"
+                                :total="pagination1.total"
+                                :page-size="pagination1.size"
+                                :current-page="pagination1.current"
+                                @current-change="currentChange1"
+                        >
+                        </el-pagination>
+                    </div>
+                    <div :style="newsStyle2">
+                        <el-table
+                                :data="newsTableData2"
+                                :style="tableStyle">
+                            <el-table-column
+                                    prop="time"
+                                    label="日期"
+                                    width="100"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                                    prop="title"
+                                    label="内容"
+                            >
+                                <template slot-scope="scope">
+                                    <el-button type="text" @click="router2NewsDetail(scope.row.id)">{{scope.row.title}}
+                                    </el-button>
+                                </template>
+                            </el-table-column>
+                        </el-table>
+                        <el-pagination
+                                layout="prev, pager, next, total"
+                                :total="pagination2.total"
+                                :page-size="pagination2.size"
+                                :current-page="pagination2.current"
+                                @current-change="currentChange2"
+                        >
+                        </el-pagination>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
     </div>
 </template>
 
@@ -108,6 +101,18 @@
                     current: 1,
                     size: 10,
                     total: 0,
+                },
+                hidden: {
+                    'display': 'none'
+                },
+                show: {
+                    'display': 'block'
+                },
+                newsStyle1: {
+                    'display': 'block'
+                },
+                newsStyle2: {
+                    'display': 'none'
                 },
                 pagination2: {
                     current: 1,
@@ -160,6 +165,16 @@
             },
             router2NewsDetail(id) {
                 this.$router.push({path: '/newsDetail?newsId=' + id})
+            },
+            showNews2() {
+                this.newsStyle2 = this.hidden;
+                this.newsStyle1 = this.show;
+                this.fetchNews();
+            },
+            showNews1() {
+                this.newsStyle2 = this.show;
+                this.newsStyle1 = this.hidden;
+                this.fetchNews();
             }
         }
     }

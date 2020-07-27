@@ -3,7 +3,7 @@
         <el-row class="hidden-md-and-down">
             <el-carousel :interval="4000" height="800px">
                 <el-carousel-item v-for="item in pics" :key="item">
-                    <el-image :src="item" fit="contain"></el-image>
+                    <el-image :src="item" fit="contain" style="width: 100%"></el-image>
                 </el-carousel-item>
             </el-carousel>
         </el-row>
