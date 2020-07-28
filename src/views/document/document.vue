@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="hidden-md-and-down">
-            <el-table :data="documentTableData" style="margin-left: 20%">
+            <el-table :data="documentTableData" style="padding-left: 20%;width: 100%;padding-right: 20%">
                 <el-table-column
                         prop="ctime"
                         label="日期"
@@ -27,7 +27,7 @@
             </el-pagination>
         </div>
         <div class="hidden-md-and-up">
-            <el-table :data="documentTableData">
+            <el-table :data="documentTableData" style="width: 100%">
                 <el-table-column
                         prop="ctime"
                         label="日期"
