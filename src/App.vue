@@ -12,7 +12,7 @@
                 </el-button>
                 <el-button type="text">
                     <span class="nav">
-                        <router-link to="/introduce" class="font-black">公司介绍</router-link>
+                        <router-link to="/introduce" class="font-black">关于我们</router-link>
                     </span>
                 </el-button>
                 <el-button type="text">
@@ -44,11 +44,11 @@
             <el-col :span="8" style="padding-top: 30px">
                 <el-dropdown>
                   <span class="el-dropdown-link">
-                    公司介绍<i class="el-icon-arrow-down el-icon--right"></i>
+                    首页<i class="el-icon-arrow-down el-icon--right"></i>
                   </span>
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item>
-                            <router-link to="/introduce" class="font-black">公司介绍</router-link>
+                            <router-link to="/introduce" class="font-black">关于我们</router-link>
                         </el-dropdown-item>
                         <el-dropdown-item>
                             <router-link to="/news" class="font-black">新闻中心</router-link>
