@@ -7,12 +7,28 @@
             <el-col :span="12" :offset="2" style="padding-top: 50px;">
                 <el-button type="text">
                     <span class="nav">
-                        <router-link to="/" class="font-black">首页</router-link>
+                            <router-link to="/" class="font-black">首页</router-link>
                     </span>
                 </el-button>
                 <el-button type="text">
                     <span class="nav">
-                        <router-link to="/introduce" class="font-black">关于我们</router-link>
+                        <el-dropdown>
+                            <router-link to="/introduce" class="font-black nav">关于我们</router-link>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item><router-link to="/introduce?id=1"
+                                                               class="font-black">公司概述</router-link></el-dropdown-item>
+                                <el-dropdown-item><router-link to="/introduce?id=2"
+                                                               class="font-black">团队介绍</router-link></el-dropdown-item>
+                                <el-dropdown-item><router-link to="/introduce?id=3"
+                                                               class="font-black">技术实力</router-link></el-dropdown-item>
+                                <el-dropdown-item><router-link to="/introduce?id=4"
+                                                               class="font-black">公司理念</router-link></el-dropdown-item>
+                                <el-dropdown-item><router-link to="/introduce?id=5"
+                                                               class="font-black">组织架构</router-link></el-dropdown-item>
+                                <el-dropdown-item><router-link to="/introduce?id=6"
+                                                               class="font-black">地址</router-link></el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
                     </span>
                 </el-button>
                 <el-button type="text">
@@ -130,6 +146,13 @@
     a:hover {
         background: #3a8ee6;
         color: white;
+    }
+
+    .bg-color-grey {
+        color: #000;
+        background-color: #dedede;
+        font-size: 22px;
+        border-radius: 5px;
     }
 
 </style>

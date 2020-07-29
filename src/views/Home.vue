@@ -5,7 +5,7 @@
                 <p style="z-index: 20;margin-left: 20%">公司理念</p>
                 <p style="z-index: 20;margin-left: 20%;margin-top: -5%">创新、共赢、严谨、诚信</p>
                 <el-button
-                        style="filter:alpha(Opacity=80);-moz-opacity:0.5;opacity: 0.5;font-size: 50px;color: white;text-align: left;margin-left: -32%"
+                        style="filter:alpha(Opacity=80);-moz-opacity:0.5;opacity: 0.5;font-size: 40px;color: white;text-align: left;margin-left: -32%"
                         type="text" @click="route2introduce">
                     了解更多
                 </el-button>
@@ -14,7 +14,7 @@
                 <p style="z-index: 20;margin-left: 20%">定位：特种合金靶材产业的拓荒者和耕耘者</p>
                 <p style="z-index: 20;margin-left: 20%;margin-top: -3%">目标：全球知名的靶材及特种合金品牌</p>
                 <el-button
-                        style="filter:alpha(Opacity=80);-moz-opacity:0.5;opacity: 0.5;font-size: 50px;color: white;text-align: left;margin-left: -32%"
+                        style="filter:alpha(Opacity=80);-moz-opacity:0.5;opacity: 0.5;font-size: 40px;color: white;text-align: left;margin-left: -32%"
                         type="text" @click="route2introduce">
                     了解更多
                 </el-button>
