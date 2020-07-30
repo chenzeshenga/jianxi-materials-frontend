@@ -1,5 +1,8 @@
 <template>
     <div>
+        <el-row>
+            <img src="../../assets/product-head.png" style="width: 100%">
+        </el-row>
         <el-container :style="padding" class="hidden-md-and-down">
             <el-aside style="padding-left: 5%;width: 20%">
                 <ul>
@@ -23,30 +26,40 @@
                             产品编号 {{currProduct.id}}
                         </el-col>
                     </el-row>
-                    <el-row>
-                        <el-col class="el-col-lg-12 el-col-md-24 el-col-sm-24"
-                                style="border: 1px solid #dedede;margin-top: 1%;text-align: left;padding-left: 5%;padding-top:2%">
-                            产品配方：氧化铟、氧化锡<br>
-                            分子重量：<br>
-                            产品纯度：<br>
-                            CAS NO.:<br>
-                            EC NO.:<br>
-                            MDL:<br>
-                            产品形态：<br>
-                            熔点：<br>
-                            沸点：<br>
-                            密度：<br>
-                            杂质含量：<br>
-                        </el-col>
+                    <!--                    <el-row>-->
+                    <!--                        <el-col class="el-col-lg-12 el-col-md-24 el-col-sm-24"-->
+                    <!--                                style="border: 1px solid #dedede;margin-top: 1%;text-align: left;padding-left: 5%;padding-top:2%">-->
+                    <!--                            产品配方：氧化铟、氧化锡<br>-->
+                    <!--                            分子重量：<br>-->
+                    <!--                            产品纯度：<br>-->
+                    <!--                            CAS NO.:<br>-->
+                    <!--                            EC NO.:<br>-->
+                    <!--                            MDL:<br>-->
+                    <!--                            产品形态：<br>-->
+                    <!--                            熔点：<br>-->
+                    <!--                            沸点：<br>-->
+                    <!--                            密度：<br>-->
+                    <!--                            杂质含量：<br>-->
+                    <!--                        </el-col>-->
 
-                        <el-col class="el-col-lg-4 el-col-lg-offset-1 el-col-md-24 el-col-sm-24"
-                                style="border: 1px solid #dedede;margin-top: 1%;text-align: left;padding-top:2%">
-                            产品图片<br>
-                            <img src="../../assets/product/ITO靶材.jpg" style="height: 150px;width: 150px">
+                    <!--                        <el-col class="el-col-lg-4 el-col-lg-offset-1 el-col-md-24 el-col-sm-24"-->
+                    <!--                                style="border: 1px solid #dedede;margin-top: 1%;text-align: left;padding-top:2%">-->
+                    <!--                            产品图片<br>-->
+                    <!--                            <img src="../../assets/product/ITO靶材.jpg" style="height: 150px;width: 150px">-->
+                    <!--                        </el-col>-->
+                    <!--                    </el-row>-->
+
+                    <el-row>
+                        <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
+                            <img src="../../assets/product1.png" style="width: 100%">
+                        </el-col>
+                        <el-col class="el-col-lg-16 el-col-md-24 el-col-sm-24">
+                            <img src="../../assets/product1-2.png" style="width: 100%">
                         </el-col>
                     </el-row>
 
-                    <el-row class="el-col-lg-17 el-col-md-24 el-col-sm-24" style="border: 1px solid #dedede;margin-top: 1%;text-align: left;padding-top:2%">
+                    <el-row class="el-col-lg-17 el-col-md-24 el-col-sm-24"
+                            style="border: 1px solid #dedede;margin-top: 1%;text-align: left;padding-top:2%">
                         文档说明：<br>
                         每批货物均附有符合标准的分析证书和材料安全数据表。<br>
                         注意：<br>
@@ -59,20 +72,30 @@
             </el-container>
         </el-container>
         <div class="hidden-md-and-up">
-            <el-table :data="productTableData">
-                <el-table-column prop="product" label="产品">
-                    <template slot-scope="scope">
-                        <el-button type="text" @click="showProduct(scope.row.id)">{{scope.row.name}}
+            <ul style="padding: 0">
+                <li v-for="product in productTableData" :key="product.id">
+                    <div style="border:1px solid #dedede;">
+                        <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
+                                   @click="showProduct(product.id)">
+                            {{product.name}}
                         </el-button>
-                    </template>
-                </el-table-column>
-            </el-table>
+                    </div>
+                </li>
+            </ul>
             <el-row>
                 <el-col class="el-col-lg-10 el-col-lg-offset-4 el-col-md-24 el-col-sm-24"
                         style="border: 1px solid #dedede">
                     <h4>产品说明</h4>
                     {{currProduct.productName}}<br>
                     产品编号 {{currProduct.id}}
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
+                    <img src="../../assets/product1.png" style="width: 100%">
+                </el-col>
+                <el-col class="el-col-lg-16 el-col-md-24 el-col-sm-24">
+                    <img src="../../assets/product1-2.png" style="width: 100%">
                 </el-col>
             </el-row>
             <el-row>
@@ -98,7 +121,8 @@
                 </el-col>
             </el-row>
 
-            <el-row class="el-col-lg-17 el-col-md-24 el-col-sm-24" style="border: 1px solid #dedede;margin-top: 1%;text-align: left;padding-top:2%">
+            <el-row class="el-col-lg-17 el-col-md-24 el-col-sm-24"
+                    style="border: 1px solid #dedede;margin-top: 1%;text-align: left;padding-top:2%">
                 文档说明：<br>
                 每批货物均附有符合标准的分析证书和材料安全数据表。<br>
                 注意：<br>
