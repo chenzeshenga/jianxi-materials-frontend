@@ -129,7 +129,28 @@
         },
         mounted() {
         },
+        watch: {
+            $route() {
+                this.showTab();
+            }
+        },
         methods: {
+            showTab() {
+                const id = this.$route.query.id;
+                if (id === '1') {
+                    this.showNews1();
+                } else if (id === '2') {
+                    this.showNews2();
+                }
+            },
+            show1() {
+                this.style1 = this.show;
+                this.style2 = this.hidden;
+            },
+            show2() {
+                this.style1 = this.hidden;
+                this.style2 = this.show;
+            },
             updateCss() {
                 if (window.outerWidth <= 992) {
                     this.tabPosition = 'top';

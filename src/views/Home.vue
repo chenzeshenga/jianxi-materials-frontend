@@ -32,12 +32,6 @@
                 <el-carousel-item>
                     <img src="../assets/index/4.jpg" style="width: 100%" alt="建锡"/>
                 </el-carousel-item>
-                <el-carousel-item>
-                    <img src="../assets/index/5.jpg" style="width: 100%" alt="建锡"/>
-                </el-carousel-item>
-                <el-carousel-item>
-                    <img src="../assets/index/6.jpg" style="width: 100%" alt="建锡"/>
-                </el-carousel-item>
             </el-carousel>
         </el-row>
         <el-row class="hidden-md-and-up">
@@ -103,9 +97,7 @@
             this.wrapper2 = this.hidden;
         },
         methods: {
-            carouselChange(newIndex, oriIndex) {
-                console.log(oriIndex);
-                console.log(newIndex);
+            carouselChange(newIndex) {
                 if (newIndex % 2 === 1) {
                     this.wrapper = this.hidden;
                     this.wrapper2 = this.show;

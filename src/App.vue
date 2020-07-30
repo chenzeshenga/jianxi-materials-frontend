@@ -33,12 +33,30 @@
                 </el-button>
                 <el-button type="text">
                     <span class="nav">
-                        <router-link to="/news" class="font-black">新闻中心</router-link>
+                        <el-dropdown>
+                        <router-link to="/news" class="font-black nav">新闻中心</router-link>
+                        <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item><router-link to="/news?id=2"
+                                                               class="font-black">行业动态</router-link></el-dropdown-item>
+                                <el-dropdown-item><router-link to="/news?id=1"
+                                                               class="font-black">公司新闻</router-link></el-dropdown-item>
+                            </el-dropdown-menu>
+                            </el-dropdown>
                     </span>
                 </el-button>
                 <el-button type="text">
                     <span class="nav">
-                        <router-link to="/product" class="font-black">产品服务</router-link>
+                        <el-dropdown>
+                        <router-link to="/product" class="font-black nav">产品服务</router-link>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item><router-link to="/product"
+                                                               class="font-black">特色产品</router-link></el-dropdown-item>
+                                <el-dropdown-item><router-link to="/product"
+                                                               class="font-black">其他产品</router-link></el-dropdown-item>
+                            <el-dropdown-item><router-link to="/product"
+                                                           class="font-black">服务</router-link></el-dropdown-item>
+                                </el-dropdown-menu>
+                        </el-dropdown>
                     </span>
                 </el-button>
                 <el-button type="text">
@@ -55,7 +73,7 @@
         </el-row>
         <el-row class="hidden-md-and-up" style="height: 100px">
             <el-col :span="16">
-                <img src="./assets/jianxi.jpg" alt="jianxi" style="height: 100px">
+                <img src="./assets/图标1.jpg" alt="jianxi" style="height: 40%;width: 90%;margin-top: 5%">
             </el-col>
             <el-col :span="8" style="padding-top: 30px">
                 <el-dropdown>
@@ -63,6 +81,9 @@
                     首页<i class="el-icon-arrow-down el-icon--right"></i>
                   </span>
                     <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>
+                            <router-link to="/" class="font-black">首页</router-link>
+                        </el-dropdown-item>
                         <el-dropdown-item>
                             <router-link to="/introduce" class="font-black">关于我们</router-link>
                         </el-dropdown-item>
@@ -76,7 +97,7 @@
                             <router-link to="/document" class="font-black">下载中心</router-link>
                         </el-dropdown-item>
                         <el-dropdown-item>
-                            <router-link to="/contact" class="font-black">联系我们</router-link>
+                            <router-link to="/contact" class="font-black">人力资源</router-link>
                         </el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>

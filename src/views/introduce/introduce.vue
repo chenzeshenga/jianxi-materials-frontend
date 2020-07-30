@@ -50,51 +50,38 @@
                         <li>
                             <div style="border:1px solid #dedede;padding: 5%;border-top: none">
                                 <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
-                                           @click="show6">地址
+                                           @click="show6">公司地址
                                 </el-button>
                             </div>
                         </li>
                     </ul>
                 </el-col>
-                <el-col class="el-col-lg-18 el-col-lg-offset-1 el-col-md-24 el-col-sm-24">
+                <el-col class="el-col-lg-18 el-col-md-24 el-col-sm-24">
                     <div :style="style1">
                         <div class="hidden-md-and-up">
                             宁波建锡新材料有限公司
                             <br>
-                            <br>
-                            <span class="mobile">
-                                    宁波建锡新材料有限公司成立于2020年6月18日，是由创业团队整合西安交通大学金属材料强度国家重点实验室及电力设备电气绝缘国家重点实验室的历年科研成果和技术团队而发起成立的，公司注册地位于宁波市慈溪市。
-                                </span>
-                            <br>
-                            <br>
-                            <span class="mobile">
-                                    公司产品可分为磁控溅射镀膜靶材、蒸镀用高纯金属颗粒、多功能金属复合材料、设备及服务等，主要应用于半导体、平板显示、薄膜太阳能、刀具镀膜、装饰镀膜、低辐射玻璃、金属膜电阻器等方面。公司产品着力于替代进口、解决瓶颈问题、降低成本，为全球客户提供高端合金材料、制品及解决方案。
-                                </span>
-                            <br>
-                            <br>
-                            <span class="mobile">
-                                    公司秉承“创新、共赢、严谨、诚信”的经营理念，采用ISO9001质量管理和ISO14001环境管理体系，严格把控生产工艺，培养员工的主人翁意识和责任感、以科技创新和新产品持续研发能力为驱动，在先进金属材料蓬勃发展的当前夯实基础，不断推陈出新，改进产品质量，提高服务水平，打造靶材和特种合金领域的全球知名品牌。
-                                </span>
-                            <br>
-                            <br>
-                            <span class="mobile">
-                                    公司理念（价值观）：创新、共赢、严谨、诚信
-                                </span>
-                            <br>
-                            <br>
-                            <span class="mobile">
-                                    使命：解决中国高端靶材和特种合金的技术瓶颈问题和受制于进口问题
-                                </span>
-                            <br>
-                            <br>
-                            <span class="mobile">
-                                    定位：特种合金靶材产业的拓荒者和耕耘者
-                                </span>
-                            <br>
-                            <br>
-                            <span class="mobile">
-                                    目标：全球知名的靶材及特种合金品牌
-                                </span>
+                            <p class="mobile">
+                                宁波建锡新材料有限公司成立于2020年6月18日，是由创业团队整合西安交通大学金属材料强度国家重点实验室及电力设备电气绝缘国家重点实验室的历年科研成果和技术团队而发起成立的，公司注册地位于宁波市慈溪市。
+                            </p>
+                            <p class="mobile">
+                                公司产品可分为磁控溅射镀膜靶材、蒸镀用高纯金属颗粒、多功能金属复合材料、设备及服务等，主要应用于半导体、平板显示、薄膜太阳能、刀具镀膜、装饰镀膜、低辐射玻璃、金属膜电阻器等方面。公司产品着力于替代进口、解决瓶颈问题、降低成本，为全球客户提供高端合金材料、制品及解决方案。
+                            </p>
+                            <p class="mobile">
+                                公司秉承“创新、共赢、严谨、诚信”的经营理念，采用ISO9001质量管理和ISO14001环境管理体系，严格把控生产工艺，培养员工的主人翁意识和责任感、以科技创新和新产品持续研发能力为驱动，在先进金属材料蓬勃发展的当前夯实基础，不断推陈出新，改进产品质量，提高服务水平，打造靶材和特种合金领域的全球知名品牌。
+                            </p>
+                            <p class="mobile">
+                                公司理念（价值观）：创新、共赢、严谨、诚信
+                            </p>
+                            <p class="mobile">
+                                使命：解决中国高端靶材和特种合金的技术瓶颈问题和受制于进口问题
+                            </p>
+                            <p class="mobile">
+                                定位：特种合金靶材产业的拓荒者和耕耘者
+                            </p>
+                            <p class="mobile">
+                                目标：全球知名的靶材及特种合金品牌
+                            </p>
                         </div>
                         <div class="hidden-md-and-down">
                             <p style="text-align: center;font-size: 20px;font-weight: bold">
@@ -113,25 +100,25 @@
                             <p style="font-weight: bold">
                                 公司理念（价值观）
                             </p>
-                            <p style="padding-left: 10%">
+                            <p>
                                 创新、共赢、严谨、诚信
                             </p>
                             <p style="font-weight: bold">
                                 使命
                             </p>
-                            <p style="padding-left: 10%">
+                            <p>
                                 解决中国高端靶材和特种合金的技术瓶颈问题和受制于进口问题
                             </p>
                             <p style="font-weight: bold">
                                 定位
                             </p>
-                            <p style="padding-left: 10%">
+                            <p>
                                 特种合金靶材产业的拓荒者和耕耘者
                             </p>
                             <p style="font-weight: bold">
                                 目标
                             </p>
-                            <p style="padding-left: 10%">
+                            <p>
                                 全球知名的靶材及特种合金品牌
                             </p>
                         </div>
@@ -173,7 +160,7 @@
                                         </div>
                                         <div class="e-card-header">
                                             <div class="e-card-header-caption center">
-                                                <div class="e-card-header-title name">公司联合创始人 总工程师 技术带头人</div>
+                                                <div class="e-card-header-title name" style="font-size: 16px">公司联合创始人/总工程师/技术带头人</div>
                                                 <div class="e-card-sub-title">王亚平</div>
                                             </div>
                                         </div>
@@ -507,6 +494,8 @@
 
     .mobile {
         text-align: left;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     li {
