@@ -205,4 +205,11 @@
     .textLeft {
         text-align: left;
     }
+
+    .el-button--text {
+        background: 0 0;
+        padding-left: 0;
+        padding-right: 0;
+        color: black;
+    }
 </style>
