@@ -87,13 +87,7 @@
                     <el-row style="margin-top: 2%">
                         <el-col :span="2">内容</el-col>
                     </el-row>
-                    <div id="defaultRTE" style="margin-top: 2%">
-                        <ejs-richtexteditor id="defaultRTE" name="defaultRTE"
-                                            ref="rteInstance"
-                                            :placeholder="placeholder" :showCharCount="showCharCount"
-                                            :maxLength="maxLength" :value="value"
-                                            height="500px"></ejs-richtexteditor>
-                    </div>
+                    <div ref="newsEditor" style="text-align:left"></div>
                     <el-button @click="news2Backend" style="margin-top: 2%">确定</el-button>
                 </div>
             </el-main>
@@ -172,13 +166,7 @@
                     <el-row style="margin-top: 2%">
                         <el-col :span="2">内容</el-col>
                     </el-row>
-                    <div id="defaultRTE4Product" style="margin-top: 2%">
-                        <ejs-richtexteditor id="defaultRTE4Product" name="defaultRTE4Product"
-                                            ref="rteInstance4Product"
-                                            :showCharCount="showCharCount"
-                                            :maxLength="maxLength" :value="value4Product"
-                                            height="500px"></ejs-richtexteditor>
-                    </div>
+                    <div ref="productEditor" style="text-align:left"></div>
                     <el-button @click="product2Backend" style="margin-top: 2%">确定</el-button>
                 </div>
             </el-main>
@@ -218,7 +206,6 @@
                 <div style="margin-top: 2%">
                     新增文档
                     <el-row style="margin-top: 2%">
-                        <!--                                action="http://localhost:8889/document/file"-->
                         <el-upload
                                 class="upload-demo"
                                 drag
@@ -239,25 +226,28 @@
 </template>
 
 <script>
-    import Vue from "vue";
-    import {
-        RichTextEditorPlugin,
-        Toolbar,
-        Link,
-        Image,
-        QuickToolbar,
-        HtmlEditor,
-        Count
-    } from "@syncfusion/ej2-vue-richtexteditor";
+    // import Vue from "vue";
+    // import {
+    //     RichTextEditorPlugin,
+    //     Toolbar,
+    //     Link,
+    //     Image,
+    //     QuickToolbar,
+    //     HtmlEditor,
+    //     Count
+    // } from "@syncfusion/ej2-vue-richtexteditor";
     import request from "../../request/request";
+    // import Editor from "../../components/Editor";
+    import E from 'wangeditor';
 
-    Vue.use(RichTextEditorPlugin);
+    // Vue.use(RichTextEditorPlugin);
 
     export default {
         name: "mgt",
-        provide: {
-            richtexteditor: [Toolbar, Link, Image, QuickToolbar, HtmlEditor, Count]
-        },
+        // components: {Editor},
+        // provide: {
+        //     richtexteditor: [Toolbar, Link, Image, QuickToolbar, HtmlEditor, Count]
+        // },
         data() {
             return {
                 news: {
@@ -285,8 +275,6 @@
                     'margin-top': '5%',
                     'display': 'none'
                 },
-                value: null,
-                value4Product: null,
                 showCharCount: true,
                 maxLength: 2000,
                 placeholder: '请输入新闻内容',
@@ -314,13 +302,31 @@
                 },
                 docMainStyle: {
                     display: 'none'
-                }
+                },
+                newsEditor: null,
+                newsEditorContent: '',
+                productEditor: null,
+                productEditorContent: '',
             };
         },
         created() {
             this.fetchNews();
             this.fetchProduct();
             this.fetchDoc();
+        },
+        mounted() {
+            this.newsEditor = new E(this.$refs.newsEditor)
+            this.newsEditor.customConfig.onchange = (html) => {
+                this.newsEditorContent = html
+            }
+            this.newsEditor.customConfig.uploadImgShowBase64 = true
+            this.newsEditor.create();
+            this.productEditor = new E(this.$refs.productEditor)
+            this.productEditor.customConfig.onchange = (html) => {
+                this.productEditorContent = html
+            }
+            this.productEditor.customConfig.uploadImgShowBase64 = true
+            this.productEditor.create()
         },
         methods: {
             fetchNews() {
@@ -397,26 +403,23 @@
                 this.docMainStyle = this.hidden;
             },
             DocUpdate() {
-                console.log('doc update')
                 this.newsMainStyle = this.hidden;
                 this.productMainStyle = this.hidden;
                 this.docMainStyle = this.show;
             },
             newsEdit(index, row) {
-                console.log(index);
-                console.log(row);
                 this.news.id = row.id;
                 this.news.title = row.title;
                 this.news.content = row.content;
                 this.news.type = row.type;
-                this.$refs.rteInstance.ej2Instances.value = row.content;
+                this.newsEditor.txt.html(row.content);
             },
             productEdit(index, row) {
                 console.log(index);
                 console.log(row);
                 this.product.id = row.id;
                 this.product.name = row.name;
-                this.$refs.rteInstance4Product.ej2Instances.value = row.introduce;
+                this.productEditor.txt.html(row.introduce);
             },
             newsDelete(index, row) {
                 console.log(index);
@@ -456,18 +459,15 @@
                     this.$message.warning('请输入标题');
                     return;
                 }
+                this.news.content = this.newsEditorContent;
                 console.log(this.news);
-                this.news.content = this.$refs.rteInstance.ej2Instances.value;
-                console.log(this.news);
-                request.addOrUpdateNews(this.news).then((ret) => {
-                    console.log(ret);
+                request.addOrUpdateNews(this.news).then(() => {
                     this.$message.success('新闻创建成功');
                     this.news = {
                         title: '',
                         content: '',
                         type: '1'
                     };
-                    this.value = null;
                     this.fetchNews();
                 }).catch((err) => {
                     console.log(err);
@@ -478,11 +478,9 @@
                     this.$message.warning('请输入产品名称');
                     return;
                 }
+                this.product.introduce = this.productEditorContent
                 console.log(this.product);
-                this.product.introduce = this.$refs.rteInstance4Product.ej2Instances.value;
-                console.log(this.product);
-                request.addOrUpdateProduct(this.product).then((ret) => {
-                    console.log(ret);
+                request.addOrUpdateProduct(this.product).then(() => {
                     this.$message.success('产品创建成功');
                     this.product = {
                         id: 0,
@@ -490,7 +488,6 @@
                         introduce: '',
                         img: ''
                     };
-                    this.value4Product = null;
                     this.fetchProduct();
                 }).catch((err) => {
                     console.log(err);
