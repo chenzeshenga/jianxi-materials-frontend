@@ -20,21 +20,23 @@
                     <div :style="newsStyle1">
                         <el-table
                                 :data="newsTableData1"
-                                :style="tableStyle">
-                            <el-table-column
-                                    prop="time"
-                                    label="日期"
-                                    width="100"
-                            >
-                            </el-table-column>
+                                :style="tableStyle"
+                                :cell-style="{'font-size':'16px'}"
+                        >
                             <el-table-column
                                     prop="title"
-                                    label="内容"
+                                    label="标题"
                             >
                                 <template slot-scope="scope">
                                     <el-button type="text" @click="router2NewsDetail(scope.row.id)">{{scope.row.title}}
                                     </el-button>
                                 </template>
+                            </el-table-column>
+                            <el-table-column
+                                    prop="time"
+                                    label="日期"
+                                    width="160"
+                            >
                             </el-table-column>
                         </el-table>
                         <el-pagination
@@ -49,21 +51,30 @@
                     <div :style="newsStyle2">
                         <el-table
                                 :data="newsTableData2"
-                                :style="tableStyle">
-                            <el-table-column
-                                    prop="time"
-                                    label="日期"
-                                    width="100"
-                            >
-                            </el-table-column>
+                                :style="tableStyle"
+                                :cell-style="{'font-size':'16px'}">
                             <el-table-column
                                     prop="title"
-                                    label="内容"
+                                    label="标题"
                             >
                                 <template slot-scope="scope">
                                     <el-button type="text" @click="router2NewsDetail(scope.row.id)">{{scope.row.title}}
                                     </el-button>
                                 </template>
+                            </el-table-column><el-table-column
+                                    prop="title"
+                                    label="标题"
+                            >
+                                <template slot-scope="scope">
+                                    <el-button type="text" @click="router2NewsDetail(scope.row.id)">{{scope.row.title}}
+                                    </el-button>
+                                </template>
+                            </el-table-column>
+                            <el-table-column
+                                    prop="time"
+                                    label="日期"
+                                    width="160"
+                            >
                             </el-table-column>
                         </el-table>
                         <el-pagination
@@ -93,9 +104,7 @@
                     'padding-left': '12%',
                     'margin-top': '2%'
                 },
-                tableStyle: {
-                    'margin-left': '10%'
-                },
+                tableStyle: {},
                 tabPosition: 'left',
                 pagination1: {
                     current: 1,
