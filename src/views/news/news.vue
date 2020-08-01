@@ -61,14 +61,6 @@
                                     <el-button type="text" @click="router2NewsDetail(scope.row.id)">{{scope.row.title}}
                                     </el-button>
                                 </template>
-                            </el-table-column><el-table-column
-                                    prop="title"
-                                    label="标题"
-                            >
-                                <template slot-scope="scope">
-                                    <el-button type="text" @click="router2NewsDetail(scope.row.id)">{{scope.row.title}}
-                                    </el-button>
-                                </template>
                             </el-table-column>
                             <el-table-column
                                     prop="time"
