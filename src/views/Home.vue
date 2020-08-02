@@ -48,12 +48,6 @@
                 <el-carousel-item>
                     <img src="../assets/index/4.jpg" style="width: 100%" alt="建锡"/>
                 </el-carousel-item>
-                <el-carousel-item>
-                    <img src="../assets/index/5.jpg" style="width: 100%" alt="建锡"/>
-                </el-carousel-item>
-                <el-carousel-item>
-                    <img src="../assets/index/6.jpg" style="width: 100%" alt="建锡"/>
-                </el-carousel-item>
             </el-carousel>
             <div class="wrapper3" :style="wrapper">
                 <p style="z-index: 20;">公司理念</p>
