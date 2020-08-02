@@ -26,6 +26,14 @@ export default {
         })
     },
 
+    addOrUpdateJob(job) {
+        return request({
+            url: '/job/insert',
+            method: 'post',
+            data: job
+        })
+    },
+
     listNews(pagination, type) {
         return request({
             url: '/news/list/' + type,
@@ -50,6 +58,13 @@ export default {
         })
     },
 
+    listJobs() {
+        return request({
+            url: '/job/list',
+            method: 'get',
+        })
+    },
+
     deleteNews(newsId) {
         return request({
             url: 'news/delete/' + newsId,
@@ -60,6 +75,13 @@ export default {
     deleteProduct(id) {
         return request({
             url: 'product/delete/' + id,
+            method: 'get'
+        })
+    },
+
+    deleteJob(id) {
+        return request({
+            url: 'job/delete/' + id,
             method: 'get'
         })
     },

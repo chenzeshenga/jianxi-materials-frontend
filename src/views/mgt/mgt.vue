@@ -16,6 +16,10 @@
                     <em class="el-icon-menu"></em>
                     <el-button type="text" slot="title" @click="DocUpdate">文档</el-button>
                 </el-menu-item>
+                <el-menu-item index="3">
+                    <em class="el-icon-menu"></em>
+                    <el-button type="text" slot="title" @click="hrUpdate">招聘</el-button>
+                </el-menu-item>
             </el-menu>
         </el-aside>
         <el-container>
@@ -216,6 +220,62 @@
                     <el-button @click="product2Backend" style="margin-top: 2%">确定</el-button>
                 </div>
             </el-main>
+            <el-main style="padding-left: 10%" :style="hrMainStyle">
+                <h3>职位管理</h3>
+                <el-table :data="jobTableData" v-loading.body="tableLoading">
+                    <el-table-column prop="title" label="名称">
+                    </el-table-column>
+                    <el-table-column prop="content" label="内容">
+                    </el-table-column>
+                    <el-table-column prop="contact" label="联系方式">
+                    </el-table-column>
+                    <el-table-column label="操作">
+                        <template slot-scope="scope">
+                            <el-tooltip
+                                    content="删除"
+                                    placement="top"
+                            >
+                                <el-button
+                                        @click="jobDelete(scope.$index, scope.row)"
+                                        size="mini"
+                                        type="danger"
+                                        icon="el-icon-delete"
+                                        circle
+                                        plain
+                                ></el-button>
+                            </el-tooltip>
+                            <el-tooltip
+                                    content="编辑"
+                                    placement="top"
+                            >
+                                <el-button
+                                        @click="jobUpdateTrigger(scope.$index, scope.row)"
+                                        size="mini"
+                                        type="info"
+                                        icon="el-icon-edit"
+                                        circle
+                                        plain
+                                ></el-button>
+                            </el-tooltip>
+                        </template>
+                    </el-table-column>
+                </el-table>
+                <div style="margin-top: 2%">
+                    新增职位
+                    <el-row style="margin-top: 2%">
+                        <el-input v-model="job.title" style="margin-top: 2%;margin-bottom: 2%">
+                            <template slot="prepend">职位名称：</template>
+                        </el-input>
+                        职位介绍：
+                        <el-input v-model="job.content" type="textarea" style="margin-bottom: 2%">
+                        </el-input>
+                        <el-input v-model="job.contact">
+                            <template slot="prepend">联系方式：</template>
+                        </el-input>
+                    </el-row>
+                    <el-button @click="jobUpdate" style="margin-top: 2%">确定</el-button>
+                </div>
+            </el-main>
         </el-container>
     </el-container>
 </template>
@@ -242,8 +302,15 @@
                     introduce: '',
                     img: ''
                 },
+                job: {
+                    id: 0,
+                    title: '',
+                    content: '',
+                    contact: ''
+                },
                 productTableData: [],
                 docTableData: [],
+                jobTableData: [],
                 hidden: {
                     display: 'none'
                 },
@@ -282,6 +349,9 @@
                 docMainStyle: {
                     display: 'none'
                 },
+                hrMainStyle: {
+                    display: 'none'
+                },
                 newsEditor: null,
                 newsEditorContent: '',
                 productEditor: null,
@@ -293,6 +363,7 @@
             this.fetchNews();
             this.fetchProduct();
             this.fetchDoc();
+            this.fetchJob();
         },
         mounted() {
             this.newsEditor = new E(this.$refs.newsEditor)
@@ -336,12 +407,19 @@
                     console.log(err)
                 })
             },
+            fetchJob() {
+                this.tableLoading = true;
+                request.listJobs().then((ret) => {
+                    this.jobTableData = ret.data;
+                    this.tableLoading = false;
+                }).catch((err) => {
+                    console.log(err)
+                })
+            },
             fetchProduct() {
                 this.tableLoading = true;
                 request.listAllProduct(this.pagination).then((ret) => {
-                    console.log(ret);
                     let list = ret.data.list;
-                    console.log(list);
                     for (let product of list) {
                         product.imgSrc = 'http://47.105.33.48:8889/img/' + product.img;
                     }
@@ -357,9 +435,7 @@
             fetchDoc() {
                 this.tableLoading = true;
                 request.listDoc(this.pagination).then((ret) => {
-                    console.log(ret);
-                    let list = ret.data.list;
-                    this.docTableData = list;
+                    this.docTableData = ret.data.list;
                     this.pagination4Doc.total = ret.data.total;
                     this.pagination4Doc.current = ret.data.current;
                     this.pagination4Doc.size = ret.data.size;
@@ -381,22 +457,29 @@
                 this.fetchDoc()
             },
             newsUpdate() {
-                console.log('news update')
                 this.newsType = '1';
                 this.newsMainStyle = this.show;
                 this.productMainStyle = this.hidden;
                 this.docMainStyle = this.hidden;
+                this.hrMainStyle = this.hidden;
             },
             productUpdate() {
-                console.log('product update')
                 this.newsMainStyle = this.hidden;
                 this.productMainStyle = this.show;
                 this.docMainStyle = this.hidden;
+                this.hrMainStyle = this.hidden;
             },
             DocUpdate() {
                 this.newsMainStyle = this.hidden;
                 this.productMainStyle = this.hidden;
+                this.hrMainStyle = this.hidden;
                 this.docMainStyle = this.show;
+            },
+            hrUpdate() {
+                this.newsMainStyle = this.hidden;
+                this.productMainStyle = this.hidden;
+                this.docMainStyle = this.hidden;
+                this.hrMainStyle = this.show;
             },
             newsEdit(index, row) {
                 this.news.id = row.id;
@@ -413,8 +496,6 @@
                 this.productEditor.txt.html(row.introduce);
             },
             newsDelete(index, row) {
-                console.log(index);
-                console.log(row);
                 request.deleteNews(row.id).then((ret) => {
                     console.log(ret);
                     this.$message.success('新闻删除成功');
@@ -441,6 +522,45 @@
                     console.log(ret);
                     this.$message.success('文档删除成功');
                     this.fetchDoc();
+                }).catch((err) => {
+                    console.log(err)
+                })
+            },
+            jobUpdate(index, row) {
+                console.log(index);
+                console.log(row);
+                if (!this.job.title) {
+                    this.$message.warning('请输入标题');
+                    return;
+                }
+                request.addOrUpdateJob(this.job).then(() => {
+                    this.$message.success('职位创建成功');
+                    this.job = {
+                        id: 0,
+                        title: '',
+                        content: '',
+                        contact: ''
+                    };
+                    this.fetchJob();
+                }).catch((err) => {
+                    console.log(err);
+                })
+            },
+            jobUpdateTrigger(index, row) {
+                console.log(index);
+                console.log(row);
+                this.job.id = row.id;
+                this.job.title = row.title;
+                this.job.content = row.content;
+                this.job.contact = row.contact;
+            },
+            jobDelete(index, row) {
+                console.log(index);
+                console.log(row);
+                request.deleteJob(row.id).then((ret) => {
+                    console.log(ret);
+                    this.$message.success('职位删除成功');
+                    this.fetchJob();
                 }).catch((err) => {
                     console.log(err)
                 })
@@ -484,11 +604,8 @@
                     console.log(err);
                 })
             },
-            successUpload(response, file, fileList) {
-                console.log(response);
+            successUpload(response) {
                 this.product.img = response;
-                console.log(file);
-                console.log(fileList);
             },
             successUploadDoc() {
                 this.fetchDoc();
