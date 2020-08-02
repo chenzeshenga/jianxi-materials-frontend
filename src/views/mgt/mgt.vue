@@ -21,7 +21,7 @@
         <el-container>
             <el-main style="padding-left: 10%" :style="newsMainStyle">
                 <h3>新闻管理</h3>
-                <el-table :data="newsTableData">
+                <el-table :data="newsTableData" v-loading.body="tableLoading">
                     <el-table-column prop="title" label="标题">
                     </el-table-column>
                     <el-table-column prop="time" label="时间">
@@ -93,12 +93,7 @@
             </el-main>
             <el-main style="padding-left: 10%" :style="productMainStyle">
                 <h3>产品管理</h3>
-                <el-table :data="productTableData">
-                    <el-table-column prop="imgSrc" label="图片">
-                        <template slot-scope="scope">
-                            <img :src="scope.row.imgSrc" alt="图片" style="height: 50px">
-                        </template>
-                    </el-table-column>
+                <el-table :data="productTableData" v-loading.body="tableLoading">
                     <el-table-column prop="name" label="名称">
                     </el-table-column>
                     <el-table-column label="操作">
@@ -172,7 +167,7 @@
             </el-main>
             <el-main style="padding-left: 10%" :style="docMainStyle">
                 <h3>文档管理</h3>
-                <el-table :data="docTableData">
+                <el-table :data="docTableData" v-loading.body="tableLoading">
                     <el-table-column prop="ctime" label="创建时间">
                     </el-table-column>
                     <el-table-column prop="name" label="名称">
@@ -226,30 +221,14 @@
 </template>
 
 <script>
-    // import Vue from "vue";
-    // import {
-    //     RichTextEditorPlugin,
-    //     Toolbar,
-    //     Link,
-    //     Image,
-    //     QuickToolbar,
-    //     HtmlEditor,
-    //     Count
-    // } from "@syncfusion/ej2-vue-richtexteditor";
     import request from "../../request/request";
-    // import Editor from "../../components/Editor";
     import E from 'wangeditor';
-
-    // Vue.use(RichTextEditorPlugin);
 
     export default {
         name: "mgt",
-        // components: {Editor},
-        // provide: {
-        //     richtexteditor: [Toolbar, Link, Image, QuickToolbar, HtmlEditor, Count]
-        // },
         data() {
             return {
+                tableLoading: false,
                 news: {
                     id: 0,
                     title: '',
@@ -310,6 +289,7 @@
             };
         },
         created() {
+            this.isMd();
             this.fetchNews();
             this.fetchProduct();
             this.fetchDoc();
@@ -329,7 +309,13 @@
             this.productEditor.create()
         },
         methods: {
+            isMd() {
+                if (window.outerWidth <= 992) {
+                    this.$message.warning('请使用桌面版管理内容')
+                }
+            },
             fetchNews() {
+                this.tableLoading = true;
                 request.listAllNews(this.pagination).then((ret) => {
                     console.log(ret);
                     let list = ret.data.list;
@@ -345,11 +331,13 @@
                     this.pagination.total = ret.data.total;
                     this.pagination.current = ret.data.current;
                     this.pagination.size = ret.data.size;
+                    this.tableLoading = false;
                 }).catch((err) => {
                     console.log(err)
                 })
             },
             fetchProduct() {
+                this.tableLoading = true;
                 request.listAllProduct(this.pagination).then((ret) => {
                     console.log(ret);
                     let list = ret.data.list;
@@ -361,11 +349,13 @@
                     this.pagination4Product.total = ret.data.total;
                     this.pagination4Product.current = ret.data.current;
                     this.pagination4Product.size = ret.data.size;
+                    this.tableLoading = false;
                 }).catch((err) => {
                     console.log(err)
                 })
             },
             fetchDoc() {
+                this.tableLoading = true;
                 request.listDoc(this.pagination).then((ret) => {
                     console.log(ret);
                     let list = ret.data.list;
@@ -373,6 +363,7 @@
                     this.pagination4Doc.total = ret.data.total;
                     this.pagination4Doc.current = ret.data.current;
                     this.pagination4Doc.size = ret.data.size;
+                    this.tableLoading = false;
                 }).catch((err) => {
                     console.log(err)
                 })
@@ -498,9 +489,6 @@
                 this.product.img = response;
                 console.log(file);
                 console.log(fileList);
-            },
-            timer() {
-                return String.valueOf(new Date().getTime());
             },
             successUploadDoc() {
                 this.fetchDoc();

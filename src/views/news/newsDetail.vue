@@ -1,8 +1,16 @@
 <template>
     <div>
-        <h6>{{title}}</h6>
-        <span>时间:{{time}}</span>
-        <div v-html="content">
+        <div style="padding-left: 20%;padding-right: 20%" class="hidden-md-and-down">
+            <h4>{{title}}</h4>
+            <span>时间:  {{time}}</span>
+            <div v-html="content">
+            </div>
+        </div>
+        <div class="hidden-md-and-up">
+            <h4>{{title}}</h4>
+            <span>时间:  {{time}}</span>
+            <div v-html="content">
+            </div>
         </div>
     </div>
 </template>
@@ -40,7 +48,6 @@
                     }).catch((err) => {
                         console.log(err);
                     })
-
                 }
             }
         }

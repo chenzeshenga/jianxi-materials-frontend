@@ -156,8 +156,8 @@
                 console.log(uuid);
                 const link = document.createElement('a');
                 link.style.display = 'none';
-                // link.href = 'http://localhost:8889/document/file/' + uuid;
-                link.href = 'http://47.105.33.48:8889/document/file/' + uuid;
+                link.href = 'http://localhost:8889/document/file/' + uuid;
+                // link.href = 'http://47.105.33.48:8889/document/file/' + uuid;
                 link.target = '_blank';
                 document.body.appendChild(link);
                 link.click();
