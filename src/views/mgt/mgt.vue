@@ -100,6 +100,8 @@
                 <el-table :data="productTableData" v-loading.body="tableLoading">
                     <el-table-column prop="name" label="名称">
                     </el-table-column>
+                    <el-table-column prop="category" label="分类">
+                    </el-table-column>
                     <el-table-column label="操作">
                         <template slot-scope="scope">
                             <el-tooltip
@@ -146,6 +148,21 @@
                         <el-col :span="18">
                             <el-tooltip content="请输入产品名称，30个字以内">
                                 <el-input v-model="product.name"></el-input>
+                            </el-tooltip>
+                        </el-col>
+                    </el-row>
+                    <el-row style="margin-top: 2%">
+                        <el-col :span="2">产品分类</el-col>
+                        <el-col :span="18">
+                            <el-tooltip content="产品分类">
+                                <el-select v-model="product.category" placeholder="请选择">
+                                    <el-option
+                                            v-for="item in options"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value">
+                                    </el-option>
+                                </el-select>
                             </el-tooltip>
                         </el-col>
                     </el-row>
@@ -288,6 +305,22 @@
         name: "mgt",
         data() {
             return {
+                options: [{
+                    value: '半导体',
+                    label: '半导体'
+                }, {
+                    value: '平板显示',
+                    label: '平板显示    '
+                }, {
+                    value: '太阳能',
+                    label: '太阳能'
+                }, {
+                    value: '其他',
+                    label: '其他'
+                }, {
+                    value: '服务',
+                    label: '服务'
+                }],
                 tableLoading: false,
                 news: {
                     id: 0,

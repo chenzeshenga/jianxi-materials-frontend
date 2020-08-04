@@ -50,11 +50,15 @@
                         <router-link to="/product" class="font-black nav">产品服务</router-link>
                             <el-dropdown-menu slot="dropdown">
                                 <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">特色产品</router-link></el-dropdown-item>
+                                                               class="font-black">半导体</router-link></el-dropdown-item>
                                 <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">其他产品</router-link></el-dropdown-item>
-                            <el-dropdown-item><router-link to="/product"
-                                                           class="font-black">服务</router-link></el-dropdown-item>
+                                                               class="font-black">平板显示</router-link></el-dropdown-item>
+                                <el-dropdown-item><router-link to="/product"
+                                                           class="font-black">太阳能</router-link></el-dropdown-item>
+                                <el-dropdown-item><router-link to="/product"
+                                                               class="font-black">其他</router-link></el-dropdown-item>
+                                <el-dropdown-item><router-link to="/product"
+                                                               class="font-black">服务</router-link></el-dropdown-item>
                                 </el-dropdown-menu>
                         </el-dropdown>
                     </span>

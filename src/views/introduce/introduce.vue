@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-row class="hidden-md-and-down">
-            <img src="../../assets/about.jpg" style="width: 100%" alt="关于我们">
+            <img src="../../assets/about.jpg" style="width: 100%;height: 180px" alt="关于我们">
         </el-row>
         <div class="about" :style="padding">
             <el-row style="margin-top: 2%">
@@ -9,7 +9,7 @@
                     <ul class="condition-style">
                         <li>
                             <div>
-                                <img src="../../assets/introduce.jpg" alt="关于我们" style="width: 100%;height: 100%"/>
+                                <img src="../../assets/introduce.png" alt="关于我们" style="width: 100%;height: 100%"/>
                             </div>
                         </li>
                         <li>
@@ -160,7 +160,9 @@
                                         </div>
                                         <div class="e-card-header">
                                             <div class="e-card-header-caption center">
-                                                <div class="e-card-header-title name" style="font-size: 16px">公司联合创始人/总工程师/技术带头人</div>
+                                                <div class="e-card-header-title name" style="font-size: 16px">
+                                                    公司联合创始人/总工程师/技术带头人
+                                                </div>
                                                 <div class="e-card-sub-title">王亚平</div>
                                             </div>
                                         </div>
@@ -249,7 +251,7 @@
                         <img src="../../assets/tech1.png" style="width: 100%" alt="技术">
                     </div>
                     <div :style="style4">
-                        公司理念
+                        <img src="../../assets/convince.png" alt="公司理念" style="margin-top: 2%">
                     </div>
                     <div :style="style5">
                         <vue2-org-tree class="hidden-md-and-up" :data="data" :horizontal="true"

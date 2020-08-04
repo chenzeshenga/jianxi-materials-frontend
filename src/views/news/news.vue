@@ -1,23 +1,29 @@
 <template>
     <div>
         <el-row>
-            <img src="../../assets/news-header.jpg" style="width: 100%" alt="新闻中心">
+            <img src="../../assets/news-header.jpg" style="width: 100%" alt="新闻中心" class="hidden-md-and-down">
         </el-row>
         <div :style="padding">
             <el-row>
                 <el-col class="el-col-lg-4 el-col-md-24 el-col-sm-24">
                     <ul style="padding-left: 0">
                         <li>
-                            <img src="../../assets/news-top.jpg" alt="新闻中心">
+                            <img src="../../assets/news.png" alt="新闻中心" style="width: 100%;height: 80px"
+                                 class="hidden-md-and-down">
+                            <img src="../../assets/news.png" alt="新闻中心" style="width: 100%" class="hidden-md-and-up">
                         </li>
                         <li>
-                            <div style="border:1px solid #dedede">
-                                <el-button type="text" style="font-size: 20px" @click="showNews2">行业动态</el-button>
+                            <div style="border:1px solid #dedede;padding: 5%">
+                                <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
+                                           @click="showNews2">行业动态
+                                </el-button>
                             </div>
                         </li>
                         <li>
-                            <div style="border:1px solid #dedede">
-                                <el-button type="text" style="font-size: 20px" @click="showNews1">公司新闻</el-button>
+                            <div style="border:1px solid #dedede;padding: 5%">
+                                <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
+                                           @click="showNews1">公司新闻
+                                </el-button>
                             </div>
                         </li>
                     </ul>
