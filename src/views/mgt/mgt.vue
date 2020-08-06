@@ -306,20 +306,26 @@
         data() {
             return {
                 options: [{
-                    value: '半导体',
-                    label: '半导体'
+                    value: '半导体靶材',
+                    label: '半导体靶材'
                 }, {
-                    value: '平板显示',
-                    label: '平板显示    '
+                    value: '平板靶材',
+                    label: '平板靶材    '
                 }, {
-                    value: '太阳能',
-                    label: '太阳能'
+                    value: '太阳能靶材',
+                    label: '太阳能靶材'
                 }, {
-                    value: '其他',
-                    label: '其他'
+                    value: '其它靶材',
+                    label: '其它靶材'
                 }, {
-                    value: '服务',
-                    label: '服务'
+                    value: '金属复合材料',
+                    label: '金属复合材料'
+                },{
+                    value: '绑定服务',
+                    label: '绑定服务'
+                },{
+                    value: '生产设备、辅助工具',
+                    label: '生产设备、辅助工具'
                 }],
                 tableLoading: false,
                 news: {

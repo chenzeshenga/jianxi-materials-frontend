@@ -40,11 +40,18 @@
                 const newsId = this.$route.query.newsId;
                 console.log(newsId);
                 if (newsId !== undefined && newsId.length > 0) {
+                    const loading = this.$loading({
+                              lock: true,
+                              text: 'Loading',
+                              spinner: 'el-icon-loading',
+                              background: 'rgba(0, 0, 0, 0.7)'
+                            });
                     request.fetchSingleNews(newsId).then((ret) => {
                         console.log(ret);
                         this.content = ret.data.content;
                         this.time = ret.data.time;
                         this.title = ret.data.title;
+                        loading.close();
                     }).catch((err) => {
                         console.log(err);
                     })
