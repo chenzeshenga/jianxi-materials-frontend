@@ -1,7 +1,7 @@
 <template>
   <div>
-    <img class="hidden-md-and-up" src="../../assets/hr-deader.jpg" width="100%" alt="hr">
-    <img class="hidden-md-and-down" src="../../assets/hr-deader.jpg" style="width: 100%;height: 150px" alt="hr">
+    <img class="hidden-md-and-up" src="../../assets/contact.png" width="100%" alt="hr">
+    <img class="hidden-md-and-down" src="../../assets/contact.png" style="width: 100%;height: 150px" alt="hr">
     <div class="hidden-md-and-down">
       <el-container :style="padding" class="hidden-md-and-down">
         <el-aside style="padding-left: 5%;width: 20%">

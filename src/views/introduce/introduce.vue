@@ -36,13 +36,6 @@
                         <li>
                             <div style="border:1px solid #dedede;padding: 5%;border-top: none">
                                 <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
-                                           @click="show4">公司理念
-                                </el-button>
-                            </div>
-                        </li>
-                        <li>
-                            <div style="border:1px solid #dedede;padding: 5%;border-top: none">
-                                <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
                                            @click="show5">组织架构
                                 </el-button>
                             </div>

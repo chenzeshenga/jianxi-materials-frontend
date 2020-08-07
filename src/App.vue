@@ -21,8 +21,6 @@
                                                                class="font-black">团队介绍</router-link></el-dropdown-item>
                                 <el-dropdown-item><router-link to="/introduce?id=3"
                                                                class="font-black">技术实力</router-link></el-dropdown-item>
-                                <el-dropdown-item><router-link to="/introduce?id=4"
-                                                               class="font-black">公司理念</router-link></el-dropdown-item>
                                 <el-dropdown-item><router-link to="/introduce?id=5"
                                                                class="font-black">组织架构</router-link></el-dropdown-item>
                                 <el-dropdown-item><router-link to="/introduce?id=6"
@@ -74,7 +72,7 @@
                 </el-button>
                 <el-button type="text">
                     <span class="nav">
-                        <router-link to="/contact" class="font-black">人力资源</router-link>
+                        <router-link to="/contact" class="font-black">联系我们</router-link>
                     </span>
                 </el-button>
             </el-col>
@@ -105,7 +103,7 @@
                             <router-link to="/document" class="font-black">下载中心</router-link>
                         </el-dropdown-item>
                         <el-dropdown-item>
-                            <router-link to="/contact" class="font-black">人力资源</router-link>
+                            <router-link to="/contact" class="font-black">联系我们</router-link>
                         </el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
