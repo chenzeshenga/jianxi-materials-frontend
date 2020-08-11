@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-row>
-            <img src="../../assets/news-new.png" style="width: 100%;height: 200px" alt="新闻中心" class="hidden-md-and-down">
+            <img src="../../assets/news-new.jpg" style="width: 100%;height: 200px" alt="新闻中心" class="hidden-md-and-down">
         </el-row>
         <div :style="padding">
             <el-row>
