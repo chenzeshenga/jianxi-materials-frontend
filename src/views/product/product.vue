@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-container :style="padding" class="hidden-md-and-down">
-      <el-aside style="padding-left: 5%;width: 20%">
+      <el-aside style="padding-left: 3%;width: 20%;overflow-x: hidden">
         <ul>
           <li>
             <div>

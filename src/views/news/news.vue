@@ -5,7 +5,7 @@
         </el-row>
         <div :style="padding">
             <el-row>
-                <el-col class="el-col-lg-4 el-col-md-24 el-col-sm-24">
+                <el-col class="el-col-lg-4 el-col-md-24 el-col-sm-24" style="overflow-x: hidden">
                     <ul style="padding-left: 0">
                         <li>
                             <img src="../../assets/news.png" alt="新闻中心" style="width: 100%;height: 80px"

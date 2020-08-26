@@ -5,7 +5,7 @@
         </el-row>
         <div class="about" :style="padding">
             <el-row style="margin-top: 2%">
-                <el-col class="el-col-lg-4 el-col-lg-offset-1 el-col-md-24 el-col-sm-24">
+                <el-col class="el-col-lg-4 el-col-lg-offset-1 el-col-md-24 el-col-sm-24" style="overflow-x: hidden">
                     <ul class="condition-style">
                         <li>
                             <div>

@@ -14,10 +14,6 @@
                 </el-menu-item>
                 <el-menu-item index="3">
                     <em class="el-icon-menu"></em>
-                    <el-button type="text" slot="title" @click="DocUpdate">文档</el-button>
-                </el-menu-item>
-                <el-menu-item index="3">
-                    <em class="el-icon-menu"></em>
                     <el-button type="text" slot="title" @click="hrUpdate">招聘</el-button>
                 </el-menu-item>
             </el-menu>
@@ -507,12 +503,6 @@
                 this.productMainStyle = this.show;
                 this.docMainStyle = this.hidden;
                 this.hrMainStyle = this.hidden;
-            },
-            DocUpdate() {
-                this.newsMainStyle = this.hidden;
-                this.productMainStyle = this.hidden;
-                this.hrMainStyle = this.hidden;
-                this.docMainStyle = this.show;
             },
             hrUpdate() {
                 this.newsMainStyle = this.hidden;
