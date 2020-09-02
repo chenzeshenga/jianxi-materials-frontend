@@ -9,12 +9,21 @@
             </div>
           </li>
           <li v-for="product in productTableData" :key="product.id">
-            <div style="border:1px solid #dedede;padding: 5%">
-              <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
+            <el-popover
+                placement="right"
+                width="400"
+                trigger="hover">
+              <el-button v-for="tmpProduct in productCategoryMap[product.name]" :key="tmpProduct.id" type="text"
                          @click="showProduct(product.name)">
-                {{ product.name }}
+                {{ tmpProduct.name }}
               </el-button>
-            </div>
+              <div style="border:1px solid #dedede;padding: 5%" slot="reference">
+                <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
+                           @click="showProduct(product.name)">
+                  {{ product.name }}
+                </el-button>
+              </div>
+            </el-popover>
           </li>
         </ul>
       </el-aside>
@@ -72,11 +81,11 @@ export default {
         },
         {
           'id': 2,
-          'name': '平板靶材'
+          'name': '平板显示'
         },
         {
           'id': 3,
-          'name': '太阳能靶材'
+          'name': '太阳能'
         },
         {
           'id': 4,
@@ -101,12 +110,14 @@ export default {
       name: '',
       introduce: '',
       content: '',
-      activeName: '1'
+      activeName: '1',
+      productCategoryMap: {},
     };
   },
   created() {
     this.updateCss();
     this.showProduct('1');
+    this.fetchProduct();
   },
   mounted() {
   },
@@ -126,7 +137,6 @@ export default {
       });
       request.showProduct(id).then((ret) => {
         this.productCategoryList = ret.data;
-        // this.content = ret.data.introduce;
         loading.close();
       }).catch((err) => {
         console.log(err);
@@ -134,9 +144,15 @@ export default {
     },
     fetchProduct() {
       request.listProduct().then((ret) => {
-        this.productTableData = ret.data;
-        let firstProduct = this.productTableData[0];
-        this.showProduct(firstProduct.id);
+        for (let tmp of ret.data) {
+          let arr = this.productCategoryMap[tmp.category];
+          if (arr === undefined) {
+            arr = [];
+          }
+          arr.push(tmp);
+          this.productCategoryMap[tmp.category] = arr;
+        }
+        console.log(this.productCategoryMap);
       }).catch((err) => {
         console.log(err);
       })
