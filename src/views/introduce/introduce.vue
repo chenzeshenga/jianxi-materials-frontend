@@ -117,127 +117,46 @@
             </div>
           </div>
           <div :style="style2">
-            <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
-              <div class="control-section avatar-card">
-                <div class="sample_container">
-                  <div class="e-card e-custom-card">
-                    <div class="e-card-header">
-                      <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                        <img src="../../assets/Y.jpg" alt="profile_pic">
-                      </div>
-                    </div>
-                    <div class="e-card-header">
-                      <div class="e-card-header-caption center">
-                        <div class="e-card-header-title name">公司创始人 董事长</div>
-                        <div class="e-card-sub-title">姚建军</div>
-                      </div>
-                    </div>
-                    <div class="e-card-content">
-                      <p class="avatar-content">
-                        西安交通大学工学博士学位，高级工程师。2013年入选国家科技部科技创新创业人才计划；2014年入选中组部第一批“万人计划”科技创业领军人才。
-                        曾任国有大型研究所常务副院长，组织和承担了多项国家、省部级项目，产学研转化落地、科技与金融结合经验丰富。
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </el-col>
-            <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
-              <div class="control-section avatar-card">
-                <div class="sample_container">
-                  <div class="e-card e-custom-card">
-                    <div class="e-card-header">
-                      <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                        <img src="../../assets/W.jpg" alt="profile_pic">
-                      </div>
-                    </div>
-                    <div class="e-card-header">
-                      <div class="e-card-header-caption center">
-                        <div class="e-card-header-title name" style="font-size: 16px">
-                          公司联合创始人/总工程师/技术带头人
-                        </div>
-                        <div class="e-card-sub-title">王亚平</div>
-                      </div>
-                    </div>
-                    <div class="e-card-content">
-                      <p class="avatar-content">
-                        西安交通大学教授，博士生导师，承担多项国家、省部级科研项目，曾获国家科技进步二等级、陕西省科学技术一等奖、二等级等奖项，拥有多项专利
-                        在金属合金领域耕耘近三十年，成功研发和产业化多种金属合金产品，属于相关领域的国际权威专家。
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </el-col>
-            <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
-              <div class="control-section avatar-card">
-                <div class="sample_container">
-                  <div class="e-card e-custom-card">
-                    <div class="e-card-header">
-                      <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                        <img src="../../assets/B.jpg" alt="profile_pic">
-                      </div>
-                    </div>
-                    <div class="e-card-header">
-                      <div class="e-card-header-caption center">
-                        <div class="e-card-header-title name">总经理</div>
-                        <div class="e-card-sub-title">白浩博</div>
-                      </div>
-                    </div>
-                    <div class="e-card-content">
-                      <p class="avatar-content">
-                        西安交通大学硕士学位，曾任国有大型研究所研发负责人，产业化公司副总经理，拥有多年工业制作、新材料领域的企业管理和产品开发经验。</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </el-col>
-            <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
-              <div class="control-section avatar-card">
-                <div class="sample_container">
-                  <div class="e-card e-custom-card">
-                    <div class="e-card-header">
-                      <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                        <img src="../../assets/YF.jpg" alt="profile_pic">
-                      </div>
-                    </div>
-                    <div class="e-card-header">
-                      <div class="e-card-header-caption center">
-                        <div class="e-card-header-title name">销售副总</div>
-                        <div class="e-card-sub-title">于丰</div>
-                      </div>
-                    </div>
-                    <div class="e-card-content">
-                      <p class="avatar-content">
-                        西安交通大学硕士学位，曾任大唐电信科技股份有限公司二级事业部总经理，管理200余人的市场销售团队，拥有丰富的市场销售经验和销售团队管理技能。</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </el-col>
-            <el-col class="el-col-lg-8 el-col-md-24 el-col-sm-24">
-              <div class="control-section avatar-card">
-                <div class="sample_container">
-                  <div class="e-card e-custom-card">
-                    <div class="e-card-header">
-                      <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                        <img src="../../assets/L.jpg" alt="profile_pic">
-                      </div>
-                    </div>
-                    <div class="e-card-header">
-                      <div class="e-card-header-caption center">
-                        <div class="e-card-header-title name">生产副总</div>
-                        <div class="e-card-sub-title">罗凯于</div>
-                      </div>
-                    </div>
-                    <div class="e-card-content">
-                      <p class="avatar-content">
-                        西安交通大学硕士学位，曾任某大型国企生产部副主任，在工业制作、新材料领域有多年的生产和项目管理经验。</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </el-col>
+            <div style="text-align: left;padding-left: 3%">
+              <span style="font-size: 24px;font-weight: bold;">姚建军</span>
+              <el-tag style="margin-left: 2%;font-size: 14px;font-weight: bold">公司创始人 董事长</el-tag>
+              <el-divider/>
+              <span style="font-size: 18px">
+                西安交通大学工学博士学位，高级工程师。2013年入选国家科技部科技创新创业人才计划；2014年入选中组部第一批“万人计划”科技创业领军人才。曾任国有大型研究所常务副院长，组织和承担了多项国家、省部级项目，产学研转化落地、科技与金融结合经验丰富。
+              </span>
+            </div>
+            <div style="text-align: left;padding-left: 3%;margin-top: 3%">
+              <span style="font-size: 24px;font-weight: bold;">王亚平</span>
+              <el-tag style="margin-left: 2%;font-size: 14px;font-weight: bold">公司联合创始人 总工程师 技术带头人</el-tag>
+              <el-divider/>
+              <span style="font-size: 18px">
+                西安交通大学教授，博士生导师，承担多项国家、省部级科研项目，曾获国家科技进步二等级、陕西省科学技术一等奖、二等级等奖项，拥有多项专利。在金属合金领域耕耘近三十年，成功研发和产业化多种金属合金产品，属于相关领域的国际权威专家。
+              </span>
+            </div>
+            <div style="text-align: left;padding-left: 3%;margin-top: 3%">
+              <span style="font-size: 24px;font-weight: bold;">白浩博</span>
+              <el-tag style="margin-left: 2%;font-size: 14px;font-weight: bold">总经理</el-tag>
+              <el-divider/>
+              <span style="font-size: 18px">
+                西安交通大学硕士学位，曾任国有大型研究所研发负责人，产业化公司副总经理，拥有多年工业制作、新材料领域的企业管理和产品开发经验。
+              </span>
+            </div>
+            <div style="text-align: left;padding-left: 3%;margin-top: 3%">
+              <span style="font-size: 24px;font-weight: bold;">于丰</span>
+              <el-tag style="margin-left: 2%;font-size: 14px;font-weight: bold">销售副总</el-tag>
+              <el-divider/>
+              <span style="font-size: 18px">
+                西安交通大学硕士学位，曾任大唐电信科技股份有限公司二级事业部总经理，管理200余人的市场销售团队，拥有丰富的市场销售经验和销售团队管理技能。
+              </span>
+            </div>
+            <div style="text-align: left;padding-left: 3%;margin-top: 3%">
+              <span style="font-size: 24px;font-weight: bold;">罗凯于</span>
+              <el-tag style="margin-left: 2%;font-size: 14px;font-weight: bold">生产副总</el-tag>
+              <el-divider/>
+              <span style="font-size: 18px">
+                西安交通大学硕士学位，曾任某大型国企生产部副主任，在工业制作、新材料领域有多年的生产和项目管理经验。
+              </span>
+            </div>
           </div>
           <div :style="style3">
             <img src="../../assets/tech2.png" style="width: 100%" alt="技术">

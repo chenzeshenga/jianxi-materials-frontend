@@ -110,14 +110,14 @@ export default {
       name: '',
       introduce: '',
       content: '',
-      activeName: '1',
+      activeName: '0',
       productCategoryMap: {},
     };
   },
   created() {
     this.updateCss();
-    this.showProduct('1');
     this.fetchProduct();
+    this.showProduct('半导体靶材');
   },
   mounted() {
   },
