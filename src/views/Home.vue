@@ -10,8 +10,7 @@
         </el-button>
       </div>
       <div class="wrapper2" :style="wrapper2">
-        <p style="z-index: 20;margin-left: 20%">特种合金靶材产业的拓荒者和耕耘者</p>
-        <p style="z-index: 20;margin-left: 20%;margin-top: -3%">全球知名的靶材及特种合金品牌</p>
+        <p style="z-index: 20;margin-left: 20%">高纯金属及特种合金产业的拓荒者和耕耘者</p>
         <el-button
             style="filter:alpha(Opacity=80);-moz-opacity:0.5;opacity: 0.5;font-size: 40px;color: white;text-align: left;margin-left: -32%"
             type="text" @click="route2introduce">

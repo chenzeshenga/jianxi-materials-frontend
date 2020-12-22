@@ -20,11 +20,9 @@
                                 <el-dropdown-item><router-link to="/introduce?id=2"
                                                                class="font-black">团队介绍</router-link></el-dropdown-item>
                                 <el-dropdown-item><router-link to="/introduce?id=3"
-                                                               class="font-black">技术实力</router-link></el-dropdown-item>
+                                                               class="font-black">技术路线</router-link></el-dropdown-item>
                                 <el-dropdown-item><router-link to="/introduce?id=5"
                                                                class="font-black">组织架构</router-link></el-dropdown-item>
-                                <el-dropdown-item><router-link to="/introduce?id=6"
-                                                               class="font-black">地址</router-link></el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
                     </span>
@@ -103,7 +101,7 @@
     </el-row>
     <router-view/>
     <el-row>
-      <h5>宁波建锡新材料有限公司 电话：13363990612/13991957119 | 传真： | 邮箱：| 备案号</h5>
+      <h5>宁波建锡新材料有限公司 电话：0574-82357006 | 邮箱：jianxi@jianxi-materials.com | 备案号: 浙ICP备2020033888号</h5>
     </el-row>
   </div>
 </template>
