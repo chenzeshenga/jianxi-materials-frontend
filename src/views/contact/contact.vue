@@ -2,11 +2,51 @@
   <div>
     <img class="hidden-md-and-up" src="../../assets/contact.png" width="100%" alt="hr">
     <img class="hidden-md-and-down" src="../../assets/contact.png" style="width: 100%;height: 150px" alt="hr">
-    <baidu-map style="width: 100%;height: 500px" class="map"
-               ak="HWgG9jQ3R5AH31GEG1svVfM8h4chKRlj"
-               @ready="handler"
-               :scroll-wheel-zoom="true">
-    </baidu-map>
+    <div class="about" style="padding-left: 10%">
+      <el-row style="margin-top: 2%">
+        <el-col class="el-col-lg-4 el-col-lg-offset-1 el-col-md-24 el-col-sm-24" style="overflow-x: hidden">
+          <ul class="condition-style">
+            <li>
+              <div style="border:1px solid #dedede;padding: 5%">
+                <el-button type="text" :class="show1Class" @click="show1">联系方式
+                </el-button>
+              </div>
+            </li>
+            <li>
+              <div style="border:1px solid #dedede;padding: 5%;border-top: none">
+                <el-button type="text" :class="show2Class"
+                           @click="show2">公司地址
+                </el-button>
+              </div>
+            </li>
+          </ul>
+        </el-col>
+        <el-col class="el-col-lg-18 el-col-md-24 el-col-sm-24">
+          <div :style="style1">
+            <p style="text-align: left;padding-left: 3%;margin-left: 0">
+            地址：浙江省宁波市慈溪市高新区新兴二路89号<br>
+            邮箱：jianxi@jianxi-materials.com<br>
+            <br>
+            办公室：<br>
+            联系人：楼女士<br>
+            电话：0574-82357006<br>
+            <br>
+            销售：<br>
+            联系人：于先生<br>
+            电话：0574-82357008<br>
+            手机：13363990612<br>
+              </p>
+          </div>
+          <div :style="style2">
+            <baidu-map style="width: 100%;height: 500px" class="map"
+                       ak="HWgG9jQ3R5AH31GEG1svVfM8h4chKRlj"
+                       @ready="handler"
+                       :scroll-wheel-zoom="true">
+            </baidu-map>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -26,7 +66,17 @@ export default {
       padding: {
         'padding-left': '10%'
       },
-      content: ''
+      content: '',
+      show1Class: 'highlight',
+      show2Class: 'normal',
+      show: {
+        'display': 'block'
+      },
+      hidden: {
+        'display': 'none'
+      },
+      style1: {'display': 'block'},
+      style2: {'display': 'none'},
     }
   },
   created() {
@@ -51,6 +101,18 @@ export default {
     },
     showContent(content) {
       this.content = content
+    },
+    show1() {
+      this.style1 = this.show;
+      this.style2 = this.hidden;
+      this.show1Class = 'highlight';
+      this.show2Class = 'normal';
+    },
+    show2() {
+      this.style1 = this.hidden;
+      this.style2 = this.show;
+      this.show1Class = 'normal';
+      this.show2Class = 'highlight';
     },
     handler({BMap, map}) {
       // 初始化地图,设置中心点坐标
@@ -106,5 +168,17 @@ li {
   .condition-style {
     padding-left: 0;
   }
+}
+
+.normal {
+  font-size: 16px;
+  color: black;
+  text-align: left;
+}
+
+.highlight {
+  font-size: 16px;
+  text-align: left;
+  color: blue;
 }
 </style>

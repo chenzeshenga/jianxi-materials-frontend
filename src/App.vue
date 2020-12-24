@@ -43,23 +43,19 @@
         <el-button type="text">
                     <span class="nav">
                         <el-dropdown>
-                        <router-link to="/product" class="font-black nav">产品服务</router-link>
+                          <router-link to="/product" class="font-black nav">产品与服务</router-link>
                             <el-dropdown-menu slot="dropdown">
                                 <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">半导体靶材</router-link></el-dropdown-item>
+                                                               class="font-black">高纯金属</router-link></el-dropdown-item>
                                 <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">平板靶材</router-link></el-dropdown-item>
+                                                               class="font-black">铜合金</router-link></el-dropdown-item>
                                 <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">太阳能靶材</router-link></el-dropdown-item>
+                                                               class="font-black">铝合金</router-link></el-dropdown-item>
                                 <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">其它靶材</router-link></el-dropdown-item>
+                                                               class="font-black">其他产品</router-link></el-dropdown-item>
                                 <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">金属复合材料</router-link></el-dropdown-item>
-                                <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">绑定服务</router-link></el-dropdown-item>
-                                <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">生产设备、辅助工具</router-link></el-dropdown-item>
-                                </el-dropdown-menu>
+                                                               class="font-black">定制化产品</router-link></el-dropdown-item>
+                            </el-dropdown-menu>
                         </el-dropdown>
                     </span>
         </el-button>
@@ -90,7 +86,7 @@
               <router-link to="/news" class="font-black">新闻中心</router-link>
             </el-dropdown-item>
             <el-dropdown-item>
-              <router-link to="/product" class="font-black">产品服务</router-link>
+              <router-link to="/product" class="font-black">产品与服务</router-link>
             </el-dropdown-item>
             <el-dropdown-item>
               <router-link to="/contact" class="font-black">联系我们</router-link>

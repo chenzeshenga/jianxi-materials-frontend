@@ -9,33 +9,83 @@
             </div>
           </li>
           <li v-for="product in productTableData" :key="product.id">
-            <el-popover
-                placement="right"
-                width="400"
-                trigger="hover">
-              <el-button v-for="tmpProduct in productCategoryMap[product.name]" :key="tmpProduct.id" type="text"
-                         @click="showProduct(product.name)">
-                {{ tmpProduct.name }}
-              </el-button>
-              <div style="border:1px solid #dedede;padding: 5%" slot="reference">
-                <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
-                           @click="showProduct(product.name)">
-                  {{ product.name }}
-                </el-button>
-              </div>
-            </el-popover>
+            <div style="border:1px solid #dedede;padding: 5%">
+              <div v-html="product.name"></div>
+            </div>
           </li>
         </ul>
       </el-aside>
       <el-container>
-        <el-main>
-          <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-            <el-tab-pane :label="product.name" v-for="product in productCategoryList" :key="product.id"
-                         @tab-click="handleClick">
-              <div v-html="product.introduce"></div>
-            </el-tab-pane>
-          </el-tabs>
-        </el-main>
+        <div>
+          <el-row :gutter="60" style="padding: 2%">
+            <el-col :span="8">
+              <img src="../../assets/product/5N高纯铜.jpg" width="300px" height="250px" alt="pic"/>
+              <br>
+              5N高纯铜
+            </el-col>
+            <el-col :span="8">
+              <img src="../../assets/product/6N高纯铜.jpg" width="300px" height="250px" alt="pic"/>
+              <br>
+              6N高纯铜
+            </el-col>
+            <el-col :span="8">
+              <img src="../../assets/product/铜铁合金.jpg" width="300px" height="250px" alt="pic"/>
+              <br>
+              铜铁合金
+            </el-col>
+          </el-row>
+          <el-row :gutter="60" style="padding: 2%">
+            <el-col :span="8">
+              <img src="../../assets/product/钨铜合金.jpg" width="300px" height="250px" alt="pic"/>
+              <br>
+              5N高纯铜
+            </el-col>
+            <el-col :span="8">
+              <img src="../../assets/product/钼铜合金.jpg" width="300px" height="250px" alt="pic"/>
+              <br>
+              6N高纯铜
+            </el-col>
+            <el-col :span="8">
+              <img src="../../assets/product/铝硌硼.jpg" width="300px" height="250px" alt="pic"/>
+              <br>
+              铜铁合金
+            </el-col>
+          </el-row>
+          <el-row :gutter="60" style="padding: 2%">
+            <el-col :span="8">
+              <img src="../../assets/product/铝硅合金.jpg" width="300px" height="250px" alt="pic"/>
+              <br>
+              5N高纯铜
+            </el-col>
+            <el-col :span="8">
+              <img src="../../assets/product/铝碳化硼.jpg" width="300px" height="250px" alt="pic"/>
+              <br>
+              6N高纯铜
+            </el-col>
+            <el-col :span="8">
+              <img src="../../assets/product/镍磷合金.jpg" width="300px" height="250px" alt="pic"/>
+              <br>
+              铜铁合金
+            </el-col>
+          </el-row>
+          <el-row :gutter="60" style="padding: 2%">
+            <el-col :span="8">
+              <img src="../../assets/product/碲化镉.jpg" width="300px" height="250px" alt="pic"/>
+              <br>
+              5N高纯铜
+            </el-col>
+            <el-col :span="8">
+              <img src="../../assets/product/铬硅合金.jpg" width="300px" height="250px" alt="pic"/>
+              <br>
+              6N高纯铜
+            </el-col>
+            <el-col :span="8">
+              <img src="../../assets/product/二硫化钼.jpg" width="300px" height="250px" alt="pic"/>
+              <br>
+              铜铁合金
+            </el-col>
+          </el-row>
+        </div>
       </el-container>
     </el-container>
     <div class="hidden-md-and-up">
@@ -77,33 +127,72 @@ export default {
       productTableData: [
         {
           'id': 1,
-          'name': '半导体靶材'
+          'name': '高纯金属'
+        },
+        {
+          'id': 11,
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;5N高纯铜'
+        },
+        {
+          'id': 12,
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;6N高纯铜'
         },
         {
           'id': 2,
-          'name': '平板显示'
+          'name': '铜合金'
+        },
+        {
+          'id': 21,
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;铜铁合金'
+        },
+        {
+          'id': 22,
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;钨铜合金'
+        },
+        {
+          'id': 23,
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;钼铜合金'
         },
         {
           'id': 3,
-          'name': '太阳能'
+          'name': '铝合金'
+        },
+        {
+          'id': 31,
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;铝铬硼'
+        },
+        {
+          'id': 32,
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;铝硅合金'
+        },
+        {
+          'id': 33,
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;铝碳化硼'
         },
         {
           'id': 4,
-          'name': '其它靶材'
+          'name': '其他产品'
+        },
+        {
+          'id': 41,
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;镍磷合金'
+        },
+        {
+          'id': 42,
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;碲化镉'
+        },
+        {
+          'id': 43,
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;铬硅合金'
+        },
+        {
+          'id': 44,
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;二硫化钼'
         },
         {
           'id': 5,
-          'name': '金属复合材料'
+          'name': '定制化产品'
         },
-        {
-          'id': 6,
-          'name': '绑定服务'
-        },
-        {
-          'id': 7,
-          'name': '生产设备、辅助工具'
-        },
-
       ],
       productCategoryList: [],
       imgSrc: '',
@@ -116,8 +205,6 @@ export default {
   },
   created() {
     this.updateCss();
-    this.fetchProduct();
-    this.showProduct('半导体靶材');
   },
   mounted() {
   },
