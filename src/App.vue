@@ -73,7 +73,7 @@
       <el-col :span="8" style="padding-top: 30px">
         <el-dropdown>
                   <span class="el-dropdown-link" style="font-size: 16px">
-                    首页<i class="el-icon-arrow-down el-icon--right"></i>
+                    首页<em class="el-icon-arrow-down el-icon--right"></em>
                   </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>
@@ -97,14 +97,12 @@
     </el-row>
     <router-view/>
     <el-row>
-      <h5>宁波建锡新材料有限公司 电话：0574-82357006 | 邮箱：jianxi@jianxi-materials.com | 备案号: 浙ICP备2020033888号</h5>
+      <h5>宁波建锡新材料有限公司 电话：0574-82357006 | 邮箱：jianxi@jianxi-materials.com | 备案号: <span><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">浙ICP备2020033888号</a></span></h5>
     </el-row>
   </div>
 </template>
 
 <script>
-// import request from "./utils/request";
-
 export default {
   name: 'app',
 

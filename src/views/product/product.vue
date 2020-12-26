@@ -10,7 +10,9 @@
           </li>
           <li v-for="product in productTableData" :key="product.id">
             <div style="border:1px solid #dedede;padding: 5%">
-              <div v-html="product.name"></div>
+              <a href="/#/product_detail">
+                <div v-html="product.name"></div>
+              </a>
             </div>
           </li>
         </ul>
@@ -38,51 +40,51 @@
             <el-col :span="8">
               <img src="../../assets/product/钨铜合金.jpg" width="300px" height="250px" alt="pic"/>
               <br>
-              5N高纯铜
+              钨铜合金
             </el-col>
             <el-col :span="8">
               <img src="../../assets/product/钼铜合金.jpg" width="300px" height="250px" alt="pic"/>
               <br>
-              6N高纯铜
+              钼铜合金
             </el-col>
             <el-col :span="8">
               <img src="../../assets/product/铝硌硼.jpg" width="300px" height="250px" alt="pic"/>
               <br>
-              铜铁合金
+              铝硌硼
             </el-col>
           </el-row>
           <el-row :gutter="60" style="padding: 2%">
             <el-col :span="8">
               <img src="../../assets/product/铝硅合金.jpg" width="300px" height="250px" alt="pic"/>
               <br>
-              5N高纯铜
+              铝硅合金
             </el-col>
             <el-col :span="8">
               <img src="../../assets/product/铝碳化硼.jpg" width="300px" height="250px" alt="pic"/>
               <br>
-              6N高纯铜
+              铝碳化硼
             </el-col>
             <el-col :span="8">
               <img src="../../assets/product/镍磷合金.jpg" width="300px" height="250px" alt="pic"/>
               <br>
-              铜铁合金
+              镍磷合金
             </el-col>
           </el-row>
           <el-row :gutter="60" style="padding: 2%">
             <el-col :span="8">
               <img src="../../assets/product/碲化镉.jpg" width="300px" height="250px" alt="pic"/>
               <br>
-              5N高纯铜
+              碲化镉
             </el-col>
             <el-col :span="8">
               <img src="../../assets/product/铬硅合金.jpg" width="300px" height="250px" alt="pic"/>
               <br>
-              6N高纯铜
+              铬硅合金
             </el-col>
             <el-col :span="8">
               <img src="../../assets/product/二硫化钼.jpg" width="300px" height="250px" alt="pic"/>
               <br>
-              铜铁合金
+              二硫化钼
             </el-col>
           </el-row>
         </div>
@@ -159,7 +161,7 @@ export default {
         },
         {
           'id': 31,
-          'name': '&nbsp;&nbsp;&nbsp;&nbsp;铝铬硼'
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;铝硌硼'
         },
         {
           'id': 32,
