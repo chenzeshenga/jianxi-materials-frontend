@@ -24,24 +24,25 @@
         <el-col class="el-col-lg-18 el-col-md-24 el-col-sm-24">
           <div :style="style1">
             <p style="text-align: left;padding-left: 3%;margin-left: 0">
-            地址：浙江省宁波市慈溪市高新区新兴二路89号<br>
-            邮箱：jianxi@jianxi-materials.com<br>
-            <br>
-            办公室：<br>
-            联系人：楼女士<br>
-            电话：0574-82357006<br>
-            <br>
-            销售：<br>
-            联系人：于先生<br>
-            电话：0574-82357008<br>
-            手机：13363990612<br>
-              </p>
+              地址：浙江省宁波市慈溪市高新区新兴二路89号<br>
+              邮箱：jianxi@jianxi-materials.com<br>
+              <br>
+              办公室：<br>
+              联系人：楼女士<br>
+              电话：0574-82357006<br>
+              <br>
+              销售：<br>
+              联系人：于先生<br>
+              电话：0574-82357008<br>
+              手机：13363990612<br>
+            </p>
           </div>
           <div :style="style2">
-            <baidu-map style="width: 100%;height: 500px" class="map"
-                       ak="HWgG9jQ3R5AH31GEG1svVfM8h4chKRlj"
-                       @ready="handler"
-                       :scroll-wheel-zoom="true">
+            <baidu-map class="bm-view" :scroll-wheel-zoom="true" :center="location" :zoom="zoom">
+              <bm-marker :position="location" :dragging="true"
+                         animation="BMAP_ANIMATION_BOUNCE">
+                <bm-label content="我爱北京天安门"/>
+              </bm-marker>
             </baidu-map>
           </div>
         </el-col>
@@ -52,13 +53,9 @@
 
 <script>
 import request from '../../request/request';
-import BaiduMap from "vue-baidu-map/components/map/Map";
 
 export default {
   name: "contact",
-  components: {
-    BaiduMap,
-  },
   data() {
     return {
       tableLoading: false,
@@ -77,6 +74,16 @@ export default {
       },
       style1: {'display': 'block'},
       style2: {'display': 'none'},
+      infoWindow: {
+        show: true,
+      },
+      // 设置中心点 经度纬度
+      location: {
+        lng: 121.217564,
+        lat: 30.243683
+      },
+      // 中心点缩放大小
+      zoom: 18,
     }
   },
   created() {
@@ -128,8 +135,6 @@ export default {
       map.addControl(new BMap.ScaleControl());
       //添加地图类型控件
       map.addControl(new BMap.MapTypeControl());
-      //设置标注的图标
-      // let icon = new BMap.Icon("/img/jianxi.png", new BMap.Size(100, 100));
       //设置标注的经纬度
       let marker = new BMap.Marker(new BMap.Point(121.222564, 30.241683));
       //把标注添加到地图上
@@ -146,9 +151,17 @@ export default {
       });
       // 标注默认显示
       map.openInfoWindow(infowindow, point);
-      // setTimeout(() => marker.trigger('click'));
-      // marker.trigger('click');
+      infowindow.redraw();
     },
+    infoWindowClose() {
+      this.infoWindow.show = false
+    },
+    infoWindowOpen() {
+      this.infoWindow.show = true
+    },
+    clear() {
+      this.infoWindow.contents = ''
+    }
   }
 }
 </script>
@@ -180,5 +193,10 @@ li {
   font-size: 16px;
   text-align: left;
   color: blue;
+}
+
+.bm-view {
+  width: 100%;
+  height: 100vh;
 }
 </style>

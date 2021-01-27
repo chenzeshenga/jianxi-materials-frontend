@@ -2,7 +2,7 @@
   <div id="app" style="width: 100%">
     <el-row class="hidden-md-and-down" :gutter="50">
       <el-col :span="6" :offset="3">
-        <img src="./assets/图标1.jpg" alt="jianxi" style="width: 100%">
+        <img src="./assets/图标1.jpg" alt="jianxi" style="padding-top:2%;width: 100%">
       </el-col>
       <el-col :span="12" :offset="2" style="padding-top: 2%;">
         <el-button type="text">
@@ -68,7 +68,7 @@
     </el-row>
     <el-row class="hidden-md-and-up" style="height: 100px">
       <el-col :span="16">
-        <img src="./assets/图标1.jpg" alt="jianxi" style="height: 40%;width: 90%;margin-top: 5%">
+        <img src="./assets/图标1.jpg" alt="jianxi" style="width:100%;padding-top:30px">
       </el-col>
       <el-col :span="8" style="padding-top: 30px">
         <el-dropdown>
@@ -97,7 +97,8 @@
     </el-row>
     <router-view/>
     <el-row>
-      <h5>宁波建锡新材料有限公司 电话：0574-82357006 | 邮箱：jianxi@jianxi-materials.com | 备案号: <span><a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">浙ICP备2020033888号</a></span></h5>
+      <h5>宁波建锡新材料有限公司 电话：0574-82357006 | 邮箱：jianxi@jianxi-materials.com | 备案号: <span><a
+          href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">浙ICP备2020033888号</a></span></h5>
     </el-row>
   </div>
 </template>
