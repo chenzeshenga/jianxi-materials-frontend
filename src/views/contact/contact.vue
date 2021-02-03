@@ -24,25 +24,47 @@
         <el-col class="el-col-lg-18 el-col-md-24 el-col-sm-24">
           <div :style="style1">
             <p style="text-align: left;padding-left: 3%;margin-left: 0">
-            地址：浙江省宁波市慈溪市高新区新兴二路89号<br>
-            邮箱：jianxi@jianxi-materials.com<br>
-            <br>
-            办公室：<br>
-            联系人：楼女士<br>
-            电话：0574-82357006<br>
-            <br>
-            销售：<br>
-            联系人：于先生<br>
-            电话：0574-82357008<br>
-            手机：13363990612<br>
-              </p>
+              地址：浙江省宁波市慈溪市高新区新兴二路89号<br>
+              邮箱：jianxi@jianxi-materials.com<br>
+              <br>
+              办公室：<br>
+              联系人：楼女士<br>
+              电话：0574-82357006<br>
+              <br>
+              销售：<br>
+              联系人：于先生<br>
+              电话：0574-82357008<br>
+              手机：13363990612<br>
+            </p>
           </div>
           <div :style="style2">
-            <baidu-map style="width: 100%;height: 500px" class="map"
-                       ak="HWgG9jQ3R5AH31GEG1svVfM8h4chKRlj"
-                       @ready="handler"
-                       :scroll-wheel-zoom="true">
-            </baidu-map>
+            <div style="width: 100%;height: auto">
+              <baidu-map class="bm-view" :scroll-wheel-zoom="true" :center="location" :zoom="zoom">
+                <bm-marker :position="markerLocation" :dragging="true"
+                           animation="BMAP_ANIMATION_BOUNCE">
+                </bm-marker>
+                <bm-overlay
+                    pane="labelPane"
+                    :class="{sample: true, active}"
+                    @draw="draw"
+                    @mouseover.native="active = true"
+                    @mouseleave.native="active = false">
+                  <div>
+                    <table>
+                      <tr>
+                        <td> 宁波建锡新材料有限公司</td>
+                      </tr>
+                      <tr>
+                        <td> 地址: 浙江宁波慈溪高新技术产业开发区新兴二路89号</td>
+                      </tr>
+                      <tr>
+                        <td> 联系方式: 0574-82357006</td>
+                      </tr>
+                    </table>
+                  </div>
+                </bm-overlay>
+              </baidu-map>
+            </div>
           </div>
         </el-col>
       </el-row>
@@ -52,13 +74,9 @@
 
 <script>
 import request from '../../request/request';
-import BaiduMap from "vue-baidu-map/components/map/Map";
 
 export default {
   name: "contact",
-  components: {
-    BaiduMap,
-  },
   data() {
     return {
       tableLoading: false,
@@ -77,6 +95,22 @@ export default {
       },
       style1: {'display': 'block'},
       style2: {'display': 'none'},
+      infoWindow: {
+        show: true,
+        contents: "123"
+      },
+      // 设置中心点 经度纬度
+      location: {
+        lng: 121.217564,
+        lat: 30.243683,
+      },
+      markerLocation: {
+        lng: 121.222564,
+        lat: 30.241683,
+      },
+      // 中心点缩放大小
+      zoom: 18,
+      active: false,
     }
   },
   created() {
@@ -99,9 +133,6 @@ export default {
         console.log(err)
       })
     },
-    showContent(content) {
-      this.content = content
-    },
     show1() {
       this.style1 = this.show;
       this.style2 = this.hidden;
@@ -114,41 +145,11 @@ export default {
       this.show1Class = 'normal';
       this.show2Class = 'highlight';
     },
-    handler({BMap, map}) {
-      // 初始化地图,设置中心点坐标
-      let point = new BMap.Point(121.222564, 30.241683)
-      map.centerAndZoom(point, 18)
-      // 添加鼠标滚动缩放
-      map.enableScrollWheelZoom();
-      // 添加缩略图控件
-      map.addControl(new BMap.OverviewMapControl({isOpen: false, anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT'}));
-      // 添加缩放平移控件
-      map.addControl(new BMap.NavigationControl());
-      //添加比例尺控件
-      map.addControl(new BMap.ScaleControl());
-      //添加地图类型控件
-      map.addControl(new BMap.MapTypeControl());
-      //设置标注的图标
-      // let icon = new BMap.Icon("/img/jianxi.png", new BMap.Size(100, 100));
-      //设置标注的经纬度
-      let marker = new BMap.Marker(new BMap.Point(121.222564, 30.241683));
-      //把标注添加到地图上
-      map.addOverlay(marker);
-      let content = "<table>";
-      content = content + "<tr><td> 宁波建锡新材料有限公司</td></tr>";
-      content = content + "<tr><td> 地址: 浙江宁波慈溪高新技术产业开发区新兴二路89号</td></tr>";
-      content = content + "<tr><td> 联系方式: 0574-82357006</td></tr>";
-      content += "</table>";
-      let infowindow = new BMap.InfoWindow(content, {width: 400, height: 100});
-      // 图标点击的时候显示标注
-      marker.addEventListener("click", function () {
-        this.openInfoWindow(infowindow);
-      });
-      // 标注默认显示
-      map.openInfoWindow(infowindow, point);
-      // setTimeout(() => marker.trigger('click'));
-      // marker.trigger('click');
-    },
+    draw({el, BMap, map}) {
+      const pixel = map.pointToOverlayPixel(new BMap.Point(121.222564, 30.241683))
+      el.style.left = pixel.x - 60 + 'px'
+      el.style.top = pixel.y - 20 + 'px'
+    }
   }
 }
 </script>
@@ -180,5 +181,28 @@ li {
   font-size: 16px;
   text-align: left;
   color: blue;
+}
+
+.bm-view {
+  width: 100%;
+  height: 100vh;
+}
+
+.sample {
+  width: 400px;
+  height: 120px;
+  line-height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  box-shadow: 0 0 5px #000;
+  color: #fff;
+  text-align: left;
+  padding: 10px;
+  position: absolute;
+}
+
+.sample.active {
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
 }
 </style>
