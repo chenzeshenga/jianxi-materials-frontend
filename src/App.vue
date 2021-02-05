@@ -98,7 +98,7 @@
     <router-view/>
     <el-row>
       <h5>宁波建锡新材料有限公司 电话：0574-82357006 | 邮箱：jianxi@jianxi-materials.com | 备案号: <span><a
-          href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">浙ICP备2020033888号</a></span></h5>
+          href="https://beian.miit.gov.cn" target="_blank">浙ICP备2020033888号-1</a></span></h5>
     </el-row>
   </div>
 </template>
