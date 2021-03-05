@@ -57,8 +57,7 @@
       </div>
       <div class="wrapper4" :style="wrapper2">
         <p style="z-index: 20;">特种合金靶材产业的拓荒者和耕耘者</p>
-        <p style="z-index: 20;">全球知名的靶材及特种合金品牌</p>
-        <el-button style="color: white;text-align: left;margin-left: -32%"
+        <el-button style="text-align: left;margin-left: -32%"
                    type="text" @click="route2introduce">
           了解更多
         </el-button>

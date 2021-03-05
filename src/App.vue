@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style="width: 100%">
+  <div id="app" style="width: 100%;overflow-x: hidden">
     <el-row class="hidden-md-and-down" :gutter="50">
       <el-col :span="6" :offset="3">
         <img src="./assets/图标1.jpg" alt="jianxi" style="padding-top:2%;width: 100%">

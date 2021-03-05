@@ -15,14 +15,14 @@
             <li>
               <div style="border:1px solid #dedede;padding: 5%">
                 <el-button type="text" style="font-size: 16px;color: black;text-align: left;" :class="show1Class"
-                           @click="showNews2">行业动态
+                           @click="showNews1">公司新闻
                 </el-button>
               </div>
             </li>
             <li>
               <div style="border:1px solid #dedede;padding: 5%">
                 <el-button type="text" style="font-size: 16px;color: black;text-align: left;" :class="show2Class"
-                           @click="showNews1">公司新闻
+                           @click="showNews2">行业动态
                 </el-button>
               </div>
             </li>
@@ -142,10 +142,10 @@ export default {
         'display': 'block'
       },
       newsStyle1: {
-        'display': 'block'
+        'display': 'none'
       },
       newsStyle2: {
-        'display': 'none'
+        'display': 'block'
       },
       pagination2: {
         current: 1,
@@ -244,16 +244,16 @@ export default {
       this.newsStyle2 = this.hidden;
       this.newsStyle1 = this.show;
       this.newsDetailStyle = this.hidden;
-      this.show1Class = 'highlight';
-      this.show2Class = 'normal';
+      this.show2Class = 'highlight';
+      this.show1Class = 'normal';
       this.fetchNews();
     },
     showNews1() {
       this.newsStyle2 = this.show;
       this.newsStyle1 = this.hidden;
       this.newsDetailStyle = this.hidden;
-      this.show1Class = 'normal';
-      this.show2Class = 'highlight';
+      this.show2Class = 'normal';
+      this.show1Class = 'highlight';
       this.fetchNews();
     }
   }
