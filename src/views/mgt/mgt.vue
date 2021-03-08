@@ -24,7 +24,7 @@
         <el-table :data="newsTableData" v-loading.body="tableLoading">
           <el-table-column prop="title" label="标题">
           </el-table-column>
-          <el-table-column prop="time" label="时间">
+          <el-table-column prop="time" label="更新时间">
           </el-table-column>
           <el-table-column prop="typeDesc" label="新闻类型">
           </el-table-column>
@@ -343,7 +343,7 @@ export default {
   mounted() {
     this.newsEditor = new E(this.$refs.newsEditor)
     this.newsEditor.customConfig.onchange = (html) => {
-      this.newsEditorContent = html
+      this.newsEditorContent = html;
     }
     this.newsEditor.customConfig.uploadImgServer = "http://47.111.170.208:8889/document/file";
     this.newsEditor.create();

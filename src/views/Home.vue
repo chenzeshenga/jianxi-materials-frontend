@@ -105,6 +105,10 @@ export default {
 <style scoped>
 p {
   text-align: left;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: ellipsis;
 }
 
 @keyframes fade-in {

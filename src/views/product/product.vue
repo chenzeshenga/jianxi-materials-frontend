@@ -9,9 +9,9 @@
             </div>
           </li>
           <li v-for="product in productTableData" :key="product.id">
-            <div style="border:1px solid #dedede;padding: 5%">
+            <div style="border:1px solid #dedede;padding: 5%" class="hoverGray">
               <a href="/#/product_detail">
-                <div v-html="product.name"></div>
+                <div v-html="product.name" style="color: black"></div>
               </a>
             </div>
           </li>
@@ -268,5 +268,15 @@ li {
   .condition-style {
     padding-left: 0;
   }
+}
+
+a:hover {
+  font-weight: bold;
+  text-underline: black;
+  background-color: gray;
+}
+
+.hoverGray:hover {
+  background-color: lightgray;
 }
 </style>

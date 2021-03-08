@@ -92,15 +92,15 @@
           </div>
           <div :style="newsDetailStyle">
             <div style="padding-left: 20%;padding-right: 20%" class="hidden-md-and-down">
-              <h4>{{ title }}</h4>
-              <span>时间:  {{ time }}</span>
-              <div v-html="content">
+              <h3>{{ title }}</h3>
+              <span style="text-align:left;">更新时间:  {{ time }}</span>
+              <div v-html="content" style="text-align:left !important">
               </div>
             </div>
             <div class="hidden-md-and-up">
-              <h4>{{ title }}</h4>
-              <span>时间:  {{ time }}</span>
-              <div v-html="content">
+              <h3>{{ title }}</h3>
+              <span style="text-align:left;">更新时间:  {{ time }}</span>
+              <div v-html="content" style="text-align:left !important">
               </div>
             </div>
           </div>
