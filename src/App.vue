@@ -55,6 +55,8 @@
                                                                class="font-black">其他产品</router-link></el-dropdown-item>
                                 <el-dropdown-item><router-link to="/product"
                                                                class="font-black">定制化产品</router-link></el-dropdown-item>
+                              <el-dropdown-item><router-link to="/product-demo"
+                                                               class="font-black">demo</router-link></el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
                     </span>
