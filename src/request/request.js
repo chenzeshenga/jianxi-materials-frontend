@@ -107,6 +107,13 @@ export default {
         })
     },
 
+    listProductDetail(id) {
+        return request({
+            url: '/product/listProductDetail?id=' + id,
+            method: 'get'
+        })
+    },
+
     listAllProduct(pagination) {
         return request({
             url: '/product/list',

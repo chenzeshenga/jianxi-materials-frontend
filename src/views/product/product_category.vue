@@ -22,72 +22,12 @@
       </el-aside>
       <el-container>
         <div>
-          <el-row :gutter="60" style="padding: 2%">
-            <el-col :span="8">
-              <img src="../../assets/product/5N高纯铜.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              5N高纯铜
+          <el-row v-for="tmp in product" v-bind:key="tmp.id">
+            <el-col :span="4" :offset="1" v-if="tmp.level==='1'">
+              <img :src="tmp.img" style="width: 100%" alt="pic"/>
             </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/6N高纯铜.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              6N高纯铜
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/铜铁合金.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              铜铁合金
-            </el-col>
-          </el-row>
-          <el-row :gutter="60" style="padding: 2%">
-            <el-col :span="8">
-              <img src="../../assets/product/钨铜合金.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              钨铜合金
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/钼铜合金.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              钼铜合金
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/铝硌硼.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              铝硌硼
-            </el-col>
-          </el-row>
-          <el-row :gutter="60" style="padding: 2%">
-            <el-col :span="8">
-              <img src="../../assets/product/铝硅合金.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              铝硅合金
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/铝碳化硼.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              铝碳化硼
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/镍磷合金.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              镍磷合金
-            </el-col>
-          </el-row>
-          <el-row :gutter="60" style="padding: 2%">
-            <el-col :span="8">
-              <img src="../../assets/product/碲化镉.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              碲化镉
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/铬硅合金.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              铬硅合金
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/二硫化钼.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              二硫化钼
+            <el-col :span="18" :offset="1" v-if="tmp.level==='1'">
+              <div v-html="tmp.introduce"/>
             </el-col>
           </el-row>
         </div>
@@ -122,7 +62,7 @@
 import request from "../../request/request";
 
 export default {
-  name: "product",
+  name: "product_category",
   data() {
     return {
       padding: {
@@ -164,7 +104,7 @@ export default {
         },
         {
           'id': 31,
-          'name': '&nbsp;&nbsp;&nbsp;&nbsp;铝硌硼'
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;铝铬硼'
         },
         {
           'id': 32,
@@ -211,29 +151,16 @@ export default {
   },
   created() {
     this.updateCss();
-    this.fetchProductCategory();
+    this.fetchLevel2Product();
   },
   mounted() {
   },
+  watch: {
+    $route() {
+      this.fetchLevel2Product();
+    }
+  },
   methods: {
-    fetchProductCategory() {
-      this.product = [];
-      request.listProduct().then((response) => {
-        for (let product of response.data) {
-          let level = product.level;
-          if (level === '0') {
-            product.link = '/#/product_category?id=' + product.id;
-            this.product.push(product);
-            let sub = product.sub;
-            for (let subProduct of sub) {
-              subProduct.name = '&nbsp;&nbsp;&nbsp;&nbsp;' + subProduct.name;
-              subProduct.link = '/#/product_detail?id=' + subProduct.id;
-              this.product.push(subProduct);
-            }
-          }
-        }
-      })
-    },
     updateCss() {
       if (window.outerWidth <= 992) {
         this.tabPosition = 'top';
@@ -271,7 +198,24 @@ export default {
     },
     handleClick(tab, event) {
       console.log(tab, event);
-    }
+    },
+    fetchLevel2Product() {
+      const id = this.$route.query.id;
+      this.product = [];
+      request.listProductDetail(id).then((response) => {
+        for (let product of response.data) {
+          let level = product.level;
+          if (level === '0') {
+            this.product.push(product);
+            let sub = product.sub;
+            for (let subProduct of sub) {
+              subProduct.name = '&nbsp;&nbsp;&nbsp;&nbsp;' + subProduct.name;
+              this.product.push(subProduct);
+            }
+          }
+        }
+      })
+    },
   }
 }
 </script>

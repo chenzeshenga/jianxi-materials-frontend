@@ -21,85 +21,22 @@
         </ul>
       </el-aside>
       <el-container>
-        <div>
-          <el-row :gutter="60" style="padding: 2%">
-            <el-col :span="8">
-              <img src="../../assets/product/5N高纯铜.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              5N高纯铜
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/6N高纯铜.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              6N高纯铜
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/铜铁合金.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              铜铁合金
-            </el-col>
+        <div style="padding-left: 20%;padding-right: 20%" class="hidden-md-and-down">
+          <h4>{{ curr.name }}</h4>
+          <el-row>
+            <img :src="curr.img" style=" width: 100%" alt="pic"/>
           </el-row>
-          <el-row :gutter="60" style="padding: 2%">
-            <el-col :span="8">
-              <img src="../../assets/product/钨铜合金.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              钨铜合金
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/钼铜合金.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              钼铜合金
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/铝硌硼.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              铝硌硼
-            </el-col>
-          </el-row>
-          <el-row :gutter="60" style="padding: 2%">
-            <el-col :span="8">
-              <img src="../../assets/product/铝硅合金.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              铝硅合金
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/铝碳化硼.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              铝碳化硼
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/镍磷合金.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              镍磷合金
-            </el-col>
-          </el-row>
-          <el-row :gutter="60" style="padding: 2%">
-            <el-col :span="8">
-              <img src="../../assets/product/碲化镉.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              碲化镉
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/铬硅合金.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              铬硅合金
-            </el-col>
-            <el-col :span="8">
-              <img src="../../assets/product/二硫化钼.jpg" width="300px" height="250px" alt="pic"/>
-              <br>
-              二硫化钼
-            </el-col>
-          </el-row>
+          <div v-html="curr.introduce"/>
         </div>
       </el-container>
     </el-container>
     <div class="hidden-md-and-up">
       <ul style="padding: 0">
-        <li v-for="tmp in product" :key="tmp.id">
+        <li v-for="product in productTableData" :key="product.id">
           <div style="border:1px solid #dedede;padding: 5%">
             <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
-                       @click="showProduct(tmp.name)">
-              <div v-html="tmp.name" style="color: black"></div>
+                       @click="showProduct(product.name)">
+              {{ product.name }}
             </el-button>
           </div>
         </li>
@@ -122,7 +59,7 @@
 import request from "../../request/request";
 
 export default {
-  name: "product",
+  name: "product-detail",
   data() {
     return {
       padding: {
@@ -207,13 +144,21 @@ export default {
       activeName: '0',
       productCategoryMap: {},
       product: [],
+      curr: {}
     };
   },
   created() {
     this.updateCss();
+    this.showProduct();
     this.fetchProductCategory();
   },
   mounted() {
+  },
+  watch: {
+    $route() {
+      this.fetchProductCategory();
+      this.showProduct();
+    }
   },
   methods: {
     fetchProductCategory() {
@@ -240,15 +185,16 @@ export default {
         this.padding = {};
       }
     },
-    showProduct(id) {
+    showProduct() {
       const loading = this.$loading({
         lock: true,
         text: 'Loading',
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.7)'
       });
+      const id = this.$route.query.id;
       request.showProduct(id).then((ret) => {
-        this.productCategoryList = ret.data;
+        this.curr = ret.data[0];
         loading.close();
       }).catch((err) => {
         console.log(err);
@@ -291,15 +237,5 @@ li {
   .condition-style {
     padding-left: 0;
   }
-}
-
-a:hover {
-  font-weight: bold;
-  text-underline: black;
-  background-color: gray;
-}
-
-.hoverGray:hover {
-  background-color: lightgray;
 }
 </style>

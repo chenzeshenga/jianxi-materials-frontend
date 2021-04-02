@@ -33,12 +33,17 @@ const routes = [
   {
     path: '/product-demo',
     name: 'product-demo',
-    component: () => import('../views/product/product-demo'),
+    component: () => import('../views/product/product-detail'),
+  },
+  {
+    path: '/product_category',
+    name: 'product_category',
+    component: () => import('../views/product/product_category'),
   },
   {
     path: '/product_detail',
     name: 'product_detail',
-    component: () => import('../views/product/product_detail'),
+    component: () => import('../views/product/product-detail'),
   },
   {
     path: '/mgt/login',

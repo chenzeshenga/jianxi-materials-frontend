@@ -45,18 +45,9 @@
                         <el-dropdown>
                           <router-link to="/product" class="font-black nav">产品与服务</router-link>
                             <el-dropdown-menu slot="dropdown">
-                                <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">高纯金属</router-link></el-dropdown-item>
-                                <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">铜合金</router-link></el-dropdown-item>
-                                <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">铝合金</router-link></el-dropdown-item>
-                                <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">其他产品</router-link></el-dropdown-item>
-                                <el-dropdown-item><router-link to="/product"
-                                                               class="font-black">定制化产品</router-link></el-dropdown-item>
-                              <el-dropdown-item><router-link to="/product-demo"
-                                                               class="font-black">demo</router-link></el-dropdown-item>
+                                <el-dropdown-item v-for="cate in category" v-bind:key="cate.id">
+                                  <router-link :to="cate.link" class="font-black">{{ cate.name }}</router-link>
+                                </el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
                     </span>
@@ -106,10 +97,28 @@
 </template>
 
 <script>
+import request from "./request/request";
+
 export default {
   name: 'app',
-
-  methods: {}
+  data() {
+    return {
+      category: []
+    }
+  },
+  created() {
+    this.fetchProductCategory();
+  },
+  methods: {
+    fetchProductCategory() {
+      request.listProduct().then((response) => {
+        for (let cate of response.data) {
+          cate.link = "/product_category?id=" + cate.id;
+        }
+        this.category = response.data;
+      })
+    }
+  }
 }
 </script>
 

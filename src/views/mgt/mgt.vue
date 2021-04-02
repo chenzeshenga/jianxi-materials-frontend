@@ -129,14 +129,6 @@
             </template>
           </el-table-column>
         </el-table>
-        <el-pagination
-            layout="prev, pager, next, total"
-            :total="pagination4Product.total"
-            :page-size="pagination4Product.size"
-            :current-page="pagination4Product.current"
-            @current-change="currentChange4Product"
-        >
-        </el-pagination>
         <div style="margin-top: 2%">
           新增产品
           <el-row style="margin-top: 2%">
@@ -163,10 +155,21 @@
             </el-col>
           </el-row>
           <el-row style="margin-top: 2%">
+            <el-col :span="2">产品级别</el-col>
+            <el-col :span="18">
+              <el-tooltip content="产品级别">
+                <el-select v-model="product.level" placeholder="请选择">
+                  <el-option key="0" value="0">0</el-option>
+                  <el-option key="1" value="1">1</el-option>
+                </el-select>
+              </el-tooltip>
+            </el-col>
+          </el-row>
+          <el-row style="margin-top: 2%">
             <el-upload
                 class="upload-demo"
                 drag
-                action="http://47.105.33.48:8889/img/img"
+                action="http://47.111.170.208:8889/document/file"
                 multiple
                 :on-success="successUpload"
             >
@@ -250,28 +253,28 @@ export default {
   name: "mgt",
   data() {
     return {
-      options: [{
-        value: '半导体靶材',
-        label: '半导体靶材'
-      }, {
-        value: '平板靶材',
-        label: '平板靶材    '
-      }, {
-        value: '太阳能靶材',
-        label: '太阳能靶材'
-      }, {
-        value: '其它靶材',
-        label: '其它靶材'
-      }, {
-        value: '金属复合材料',
-        label: '金属复合材料'
-      }, {
-        value: '绑定服务',
-        label: '绑定服务'
-      }, {
-        value: '生产设备、辅助工具',
-        label: '生产设备、辅助工具'
-      }],
+      options: [
+        {
+          value: '高纯金属',
+          label: '高纯金属'
+        },
+        {
+          value: '铜合金',
+          label: '铜合金    '
+        },
+        {
+          value: '铝合金',
+          label: '铝合金'
+        },
+        {
+          value: '其他产品',
+          label: '其他产品'
+        },
+        {
+          value: '定制化产品',
+          label: '定制化产品'
+        }
+      ],
       tableLoading: false,
       news: {
         id: 0,
@@ -284,7 +287,8 @@ export default {
         id: 0,
         name: '',
         introduce: '',
-        img: ''
+        img: '',
+        level: '',
       },
       job: {
         id: 0,
@@ -347,11 +351,12 @@ export default {
     }
     this.newsEditor.customConfig.uploadImgServer = "http://47.111.170.208:8889/document/file";
     this.newsEditor.create();
+
     this.productEditor = new E(this.$refs.productEditor)
     this.productEditor.customConfig.onchange = (html) => {
       this.productEditorContent = html
     }
-    this.productEditor.customConfig.uploadImgShowBase64 = true
+    this.productEditor.customConfig.uploadImgServer = "http://47.111.170.208:8889/document/file";
     this.productEditor.create()
   },
   methods: {
@@ -363,9 +368,7 @@ export default {
     fetchNews() {
       this.tableLoading = true;
       request.listAllNews(this.pagination).then((ret) => {
-        console.log(ret);
         let list = ret.data.list;
-        console.log(list);
         for (let news of list) {
           if ('1' === news.type) {
             news.typeDesc = '行业动态';
@@ -393,15 +396,8 @@ export default {
     },
     fetchProduct() {
       this.tableLoading = true;
-      request.listAllProduct(this.pagination).then((ret) => {
-        let list = ret.data.list;
-        for (let product of list) {
-          product.imgSrc = 'http://47.105.33.48:8889/img/' + product.img;
-        }
-        this.productTableData = list;
-        this.pagination4Product.total = ret.data.total;
-        this.pagination4Product.current = ret.data.current;
-        this.pagination4Product.size = ret.data.size;
+      request.listAllProduct().then((ret) => {
+        this.productTableData = ret.data;
         this.tableLoading = false;
       }).catch((err) => {
         console.log(err)
@@ -439,10 +435,7 @@ export default {
       this.newsEditor.txt.html(row.content);
     },
     productEdit(index, row) {
-      console.log(index);
-      console.log(row);
-      this.product.id = row.id;
-      this.product.name = row.name;
+      this.product = row;
       this.productEditor.txt.html(row.introduce);
     },
     newsDelete(index, row) {
@@ -455,8 +448,6 @@ export default {
       })
     },
     productDelete(index, row) {
-      console.log(index);
-      console.log(row);
       request.deleteProduct(row.id).then((ret) => {
         console.log(ret);
         this.$message.success('产品删除成功');
@@ -486,16 +477,12 @@ export default {
       })
     },
     jobUpdateTrigger(index, row) {
-      console.log(index);
-      console.log(row);
       this.job.id = row.id;
       this.job.title = row.title;
       this.job.content = row.content;
       this.job.contact = row.contact;
     },
     jobDelete(index, row) {
-      console.log(index);
-      console.log(row);
       request.deleteJob(row.id).then((ret) => {
         console.log(ret);
         this.$message.success('职位删除成功');
@@ -510,7 +497,6 @@ export default {
         return;
       }
       this.news.content = this.newsEditorContent;
-      console.log(this.news);
       request.addOrUpdateNews(this.news).then(() => {
         this.$message.success('新闻创建成功');
         this.news = {
@@ -529,7 +515,6 @@ export default {
         return;
       }
       this.product.introduce = this.productEditorContent
-      console.log(this.product);
       request.addOrUpdateProduct(this.product).then(() => {
         this.$message.success('产品创建成功');
         this.product = {
@@ -544,7 +529,7 @@ export default {
       })
     },
     successUpload(response) {
-      this.product.img = response;
+      this.product.img = response.data[0];
     },
   }
 }

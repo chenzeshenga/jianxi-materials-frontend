@@ -8,41 +8,70 @@
               <img src="../../assets/product-head.png" alt="产品" style="width: 100%;height: 100%"/>
             </div>
           </li>
-          <li v-for="product in productTableData" :key="product.id">
-            <div style="border:1px solid #dedede;padding: 5%">
-              <a href="/#/product_detail">
-                <div v-html="product.name"></div>
+          <li v-for="tmp in product" :key="tmp.id">
+            <div style="border:1px solid #dedede;padding: 5%" class="hoverGray">
+              <a href="/#/product_category">
+                <div v-html="tmp.name" style="color: black"></div>
               </a>
             </div>
           </li>
         </ul>
       </el-aside>
       <el-container>
-        <div style="padding-left: 20%;padding-right: 20%" class="hidden-md-and-down">
-          <h4>5N高纯铜</h4>
-          <el-row>
-            <img src="http://47.111.170.208:8889/document/file/9379a281-165b-41b9-96c3-aa3cb24bbf74"
-                 style=" width: 100%" alt="pic"/>
+        <div>
+          <el-row v-for="tmp in product" v-bind:key="tmp.id">
+            <el-col :span="4" :offset="1">
+              <img :src="tmp.img" style="width: 100%" alt="pic"/>
+            </el-col>
+            <el-col :span="18" :offset="1">
+              <div :v-html="tmp.introduce"/>
+            </el-col>
           </el-row>
-          <div>
-            <p style="text-align: left">
-              纯度99.999%以上<br>
-              氧含量小于3ppm<br>
-              重量大于600kg<br>
-              产品可加工成锭、棒、管、板等<br>
-              产品可应用于平板显示、高纯合金制造、薄膜太阳能电池导电层、超导领域等<br>
-            </p>
-          </div>
+          <el-row>
+            <el-col :span="4" :offset="1">
+              <img src="../../assets/product/铝硌硼.jpg" style="width: 100%" alt="pic"/>
+            </el-col>
+            <el-col :span="18" :offset="1">
+              <p style="font-weight: bold;text-align: left">铝铬硼</p>
+              <p style="text-align: left">
+                合金比例有：Cr-Al-B：（65:30:5）at%、（63:30:7）at%、（63:27:10）at%<br>
+                产品具备超高的硬度（约50GPa）、低的内应力、提高涂层和刀具的工作寿命、热稳定性高<br>
+                产品应用于金属刀具、模具、工具的表面改性<br>
+              </p>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="4" :offset="1">
+              <img src="../../assets/product/镍磷合金.jpg" style="width: 100%" alt="pic"/>
+            </el-col>
+            <el-col :span="18" :offset="1">
+              <p style="font-weight: bold;text-align: left">镍磷合金</p>
+              <p style="text-align: left">
+                纯度99.9%以上<br>
+                合金比例有：Ni-P：（92:8）at%、（88:12）at%、（80:20）at%<br>
+                产品耐蚀性强、镀膜后耐磨性好、磨蹭均匀、光泽度高、致密度高、电磁屏蔽性好<br>
+                产品应用于IGBT基板镀层、手机壳镀膜、玻璃镀膜、陶瓷镀膜、合金表面改性、汽车车身镀膜等领域<br>
+              </p>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="18" :offset="6">
+              <p style="font-weight: bold;text-align: left">定制化产品</p>
+              <p style="text-align: left">
+                公司具备通用性溶渗工艺的技术储备，可根据客户实际需求制造其他特殊要求的难加工合金及极端应用场合的多功能金属复合材料
+              </p>
+            </el-col>
+          </el-row>
         </div>
       </el-container>
     </el-container>
     <div class="hidden-md-and-up">
       <ul style="padding: 0">
-        <li v-for="product in productTableData" :key="product.id">
+        <li v-for="tmp in product" :key="tmp.id">
           <div style="border:1px solid #dedede;padding: 5%">
             <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
-                       @click="showProduct(product.name)">
-              {{ product.name }}
+                       @click="showProduct(tmp.name)">
+              <div v-html="tmp.name" style="color: black"></div>
             </el-button>
           </div>
         </li>
@@ -65,7 +94,7 @@
 import request from "../../request/request";
 
 export default {
-  name: "product",
+  name: "product_category",
   data() {
     return {
       padding: {
@@ -107,7 +136,7 @@ export default {
         },
         {
           'id': 31,
-          'name': '&nbsp;&nbsp;&nbsp;&nbsp;铝硌硼'
+          'name': '&nbsp;&nbsp;&nbsp;&nbsp;铝铬硼'
         },
         {
           'id': 32,
@@ -149,12 +178,19 @@ export default {
       content: '',
       activeName: '0',
       productCategoryMap: {},
+      product: [],
     };
   },
   created() {
     this.updateCss();
+    this.fetchLevel2Product();
   },
   mounted() {
+  },
+  watch: {
+    $route() {
+      this.fetchLevel2Product();
+    }
   },
   methods: {
     updateCss() {
@@ -194,7 +230,23 @@ export default {
     },
     handleClick(tab, event) {
       console.log(tab, event);
-    }
+    },
+    fetchLevel2Product() {
+      const id = this.$route.query.id;
+      request.listProductDetail(id).then((response) => {
+        for (let product of response.data) {
+          let level = product.level;
+          if (level === '0') {
+            this.product.push(product);
+            let sub = product.sub;
+            for (let subProduct of sub) {
+              subProduct.name = '&nbsp;&nbsp;&nbsp;&nbsp;' + subProduct.name;
+              this.product.push(subProduct);
+            }
+          }
+        }
+      })
+    },
   }
 }
 </script>
@@ -214,5 +266,15 @@ li {
   .condition-style {
     padding-left: 0;
   }
+}
+
+a:hover {
+  font-weight: bold;
+  text-underline: black;
+  background-color: gray;
+}
+
+.hoverGray:hover {
+  background-color: lightgray;
 }
 </style>
