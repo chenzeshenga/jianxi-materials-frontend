@@ -95,22 +95,81 @@
     </el-container>
     <div class="hidden-md-and-up">
       <ul style="padding: 0">
+        <li>
+          <div>
+            <img src="../../assets/product-head.png" alt="产品" style="width: 100%;height: 100%"/>
+          </div>
+        </li>
         <li v-for="tmp in product" :key="tmp.id">
-          <div style="border:1px solid #dedede;padding: 5%">
-            <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
-                       @click="showProduct(tmp.name)">
+          <div style="border:1px solid #dedede;padding: 5%" class="hoverGray">
+            <a :href="tmp.link" v-if="tmp.level==='1'">
               <div v-html="tmp.name" style="color: black"></div>
-            </el-button>
+            </a>
+            <a :href="tmp.link" v-if="tmp.level==='0'">
+              <div v-html="tmp.name" style="color: black"></div>
+            </a>
           </div>
         </li>
       </ul>
-      <el-row>
-        <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-          <el-tab-pane :label="product.name" v-for="product in productCategoryList" :key="product.id"
-                       @tab-click="handleClick">
-            <div v-html="product.introduce"></div>
-          </el-tab-pane>
-        </el-tabs>
+      <el-row style="padding: 1%">
+        <img src="../../assets/product/5N高纯铜.jpg" height="250px" alt="pic"/>
+        <br>
+        5N高纯铜
+      </el-row>
+      <el-row style="padding: 1%">
+        <img src="../../assets/product/6N高纯铜.jpg" height="250px" alt="pic"/>
+        <br>
+        6N高纯铜
+      </el-row>
+      <el-row style="padding: 1%">
+        <img src="../../assets/product/铜铁合金.jpg" height="250px" alt="pic"/>
+        <br>
+        铜铁合金
+      </el-row>
+      <el-row style="padding: 1%">
+        <img src="../../assets/product/钨铜合金.jpg" height="250px" alt="pic"/>
+        <br>
+        钨铜合金
+      </el-row>
+      <el-row style="padding: 1%">
+        <img src="../../assets/product/钼铜合金.jpg" height="250px" alt="pic"/>
+        <br>
+        钼铜合金
+      </el-row>
+      <el-row style="padding: 1%">
+        <img src="../../assets/product/铝硌硼.jpg" height="250px" alt="pic"/>
+        <br>
+        铝硌硼
+      </el-row>
+      <el-row style="padding: 1%">
+        <img src="../../assets/product/铝硅合金.jpg" height="250px" alt="pic"/>
+        <br>
+        铝硅合金
+      </el-row>
+      <el-row style="padding: 1%">
+        <img src="../../assets/product/铝碳化硼.jpg" height="250px" alt="pic"/>
+        <br>
+        铝碳化硼
+      </el-row>
+      <el-row style="padding: 1%">
+        <img src="../../assets/product/镍磷合金.jpg" height="250px" alt="pic"/>
+        <br>
+        镍磷合金
+      </el-row>
+      <el-row style="padding: 1%">
+        <img src="../../assets/product/碲化镉.jpg" height="250px" alt="pic"/>
+        <br>
+        碲化镉
+      </el-row>
+      <el-row style="padding: 1%">
+        <img src="../../assets/product/铬硅合金.jpg" height="250px" alt="pic"/>
+        <br>
+        铬硅合金
+      </el-row>
+      <el-row style="padding: 1%">
+        <img src="../../assets/product/二硫化钼.jpg" height="250px" alt="pic"/>
+        <br>
+        二硫化钼
       </el-row>
     </div>
   </div>

@@ -35,22 +35,29 @@
     </el-container>
     <div class="hidden-md-and-up">
       <ul style="padding: 0">
+        <li>
+          <div>
+            <img src="../../assets/product-head.png" alt="产品" style="width: 100%;height: 100%"/>
+          </div>
+        </li>
         <li v-for="tmp in product" :key="tmp.id">
-          <div style="border:1px solid #dedede;padding: 5%">
-            <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
-                       @click="showProduct(tmp.name)">
+          <div style="border:1px solid #dedede;padding: 5%" class="hoverGray">
+            <a :href="tmp.link" v-if="tmp.level==='1'">
               <div v-html="tmp.name" style="color: black"></div>
-            </el-button>
+            </a>
+            <a :href="tmp.link" v-if="tmp.level==='0'">
+              <div v-html="tmp.name" style="color: black"></div>
+            </a>
           </div>
         </li>
       </ul>
-      <el-row>
-        <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-          <el-tab-pane :label="product.name" v-for="product in productCategoryList" :key="product.id"
-                       @tab-click="handleClick">
-            <div v-html="product.introduce"></div>
-          </el-tab-pane>
-        </el-tabs>
+      <el-row v-for="tmp in product" v-bind:key="tmp.id">
+        <el-row v-if="tmp.level==='1'">
+          <img :src="tmp.img" style="width: 100%" alt="pic"/>
+        </el-row>
+        <el-row v-if="tmp.level==='1'">
+          <div v-html="tmp.introduce"/>
+        </el-row>
       </el-row>
     </div>
   </div>
@@ -199,6 +206,24 @@ export default {
     handleClick(tab, event) {
       console.log(tab, event);
     },
+    fetchProductCategory() {
+      this.product = [];
+      request.listProduct().then((response) => {
+        for (let product of response.data) {
+          let level = product.level;
+          if (level === '0') {
+            product.link = '/#/product_category?id=' + product.id;
+            this.product.push(product);
+            let sub = product.sub;
+            for (let subProduct of sub) {
+              subProduct.name = '&nbsp;&nbsp;&nbsp;&nbsp;' + subProduct.name;
+              subProduct.link = '/#/product_detail?id=' + subProduct.id;
+              this.product.push(subProduct);
+            }
+          }
+        }
+      })
+    },
     fetchLevel2Product() {
       const id = this.$route.query.id;
       this.product = [];
@@ -206,10 +231,12 @@ export default {
         for (let product of response.data) {
           let level = product.level;
           if (level === '0') {
+            product.link = '/#/product_category?id=' + product.id;
             this.product.push(product);
             let sub = product.sub;
             for (let subProduct of sub) {
               subProduct.name = '&nbsp;&nbsp;&nbsp;&nbsp;' + subProduct.name;
+              subProduct.link = '/#/product_detail?id=' + subProduct.id;
               this.product.push(subProduct);
             }
           }

@@ -32,22 +32,28 @@
     </el-container>
     <div class="hidden-md-and-up">
       <ul style="padding: 0">
-        <li v-for="product in productTableData" :key="product.id">
-          <div style="border:1px solid #dedede;padding: 5%">
-            <el-button type="text" style="font-size: 16px;color: black;text-align: left;"
-                       @click="showProduct(product.name)">
-              {{ product.name }}
-            </el-button>
+        <li>
+          <div>
+            <img src="../../assets/product-head.png" alt="产品" style="width: 100%;height: 100%"/>
+          </div>
+        </li>
+        <li v-for="tmp in product" :key="tmp.id">
+          <div style="border:1px solid #dedede;padding: 5%" class="hoverGray">
+            <a :href="tmp.link" v-if="tmp.level==='1'">
+              <div v-html="tmp.name" style="color: black"></div>
+            </a>
+            <a :href="tmp.link" v-if="tmp.level==='0'">
+              <div v-html="tmp.name" style="color: black"></div>
+            </a>
           </div>
         </li>
       </ul>
       <el-row>
-        <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-          <el-tab-pane :label="product.name" v-for="product in productCategoryList" :key="product.id"
-                       @tab-click="handleClick">
-            <div v-html="product.introduce"></div>
-          </el-tab-pane>
-        </el-tabs>
+        <h4>{{ curr.name }}</h4>
+        <el-row>
+          <img :src="curr.img" style="width: 100%" alt="pic"/>
+        </el-row>
+        <div v-html="curr.introduce"/>
       </el-row>
     </div>
   </div>

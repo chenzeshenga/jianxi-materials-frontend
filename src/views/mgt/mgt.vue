@@ -169,7 +169,7 @@
             <el-upload
                 class="upload-demo"
                 drag
-                action="http://47.111.170.208:8889/document/file"
+                action="http://47.111.170.208:8889/materials/file"
                 multiple
                 :on-success="successUpload"
             >
@@ -349,14 +349,14 @@ export default {
     this.newsEditor.customConfig.onchange = (html) => {
       this.newsEditorContent = html;
     }
-    this.newsEditor.customConfig.uploadImgServer = "http://47.111.170.208:8889/document/file";
+    this.newsEditor.customConfig.uploadImgServer = "http://47.111.170.208:8889/materials/file";
     this.newsEditor.create();
 
     this.productEditor = new E(this.$refs.productEditor)
     this.productEditor.customConfig.onchange = (html) => {
       this.productEditorContent = html
     }
-    this.productEditor.customConfig.uploadImgServer = "http://47.111.170.208:8889/document/file";
+    this.productEditor.customConfig.uploadImgServer = "http://47.111.170.208:8889/materials/file";
     this.productEditor.create()
   },
   methods: {
